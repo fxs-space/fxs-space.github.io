@@ -1,6 +1,6 @@
 ---
-title: Hello World
-date: 2018-01-04 11:10:26
+title: Hello Hexo
+date: 2017-06-08 22:10:26
 categories: 框架
 tags: Hexo
 ---
@@ -22,7 +22,15 @@ More info: [Writing](https://hexo.io/docs/writing.html)
 $ hexo server
 ```
 
+<!--more-->
+
 More info: [Server](https://hexo.io/docs/server.html)
+
+### clean cache
+
+``` bash
+$ hexo clean
+```
 
 ### Generate static files
 
