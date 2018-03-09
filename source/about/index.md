@@ -13,7 +13,7 @@ type: "about"
 
 ##### App:
 
-- 有数征信（简查App的前身）
+- 有数征信（有数简查App的前身）
 
 - 有数简查（有数征信App2.0的升级版，AppStore与各大主流android应用市场可下载）
 

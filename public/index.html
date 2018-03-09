@@ -306,6 +306,178 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fengxiansen.github.io/2018/03/08/前端常见跨域解决方案/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="馮先森">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CodeSky's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/08/前端常见跨域解决方案/" itemprop="url">前端常见跨域解决方案</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T19:57:12+08:00">
+                2018-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/08/前端常见跨域解决方案/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/03/08/前端常见跨域解决方案/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="前端常见跨域解决方案（全）"><a href="#前端常见跨域解决方案（全）" class="headerlink" title="前端常见跨域解决方案（全）"></a>前端常见跨域解决方案（全）</h2><h4 id="什么是跨域？"><a href="#什么是跨域？" class="headerlink" title="什么是跨域？"></a>什么是跨域？</h4><p>跨域是指一个域下的文档或脚本试图去请求另一个域下的资源，这里跨域是广义的。</p>
+<h5 id="广义的跨域："><a href="#广义的跨域：" class="headerlink" title="广义的跨域："></a>广义的跨域：</h5><ol>
+<li>资源跳转： A链接、重定向、表单提交</li>
+<li>资源嵌入： <code>&lt;link&gt;、&lt;script&gt;、&lt;img&gt;、&lt;frame&gt;</code>等dom标签， 还有样式中background:url()、 @font-face()等文件外链</li>
+<li>脚本请求： js发起的ajax请求、dom和js对象的跨域操作等</li>
+</ol>
+<p>其实我们通常所说的跨域是狭义的，是由浏览器同源策略限制的一类请求场景。</p>
+<h4 id="什么是同源策略？"><a href="#什么是同源策略？" class="headerlink" title="什么是同源策略？"></a>什么是同源策略？</h4><p>同源策略/SOP（Same origin policy）是一种约定，由Netscape公司1995年引入浏览器，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，浏览器很容易受到XSS、CSFR等攻击。所谓同源是指”协议+域名+端口”三者相同，即便两个不同的域名指向同一个ip地址，也非同源。</p>
+<h5 id="同源策略限制以下几种行为："><a href="#同源策略限制以下几种行为：" class="headerlink" title="同源策略限制以下几种行为："></a>同源策略限制以下几种行为：</h5><ol>
+<li>Cookie、LocalStorage 和 IndexDB 无法读取</li>
+<li>DOM 和 js对象无法获得</li>
+<li>AJAX 请求不能发送跨域方法</li>
+</ol>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/08/前端常见跨域解决方案/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://fengxiansen.github.io/2018/01/06/dva的几个核心概念/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -801,6 +973,170 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fengxiansen.github.io/2017/11/23/深入分析javascript中的错误处理机制/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="馮先森">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CodeSky's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/23/深入分析javascript中的错误处理机制/" itemprop="url">深入分析javascript中的错误处理机制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-23T20:19:00+08:00">
+                2017-11-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/11/23/深入分析javascript中的错误处理机制/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/11/23/深入分析javascript中的错误处理机制/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="深入分析javascript中的错误处理机制"><a href="#深入分析javascript中的错误处理机制" class="headerlink" title="深入分析javascript中的错误处理机制"></a>深入分析javascript中的错误处理机制</h2><h4 id="前面的话"><a href="#前面的话" class="headerlink" title="前面的话"></a>前面的话</h4><p>错误处理对于web应用程序开发至关重要，不能提前预测到可能发生的错误，不能提前采取恢复策略，可能导致较差的用户体验。由于任何javascript错误都可能导致网页无法使用，因此作为开发人员，必须要知道何时可能出错，为什么会出错，以及会出什么错。本文将详细介绍javascript中的错误处理机制</p>
+<h4 id="error对象"><a href="#error对象" class="headerlink" title="error对象"></a>error对象</h4><p>error对象是包含错误信息的对象，是javascript的原生对象。当代码解析或运行时发生错误，javascript引擎就会自动产生并抛出一个error对象的实例，然后整个程序就中断在发生错误的地方</p>
+<p><code>console.log(t);    //Uncaught ReferenceError: t is not defined</code></p>
+<p>ECMA-262规定了error对象包括两个属性：message和name。message属性保存着错误信息，而name属性保存错误类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//一般地，使用try-catch语句来捕获错误</span><br><span class="line">try &#123;</span><br><span class="line">    t;</span><br><span class="line">&#125; catch(ex) &#123;</span><br><span class="line">    console.log(ex.message);    //t is not defined</span><br><span class="line">    console.log(ex.name);   //ReferenceError</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/23/深入分析javascript中的错误处理机制/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://fengxiansen.github.io/2017/11/09/Webpack从入门到上手/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -918,6 +1254,167 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/11/09/Webpack从入门到上手/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fengxiansen.github.io/2017/10/23/Linux实用命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="馮先森">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CodeSky's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/23/Linux实用命令/" itemprop="url">Linux实用命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-23T20:19:00+08:00">
+                2017-10-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/10/23/Linux实用命令/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/10/23/Linux实用命令/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="Linux实用命令"><a href="#Linux实用命令" class="headerlink" title="Linux实用命令"></a>Linux实用命令</h2><h4 id="Linux实用命令-1"><a href="#Linux实用命令-1" class="headerlink" title="Linux实用命令"></a>Linux实用命令</h4><h5 id="查看当前特定的所有进程"><a href="#查看当前特定的所有进程" class="headerlink" title="查看当前特定的所有进程"></a>查看当前特定的所有进程</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep *</span><br><span class="line"></span><br><span class="line">eg: ps -ef | grep VirtualBox</span><br></pre></td></tr></table></figure>
+<h5 id="杀死特定的进程"><a href="#杀死特定的进程" class="headerlink" title="杀死特定的进程"></a>杀死特定的进程</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kill -9 PID</span><br><span class="line"></span><br><span class="line">eg: kill -9 63586</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/23/Linux实用命令/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1457,513 +1954,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fengxiansen.github.io/2017/08/05/30个你必须记住的CSS选择符/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="馮先森">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CodeSky's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/05/30个你必须记住的CSS选择符/" itemprop="url">30个你必须记住的CSS选择符</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-05T21:06:20+08:00">
-                2017-08-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/08/05/30个你必须记住的CSS选择符/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/08/05/30个你必须记住的CSS选择符/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="30个你必须记住的CSS选择符"><a href="#30个你必须记住的CSS选择符" class="headerlink" title="30个你必须记住的CSS选择符"></a>30个你必须记住的CSS选择符</h2><p>你学会了基础的id，类和后代选择符，然后你就一直用它们了吗？如果是这样，你丢失了CSS巨大的灵活性。在本文中提到的很多选择器属于CSS3规范的一部分，因此，只有在现代浏览器中才可使用。</p>
-<h4 id="1"><a href="#1" class="headerlink" title="1.*"></a>1.<code>*</code></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line"> margin: 0;</span><br><span class="line"> padding: 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>对于初学者，在学习更多高级选择器之前，<code>*</code>是最应先了解的选择器。</p>
-<p>星号选择器将匹配页面里的每一个元素。很多开发者使用这个技巧将外边距和内边距重置为零。虽然在快速测试时这确实很好用，但我建议你永远不要在生产代码中使用它。它给浏览器带来大量不必要的负担。</p>
-<p><code>*</code>也能作为子选择符使用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#container * &#123;</span><br><span class="line"> border: 1px solid black;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这将匹配<code>#container div</code>的每一个后代元素。再次强调，尽量不要使用这种技术。</p>
-<h4 id="2-X"><a href="#2-X" class="headerlink" title="2.#X"></a>2.<code>#X</code></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#container &#123;</span><br><span class="line">   width: 960px;</span><br><span class="line">   margin: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>#</code>号前缀允许我们选择id。这是最常见的用法，不过应该慎重使用ID选择器。</p>
-<p>id选择符是唯一的，不允许重复使用。如果可能的话，先尝试使用一个标签名称，一个新的HTML5元素，甚至是一个伪类。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/05/30个你必须记住的CSS选择符/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fengxiansen.github.io/2017/07/06/CSS清除浮动方法汇总/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="馮先森">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CodeSky's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/06/CSS清除浮动方法汇总/" itemprop="url">CSS清除浮动方法汇总</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-06T19:42:39+08:00">
-                2017-07-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/07/06/CSS清除浮动方法汇总/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/07/06/CSS清除浮动方法汇总/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="CSS清除浮动方法汇总"><a href="#CSS清除浮动方法汇总" class="headerlink" title="CSS清除浮动方法汇总"></a>CSS清除浮动方法汇总</h2><h5 id="在清除浮动前我们要了解两个重要的定义："><a href="#在清除浮动前我们要了解两个重要的定义：" class="headerlink" title="在清除浮动前我们要了解两个重要的定义："></a>在清除浮动前我们要了解两个重要的定义：</h5><ul>
-<li><p><strong>浮动的定义</strong>：使元素脱离文档流，按照指定方向发生移动，遇到父级边界或者相邻的浮动元素停了下来。</p>
-</li>
-<li><p><strong>高度塌陷</strong>：浮动元素父元素高度自适应（父元素不写高度时，子元素写了浮动后，父元素会发生高度塌陷）</p>
-</li>
-</ul>
-<p>知道浮动和为什么要清除浮动之后我们可以开始学习如何清除浮动了，这时候我们就需要用到清除浮动的属性<code>clear</code>：</p>
-<ul>
-<li>clear:left | right | both | none | inherit：元素的某个方向上不能有浮动元素</li>
-<li>clear:both：在左右两侧均不允许浮动元素。</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/06/CSS清除浮动方法汇总/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fengxiansen.github.io/2017/07/02/React-Native的组件通信方式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="馮先森">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CodeSky's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/02/React-Native的组件通信方式/" itemprop="url">React Native的组件通信方式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-02T21:21:18+08:00">
-                2017-07-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/React-Native/" itemprop="url" rel="index">
-                    <span itemprop="name">React-Native</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/07/02/React-Native的组件通信方式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/07/02/React-Native的组件通信方式/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="React-Native的组件通信方式"><a href="#React-Native的组件通信方式" class="headerlink" title="React Native的组件通信方式"></a>React Native的组件通信方式</h2><p>题外话，简单总结下 React、ReactJS 以及 React Native 之间的关系：</p>
-<ul>
-<li><p>React 是非常热门的一个前端开发框架，其本身作为 MVC 中的 View 层可以用来构建 UI；同时，React 通过对虚拟 DOM 中的微操作来实对现实际 DOM 的局部更新，提高性能。其组件的模块化开发提高了代码的可维护性。单向数据流的特点，让每个模块根据数据量自动更新，让开发者可以只专注于数据部分，改善程序的可预测性。</p>
-</li>
-<li><p>React Native是一个框架，而ReactJS是用来构建站点的JavaScript库。当你用ReactJS开始一个新的项目，你或许需要选择一个类似Webpack的打包器，然后去指定你工程中所需要的打包模块。React-Native包含了你需要的所有东西，你几乎不再需要其他东西了。当你开始一个新项目，你会发现一切都很简单——你可以只需要在命令行敲一行命令就行了——然后你就可使用ES6, 某些ES7特性，甚至一些比较新的polyfills开始你的编码。</p>
-</li>
-<li><p>React Native不使用HTML来渲染App，但是提供了可代替它的类似组件。这些React Native组件映射到渲染到App中的真正的原生iOS和Android UI组件。</p>
-</li>
-</ul>
-<p><strong>言归正传，正文开始</strong></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/02/React-Native的组件通信方式/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2018,7 +2008,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2029,7 +2019,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2040,7 +2030,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2085,11 +2075,11 @@
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="http://www.daqianduan.com/nav" title="大前端" target="_blank">大前端</a>
+                    <a href="http://f2er.club/" title="醉牛前端" target="_blank">醉牛前端</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="http://www.qdfuns.com/" title="前端网" target="_blank">前端网</a>
+                    <a href="https://docschina.org/home/doc" title="印记中文" target="_blank">印记中文</a>
                   </li>
                 
               </ul>
