@@ -34,3 +34,11 @@ history
 (后面可加number,查最近n条记录)
 eg: history 10
 ```
+
+##### 查看特定命令的历史记录
+
+```
+history | grep *
+
+eg: history | grep code-push
+```
