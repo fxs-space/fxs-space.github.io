@@ -1,8 +1,8 @@
 ---
 title: React Native的组件通信方式
 date: 2017-07-02 21:21:18
-categories: React-Native
-tags: React-Native
+categories: React Native
+tags: React Native
 ---
 
 ## React Native的组件通信方式

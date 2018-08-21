@@ -6,7 +6,7 @@ type: "about"
 
 ### Introduce
 
-- 90后、React-Native跨平台开发、web开发、iOS探索者、代码强迫症、新技术热衷者
+- 90后、React-Native跨平台开发、web开发、H5开发、iOS探索者、代码强迫症、新技术热衷者
 - 积累技术，努力工作，坚持学习，认真生活
 
 ### Production
@@ -15,9 +15,11 @@ type: "about"
 
 - 有数征信（有数简查App的前身）
 
-- 有数简查（有数征信App2.0的升级版，AppStore与各大主流android应用市场可下载）
+- 有数简查（有数征信App2.0的升级版，AppStore与各大主流Android应用市场可下载）
 
-- 郡县数治（AppStore与各大主流android应用市场可下载）
+- 郡县数治（AppStore与各大主流Android应用市场可下载）
+
+- 企数宝（[iOS版下载](https://www.pgyer.com/uuuZ)、[Android版下载](https://www.pgyer.com/ZAXO)）
 
 ##### Web:
 
