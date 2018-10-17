@@ -6,7 +6,7 @@ type: "about"
 
 ### Introduce
 
-- 90后、React-Native跨平台开发、web开发、H5开发、iOS探索者、代码强迫症、新技术热衷者
+- 90后、React-Native跨平台开发、Web开发、H5开发、React and Vue搬砖工、iOS小菜鸡、代码强迫症、新技术热衷者
 - 积累技术，努力工作，坚持学习，认真生活
 
 ### Production
@@ -26,6 +26,8 @@ type: "about"
 - [简查（web端）](https://jc.yscredit.com/)
 
 - [郡县数治（web端）](https://data-town.yscredit.com/index)
+
+- [郡县数治汇总平台（web端）](http://manage-town.yscredit.com/platform/index)
 
 - [长三院投资管理系统](http://www.thhzim.com/loginIndex)
 
