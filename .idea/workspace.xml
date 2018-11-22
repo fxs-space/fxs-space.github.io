@@ -16,7 +16,6 @@
       <change beforePath="$PROJECT_DIR$/public/tags/CSS/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/CSS/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/tags/Hexo/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/Hexo/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/tags/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/source/about/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/about/index.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/next/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next/_config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/next/layout/_macro/post.swig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next/layout/_macro/post.swig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/next/layout/_partials/header.swig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next/layout/_partials/header.swig" afterDir="false" />
@@ -41,32 +40,33 @@
     <session id="619703247">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
-          <entry key="project.open.time.1" value="3" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.closed" value="6" />
+          <entry key="project.open.time.1" value="5" />
+          <entry key="project.open.time.3" value="1" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="md" value="7" />
+          <entry key="md" value="9" />
           <entry key="yml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PLAIN_TEXT" value="7" />
+          <entry key="PLAIN_TEXT" value="9" />
           <entry key="YAML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="md" value="109" />
+          <entry key="md" value="214" />
           <entry key="yml" value="21" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="109" />
+          <entry key="PLAIN_TEXT" value="214" />
           <entry key="YAML" value="21" />
         </counts>
       </usages-collector>
@@ -86,8 +86,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/_posts/hello-hexo.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+            <state relative-caret-position="380">
+              <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -95,17 +95,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/_posts/vue项目实战中的小技巧.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="93" column="96" selection-start-line="93" selection-end-line="93" selection-end-column="96" />
+            <state relative-caret-position="399">
+              <caret line="21" column="3" selection-start-line="21" selection-start-column="3" selection-end-line="21" selection-end-column="3" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/source/_posts/Vue入门基础笔记.md">
+        <entry file="file://$PROJECT_DIR$/source/_posts/vue项目里使用vue-area-linkage插件遇到的坑.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="399">
+              <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -155,7 +155,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/themes/next/source/css/_common/components/header/site-meta.styl" />
         <option value="$PROJECT_DIR$/robots.txt" />
         <option value="$PROJECT_DIR$/public/404.html" />
         <option value="$PROJECT_DIR$/public/2018/01/04/hello-world/index.html" />
@@ -206,6 +205,7 @@
         <option value="$PROJECT_DIR$/source/_posts/vue项目实战中的小技巧.md" />
         <option value="$PROJECT_DIR$/source/about/index.md" />
         <option value="$PROJECT_DIR$/source/_posts/Vue入门基础笔记.md" />
+        <option value="$PROJECT_DIR$/source/_posts/vue项目里使用vue-area-linkage插件遇到的坑.md" />
       </list>
     </option>
   </component>
@@ -226,7 +226,7 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="409" />
+    <option name="x" value="356" />
     <option name="y" value="23" />
     <option name="width" value="1398" />
     <option name="height" value="1026" />
@@ -237,7 +237,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -266,6 +265,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -331,15 +331,18 @@
       <workItem from="1534818382631" duration="862000" />
       <workItem from="1537162532980" duration="229000" />
       <workItem from="1539754728459" duration="4448000" />
-      <workItem from="1539765247202" duration="1114000" />
+      <workItem from="1539765247202" duration="1221000" />
+      <workItem from="1542682629367" duration="868000" />
+      <workItem from="1542691053033" duration="225000" />
+      <workItem from="1542691428939" duration="321000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91826000" />
+    <option name="totallyTimeSpent" value="93347000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="409" y="23" width="1398" height="1026" extended-state="0" />
+    <frame x="356" y="23" width="1398" height="1026" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25054467" />
@@ -353,7 +356,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.40149894" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.2783726" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -368,13 +371,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/archives/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="2" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/categories/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1215">
@@ -602,13 +598,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/Xcode无证书打包.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/_posts/redux-saga的入门学习.md" />
     <entry file="file://$PROJECT_DIR$/themes/next/_config.yml">
       <provider selected="true" editor-type-id="text-editor">
@@ -645,20 +634,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/hello-hexo.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/_posts/Vue-js中侦听器（watch）的高级用法.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
@@ -673,17 +648,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/vue项目实战中的小技巧.md">
+    <entry file="file://$PROJECT_DIR$/source/_posts/Vue入门基础笔记.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="93" column="96" selection-start-line="93" selection-end-line="93" selection-end-column="96" />
+        <state relative-caret-position="456">
+          <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/Vue入门基础笔记.md">
+    <entry file="file://$PROJECT_DIR$/source/_posts/Xcode无证书打包.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="323">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/hello-hexo.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="20" column="8" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/vue项目实战中的小技巧.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="21" column="3" selection-start-line="21" selection-start-column="3" selection-end-line="21" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/vue项目里使用vue-area-linkage插件遇到的坑.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
         </state>
       </provider>
     </entry>
