@@ -33,7 +33,9 @@ type: "about"
 
 - [CRM客户关系管理系统](http://crm.yscredit.com/login)
 
-- [有数后台管理系统](http://ysadmin.yscredit.com/login)
+- [有数后台管理系统](http://jcadmin.yscredit.com/login)
+
+- [企贷金服运维平台](http://ms1.qdjfcredit.cn/)
 
 ##### H5:
 
