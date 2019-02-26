@@ -123,16 +123,16 @@
 
 
 
-<meta name="description" content="因为相信，所以要坚持着～">
+<meta name="description" content="往事如烟，未来可期，just do it～">
 <meta property="og:type" content="website">
 <meta property="og:title" content="CodeSky&#39;s Blog">
 <meta property="og:url" content="https://fengxiansen.github.io/index.html">
 <meta property="og:site_name" content="CodeSky&#39;s Blog">
-<meta property="og:description" content="因为相信，所以要坚持着～">
+<meta property="og:description" content="往事如烟，未来可期，just do it～">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CodeSky&#39;s Blog">
-<meta name="twitter:description" content="因为相信，所以要坚持着～">
+<meta name="twitter:description" content="往事如烟，未来可期，just do it～">
 
 
 
@@ -292,6 +292,328 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fengxiansen.github.io/2019/01/23/React前端路由实现及react-router-v4源码分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="馮先森">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CodeSky's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/23/React前端路由实现及react-router-v4源码分析/" itemprop="url">React前端路由实现及react-router v4源码分析</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-23T16:18:27+08:00">
+                2019-01-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/React/" itemprop="url" rel="index">
+                    <span itemprop="name">React</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/23/React前端路由实现及react-router-v4源码分析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/01/23/React前端路由实现及react-router-v4源码分析/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="React前端路由实现及-react-router-v4-源码分析"><a href="#React前端路由实现及-react-router-v4-源码分析" class="headerlink" title="React前端路由实现及 react-router v4 源码分析"></a>React前端路由实现及 react-router v4 源码分析</h2><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>react-router 目前作为 react 最流行的路由管理库，已经成为了某种意义上的官方路由库（不过下一代的路由库 reach-router 已经蓄势待发了），并且更新到了 v4 版本，完成了一切皆组件的升级。本文将对 react-router v4（以下简称 rr4） 的源码进行分析，来理解 rr4 是如何帮助我们管理路由状态的。</p>
+<h4 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h4><p>在分析源码之前，先来对路由有一个认识。在 SPA 盛行之前，还不存在前端层面的路由概念，每个 URL 对应一个页面，所有的跳转或者链接都通过 <code>&lt;a&gt;</code> 标签来完成，随着 SPA 的逐渐兴盛及 HTML5 的普及，hash 路由及基于 history 的路由库越来越多。</p>
+<p>路由库最大的作用就是<strong>同步 URL 与其对应的回调函数</strong>。对于基于 history 的路由，它通过 <code>history.pushState</code> 来修改 URL，通过 <code>window.addEventListener(&#39;popstate&#39;, callback)</code> 来监听前进/后退事件；对于 hash 路由，通过操作 <code>window.location</code> 的字符串来更改 hash，通过 <code>window.addEventListener(&#39;hashchange&#39;, callback)</code> 来监听 URL 的变化。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/01/23/React前端路由实现及react-router-v4源码分析/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fengxiansen.github.io/2018/12/21/浅析React-v16-3新生命周期函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="馮先森">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CodeSky's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/21/浅析React-v16-3新生命周期函数/" itemprop="url">浅析React v16.3新生命周期函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-21T14:31:47+08:00">
+                2018-12-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/React/" itemprop="url" rel="index">
+                    <span itemprop="name">React</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/12/21/浅析React-v16-3新生命周期函数/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/12/21/浅析React-v16-3新生命周期函数/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="浅析-React-v16-3-新生命周期函数"><a href="#浅析-React-v16-3-新生命周期函数" class="headerlink" title="浅析 React v16.3 新生命周期函数"></a>浅析 React v16.3 新生命周期函数</h2><h4 id="生命周期的变化"><a href="#生命周期的变化" class="headerlink" title="生命周期的变化"></a>生命周期的变化</h4><p><img src="/2018/12/21/浅析React-v16-3新生命周期函数/1.png" alt="React-v16.3新生命周期函数"></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/12/21/浅析React-v16-3新生命周期函数/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -1579,345 +1901,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fengxiansen.github.io/2018/04/04/redux-saga的入门基础/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="馮先森">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CodeSky's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/04/redux-saga的入门基础/" itemprop="url">redux-saga的入门基础</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-04T19:51:50+08:00">
-                2018-04-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/React/" itemprop="url" rel="index">
-                    <span itemprop="name">React</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/04/04/redux-saga的入门基础/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/04/04/redux-saga的入门基础/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="redux-saga的入门基础"><a href="#redux-saga的入门基础" class="headerlink" title="redux-saga的入门基础"></a>redux-saga的入门基础</h2><p>redux-saga 是一个用于管理 Redux 应用异步操作（Side Effects。译注：直译成 “副作用” 不太通顺，所以这里译为 “异步操作” 更好理解）的中间件（又称异步 action）。 redux-saga 通过创建 Sagas 将所有的异步操作逻辑收集在一个地方集中处理，可以用来代替 redux-thunk 中间件。</p>
-<h5 id="这意味着应用的逻辑会存在两个地方："><a href="#这意味着应用的逻辑会存在两个地方：" class="headerlink" title="这意味着应用的逻辑会存在两个地方："></a>这意味着应用的逻辑会存在两个地方：</h5><ol>
-<li><p>Reducers 负责处理 action 的 state 更新。</p>
-</li>
-<li><p>Sagas 负责协调那些复杂或异步的操作。</p>
-</li>
-</ol>
-<p>Sagas 是通过 Generator 函数来创建的。如果你还不熟悉 Generator，可以在这里找到 <a href="http://superraytin.github.io/redux-saga-in-chinese/docs/ExternalResources.html" target="_blank" rel="noopener">一些有用的链接</a>。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/04/04/redux-saga的入门基础/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fengxiansen.github.io/2018/03/08/前端常见跨域解决方案/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="馮先森">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CodeSky's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/08/前端常见跨域解决方案/" itemprop="url">前端常见跨域解决方案</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-08T19:57:12+08:00">
-                2018-03-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/前端/" itemprop="url" rel="index">
-                    <span itemprop="name">前端</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/08/前端常见跨域解决方案/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/03/08/前端常见跨域解决方案/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="前端常见跨域解决方案（全）"><a href="#前端常见跨域解决方案（全）" class="headerlink" title="前端常见跨域解决方案（全）"></a>前端常见跨域解决方案（全）</h2><h4 id="什么是跨域？"><a href="#什么是跨域？" class="headerlink" title="什么是跨域？"></a>什么是跨域？</h4><p>跨域是指一个域下的文档或脚本试图去请求另一个域下的资源，这里跨域是广义的。</p>
-<h5 id="广义的跨域："><a href="#广义的跨域：" class="headerlink" title="广义的跨域："></a>广义的跨域：</h5><ol>
-<li>资源跳转： A链接、重定向、表单提交</li>
-<li>资源嵌入： <code>&lt;link&gt;、&lt;script&gt;、&lt;img&gt;、&lt;frame&gt;</code>等dom标签， 还有样式中background:url()、 @font-face()等文件外链</li>
-<li>脚本请求： js发起的ajax请求、dom和js对象的跨域操作等</li>
-</ol>
-<p>其实我们通常所说的跨域是狭义的，是由浏览器同源策略限制的一类请求场景。</p>
-<h4 id="什么是同源策略？"><a href="#什么是同源策略？" class="headerlink" title="什么是同源策略？"></a>什么是同源策略？</h4><p>同源策略/SOP（Same origin policy）是一种约定，由Netscape公司1995年引入浏览器，它是浏览器最核心也最基本的安全功能，如果缺少了同源策略，浏览器很容易受到XSS、CSFR等攻击。所谓同源是指”协议+域名+端口”三者相同，即便两个不同的域名指向同一个ip地址，也非同源。</p>
-<h5 id="同源策略限制以下几种行为："><a href="#同源策略限制以下几种行为：" class="headerlink" title="同源策略限制以下几种行为："></a>同源策略限制以下几种行为：</h5><ol>
-<li>Cookie、LocalStorage 和 IndexDB 无法读取</li>
-<li>DOM 和 js对象无法获得</li>
-<li>AJAX 请求不能发送跨域方法</li>
-</ol>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/08/前端常见跨域解决方案/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1962,7 +1945,7 @@
                 alt="馮先森" />
             
               <p class="site-author-name" itemprop="name">馮先森</p>
-              <p class="site-description motion-element" itemprop="description">因为相信，所以要坚持着～</p>
+              <p class="site-description motion-element" itemprop="description">往事如烟，未来可期，just do it～</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -1972,7 +1955,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1994,7 +1977,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2069,7 +2052,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
