@@ -306,6 +306,334 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fengxiansen.github.io/2019/04/11/手撕常用代码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="馮先森">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CodeSky's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/11/手撕常用代码/" itemprop="url">手撕常用代码</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-11T14:12:30+08:00">
+                2019-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/11/手撕常用代码/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/04/11/手撕常用代码/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="手撕常用代码"><a href="#手撕常用代码" class="headerlink" title="手撕常用代码"></a>手撕常用代码</h2><h4 id="夯实基础，日常练习，点滴积累，进阶提升。（长期维护更新）"><a href="#夯实基础，日常练习，点滴积累，进阶提升。（长期维护更新）" class="headerlink" title="夯实基础，日常练习，点滴积累，进阶提升。（长期维护更新）"></a>夯实基础，日常练习，点滴积累，进阶提升。（长期维护更新）</h4><h4 id="1-浅拷贝："><a href="#1-浅拷贝：" class="headerlink" title="1. 浅拷贝："></a>1. 浅拷贝：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function clone(o) &#123;</span><br><span class="line"> 	var _o = &#123;&#125;;</span><br><span class="line"> 	for (let k in o) &#123;</span><br><span class="line"> 		_o[k] = o[k];</span><br><span class="line"> 	&#125;</span><br><span class="line"> 	return _o;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2-深拷贝："><a href="#2-深拷贝：" class="headerlink" title="2. 深拷贝："></a>2. 深拷贝：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function deepClone(o) &#123;</span><br><span class="line"> 	if (typeof o === &apos;string&apos; || typeof o === &apos;number&apos; || typeof o === &apos;boolean&apos; || typeof o === &apos;undefined&apos;) &#123;</span><br><span class="line"> 		return o;</span><br><span class="line"> 	&#125; else if (Array.isArray(o)) &#123;</span><br><span class="line"> 		var arr = [];</span><br><span class="line"> 		for(let i = 0; i &lt; o.length; i++) &#123;</span><br><span class="line"> 			arr.push(deepClone(o[i]))</span><br><span class="line"> 		&#125;</span><br><span class="line"> 		return arr;</span><br><span class="line"> 	&#125; else if (typeof o === &apos;object&apos;) &#123;</span><br><span class="line"> 		var obj = &#123;&#125;;</span><br><span class="line"> 		for(let k in o) &#123;</span><br><span class="line"> 			obj[k] = deepClone(o[k]);</span><br><span class="line"> 		&#125;</span><br><span class="line"> 		return obj;</span><br><span class="line"> 	&#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/04/11/手撕常用代码/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fengxiansen.github.io/2019/03/16/前端进阶笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="馮先森">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CodeSky's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/16/前端进阶笔记/" itemprop="url">前端进阶笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-16T17:12:12+08:00">
+                2019-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/16/前端进阶笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/03/16/前端进阶笔记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="前端进阶笔记"><a href="#前端进阶笔记" class="headerlink" title="前端进阶笔记"></a>前端进阶笔记</h2><h4 id="夯实基础，日常笔记，点滴积累，进阶提升。（长期维护更新）"><a href="#夯实基础，日常笔记，点滴积累，进阶提升。（长期维护更新）" class="headerlink" title="夯实基础，日常笔记，点滴积累，进阶提升。（长期维护更新）"></a>夯实基础，日常笔记，点滴积累，进阶提升。（长期维护更新）</h4><h4 id="一、JS事件机制-Event-Loop"><a href="#一、JS事件机制-Event-Loop" class="headerlink" title="一、JS事件机制 Event Loop"></a>一、JS事件机制 Event Loop</h4><h5 id="1-几个概念"><a href="#1-几个概念" class="headerlink" title="1. 几个概念"></a>1. 几个概念</h5><p>谈到事件机制首先弄清楚主线程，执行栈， 任务队列这几个概念。</p>
+<p>主线程：运行JS 代码。JS 的单线程针对的是单一的主线程，不是只能有一个线程。</p>
+<p>执行栈：关于执行栈的概念结合执行上下文来看</p>
+<p>任务队列Task Queue：即队列，是一种先进先出的数据结构</p>
+<p>三者的关系是：主线程要执行的都在执行栈里，执行栈里的内容是从任务队列里拿过来的。</p>
+<h5 id="2-关于任务"><a href="#2-关于任务" class="headerlink" title="2. 关于任务"></a>2. 关于任务</h5><p>任务可以划分为宏任务和微任务。</p>
+<p>宏任务（MacroTask）：整个script、 setTimeout、 setInterval、 setImmidiate(浏览器暂时不支持，只有IE10，但是在nodejs 中常用到)、I/O、UI Redering。</p>
+<p>微任务（MicroTask）：Promise、Async/Await(底层就是Promise)、Process.nextTick (node独有)、MutationObserver。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/03/16/前端进阶笔记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://fengxiansen.github.io/2019/01/23/React前端路由实现及react-router-v4源码分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1214,7 +1542,7 @@
 
       
         
-          <h2 id="Vue入门基础笔记"><a href="#Vue入门基础笔记" class="headerlink" title="Vue入门基础笔记"></a>Vue入门基础笔记</h2><h4 id="Vue-实例上的属性"><a href="#Vue-实例上的属性" class="headerlink" title="Vue 实例上的属性"></a>Vue 实例上的属性</h4><p><img src="https://i.imgur.com/Y3Fn5lV.png" alt="Vue实例"></p>
+          <h2 id="Vue入门基础笔记"><a href="#Vue入门基础笔记" class="headerlink" title="Vue入门基础笔记"></a>Vue入门基础笔记</h2><h4 id="Vue-实例上的属性"><a href="#Vue-实例上的属性" class="headerlink" title="Vue 实例上的属性"></a>Vue 实例上的属性</h4><p><img src="/2018/07/19/Vue入门基础笔记/Vue实例.png" alt="Vue实例"></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/07/19/Vue入门基础笔记/#more" rel="contents">
@@ -1579,328 +1907,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fengxiansen.github.io/2018/06/24/RN开发之调用WebView爬坑记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="馮先森">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CodeSky's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/24/RN开发之调用WebView爬坑记/" itemprop="url">RN开发之调用WebView爬坑记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-24T18:56:28+08:00">
-                2018-06-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/React-Native/" itemprop="url" rel="index">
-                    <span itemprop="name">React Native</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/06/24/RN开发之调用WebView爬坑记/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/06/24/RN开发之调用WebView爬坑记/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="RN开发之调用WebView爬坑记"><a href="#RN开发之调用WebView爬坑记" class="headerlink" title="RN开发之调用WebView爬坑记"></a>RN开发之调用WebView爬坑记</h2><h4 id="解决React-Native之Android手机中WebView不能调用相机相册的问题"><a href="#解决React-Native之Android手机中WebView不能调用相机相册的问题" class="headerlink" title="解决React Native之Android手机中WebView不能调用相机相册的问题"></a>解决React Native之Android手机中WebView不能调用相机相册的问题</h4><p>记录最近在RN开发中踩的一个坑以及分享我的爬坑记：Android手机不能在WebView中调用相机相册；我刚开始很困惑，大家都一致认为这是链接的第三方写的H5中调用相机相册的方法有问题所导致的，后来我通过查找原因，发现这是Android原生WebView中没有实现调用相机相册的功能；soga，知道原因后开始在网上查找解决方法，大概找到两三个类似的依赖包，于是开始尝试集成到现在的项目中去，结果全部jj：不是和其他依赖包冲突就是gradle build失败；唉，各种心塞心累，于是决定自己尝试桥接原生WebView，桥接的过程也是各种蜿蜒曲折啊；下面开始分享我桥接的过程，希望可以帮助有需要的人少踩点坑。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/24/RN开发之调用WebView爬坑记/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fengxiansen.github.io/2018/06/15/vue中的computed和watch之间的区别/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="馮先森">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CodeSky's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/15/vue中的computed和watch之间的区别/" itemprop="url">vue中的computed和watch之间的区别</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-15T19:40:24+08:00">
-                2018-06-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Vue/" itemprop="url" rel="index">
-                    <span itemprop="name">Vue</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/06/15/vue中的computed和watch之间的区别/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/06/15/vue中的computed和watch之间的区别/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="vue中的computed和watch之间的区别"><a href="#vue中的computed和watch之间的区别" class="headerlink" title="vue中的computed和watch之间的区别"></a>vue中的computed和watch之间的区别</h2><h4 id="计算属性computed是计算属性，侦听器watch是侦听器watch。"><a href="#计算属性computed是计算属性，侦听器watch是侦听器watch。" class="headerlink" title="计算属性computed是计算属性，侦听器watch是侦听器watch。"></a>计算属性computed是计算属性，侦听器watch是侦听器watch。</h4><p>计算属性顾名思义就是通过其他变量计算得来的另一个属性，例如fullName在它所依赖firstName，lastName这两个变量变化时重新计算自己的值。</p>
-<p>另外，计算属性具有缓存。计算属性是基于它们的依赖进行缓存的。计算属性只有在它的相关依赖发生改变时才会重新求值。这就意味着只要lastName和firstName都没有发生改变，多次访问fullName计算属性会立即返回之前的计算结果，而不必再次执行函数。</p>
-<p>而侦听器watch是侦听一个特定的值，当该值变化时执行特定的函数。例如分页组件中，我们可以监听当前页码，当页码变化时执行对应的获取数据的函数。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/15/vue中的computed和watch之间的区别/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1955,7 +1961,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

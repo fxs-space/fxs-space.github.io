@@ -8,7 +8,7 @@ tags: Vue
 
 #### Vue 实例上的属性
 
-![Vue实例](https://i.imgur.com/Y3Fn5lV.png)
+![Vue实例](Vue入门基础笔记/Vue实例.png)
 
 <!--more-->
 
