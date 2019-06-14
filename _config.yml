@@ -78,7 +78,7 @@ search:
 sitemap:
 path: sitemap.xml
 
-duoshuo_shortname: fengxiansen
+#duoshuo_shortname: fengxiansen
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
