@@ -3,20 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6d5fff1d-4f59-4154-a9aa-0538a0da5105" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/404.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/about/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/about/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/archives/2018/01/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/archives/2018/01/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/archives/2018/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/archives/2018/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/archives/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/archives/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/categories/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/categories/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/categories/前端/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/categories/前端/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/categories/框架/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/categories/框架/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/CSS/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/CSS/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/Hexo/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/Hexo/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tags/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/tags/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source/_posts/手撕常用代码.md" beforeDir="false" afterPath="$PROJECT_DIR$/source/_posts/手撕常用代码.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/next/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next/_config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/next/layout/_macro/post.swig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next/layout/_macro/post.swig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/themes/next/layout/_partials/header.swig" beforeDir="false" afterPath="$PROJECT_DIR$/themes/next/layout/_partials/header.swig" afterDir="false" />
@@ -41,14 +29,14 @@
     <session id="619703247">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="17" />
+          <entry key="project.closed" value="18" />
           <entry key="project.open.time.0" value="3" />
           <entry key="project.open.time.1" value="8" />
-          <entry key="project.open.time.2" value="2" />
+          <entry key="project.open.time.2" value="3" />
           <entry key="project.open.time.3" value="2" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="17" />
+          <entry key="project.opened" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -77,13 +65,13 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gitignore" value="4" />
-          <entry key="md" value="312" />
+          <entry key="md" value="385" />
           <entry key="yml" value="122" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="316" />
+          <entry key="PLAIN_TEXT" value="389" />
           <entry key="YAML" value="122" />
         </counts>
       </usages-collector>
@@ -91,11 +79,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="528">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
             </state>
           </provider>
         </entry>
@@ -103,7 +91,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/_posts/hello-hexo.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
+            <state relative-caret-position="792">
               <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
             </state>
           </provider>
@@ -127,11 +115,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/source/_posts/手撕常用代码.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="77" column="18" selection-start-line="77" selection-start-column="18" selection-end-line="77" selection-end-column="18" />
+            <state relative-caret-position="297">
+              <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
             </state>
           </provider>
         </entry>
@@ -227,12 +215,12 @@
         <option value="$PROJECT_DIR$/themes/next/.gitignore" />
         <option value="$PROJECT_DIR$/source/about/index.md" />
         <option value="$PROJECT_DIR$/source/_posts/前端进阶笔记.md" />
-        <option value="$PROJECT_DIR$/source/_posts/手撕常用代码.md" />
         <option value="$PROJECT_DIR$/source/_posts/Vue入门基础笔记.md" />
         <option value="$PROJECT_DIR$/.deploy_git/categories/React-Native/index.html" />
         <option value="$PROJECT_DIR$/themes/next/layout/_macro/post.swig" />
         <option value="$PROJECT_DIR$/_config.yml" />
         <option value="$PROJECT_DIR$/themes/next/_config.yml" />
+        <option value="$PROJECT_DIR$/source/_posts/手撕常用代码.md" />
       </list>
     </option>
   </component>
@@ -253,7 +241,7 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="483" />
+    <option name="x" value="491" />
     <option name="y" value="23" />
     <option name="width" value="1398" />
     <option name="height" value="1057" />
@@ -379,14 +367,15 @@
       <workItem from="1555062641611" duration="1044000" />
       <workItem from="1560241759719" duration="3298000" />
       <workItem from="1560391042621" duration="5927000" />
+      <workItem from="1560915031593" duration="623000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="109356000" />
+    <option name="totallyTimeSpent" value="109979000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="483" y="23" width="1398" height="1057" extended-state="0" />
+    <frame x="491" y="23" width="1398" height="1057" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25054467" />
@@ -400,7 +389,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.2373057" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.37823835" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -642,29 +631,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/vue项目实战中的小技巧.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
-          <caret line="31" column="23" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/前端进阶笔记.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/live2d_models/z16/z16.model.json">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/手撕常用代码.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="77" column="18" selection-start-line="77" selection-start-column="18" selection-end-line="77" selection-end-column="18" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/themes/next/layout/post.swig">
       <provider selected="true" editor-type-id="text-editor">
@@ -711,13 +679,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/_posts/hello-hexo.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/_config.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="236">
@@ -735,7 +696,35 @@
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="528">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/hello-hexo.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="792">
+          <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="36" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/vue项目实战中的小技巧.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="682">
+          <caret line="31" column="23" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/前端进阶笔记.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/手撕常用代码.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
         </state>
       </provider>
     </entry>
