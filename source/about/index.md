@@ -6,7 +6,7 @@ type: "about"
 
 ### Introduce
 
-- 90后、React-Native跨平台开发、Web开发、H5开发、React and Vue搬砖工、iOS小菜鸡、代码强迫症、新技术热衷者
+- 90后、React-Native跨平台开发、Web开发、H5开发、React and Vue搬砖工、iOS小菜鸡、代码强迫症、大前端开发爱好者
 - 积累技术，努力工作，坚持学习，认真生活
 
 ### Production
@@ -15,9 +15,9 @@ type: "about"
 
 - 有数征信（有数简查App的前身）
 
-- 有数简查（有数征信App2.0的升级版，AppStore与各大主流Android应用市场可下载）
+- 有数简查（有数征信App2.0的升级版，AppStore与各大主流Android应用市场均可下载）
 
-- 郡县数治（AppStore与各大主流Android应用市场可下载）
+- 郡县数治（AppStore与各大主流Android应用市场均可下载）
 
 - 企数宝（[iOS版下载](https://www.pgyer.com/uuuZ)、[Android版下载](https://www.pgyer.com/ZAXO)）
 
@@ -40,6 +40,14 @@ type: "about"
 ##### H5:
 
 - 湖州绿贷通企业端H5（关注《湖州绿色金融综合服务平台》微信公众号 -> 点击找贷款）
+
+### Career
+
+- 2015/11/09 至 2016/04/22   上海萌萃信息技术有限公司     iOS开发(实习)
+
+- 2016/06/27 至 2018/04/16   杭州有数金融信息服务有限公司  前端开发工程师
+
+- 2018/04/17 至 至今          杭州企云数科技有限公司       前端开发工程师
 
 ### Values
 
