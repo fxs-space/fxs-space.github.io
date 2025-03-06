@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="React,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="React 前端路由实现及 react-router v4 源码分析前言react-router 目前作为 react 最流行的路由管理库，已经成为了某种意义上的官方路由库（不过下一代的路由库 reach-router 已经蓄势待发了），并且更新到了 v4 版本，完成了一切皆组件的升级。本文将对 react-router v4（以下简称 rr4） 的源码进行分析，来理解 rr4 是如何帮助我们管理">
+<meta name="keywords" content="React">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React前端路由实现及react-router v4源码分析">
+<meta property="og:url" content="https://fxs-space.github.io/2019/01/23/React前端路由实现及react-router-v4源码分析/index.html">
+<meta property="og:site_name" content="CodeSky&#39;s Blog">
+<meta property="og:description" content="React 前端路由实现及 react-router v4 源码分析前言react-router 目前作为 react 最流行的路由管理库，已经成为了某种意义上的官方路由库（不过下一代的路由库 reach-router 已经蓄势待发了），并且更新到了 v4 版本，完成了一切皆组件的升级。本文将对 react-router v4（以下简称 rr4） 的源码进行分析，来理解 rr4 是如何帮助我们管理">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2025-03-06T07:00:57.697Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React前端路由实现及react-router v4源码分析">
+<meta name="twitter:description" content="React 前端路由实现及 react-router v4 源码分析前言react-router 目前作为 react 最流行的路由管理库，已经成为了某种意义上的官方路由库（不过下一代的路由库 reach-router 已经蓄势待发了），并且更新到了 v4 版本，完成了一切皆组件的升级。本文将对 react-router v4（以下简称 rr4） 的源码进行分析，来理解 rr4 是如何帮助我们管理">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+
+
+
+
+  <title>React前端路由实现及react-router v4源码分析 | CodeSky's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CodeSky's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">技术分享与学习笔记</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fxs-space.github.io/2019/01/23/React前端路由实现及react-router-v4源码分析/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fxs">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CodeSky's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">React前端路由实现及react-router v4源码分析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-23T16:18:27+08:00">
+                2019-01-23
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2025-03-06T15:00:57+08:00">
+                2025-03-06
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/React/" itemprop="url" rel="index">
+                    <span itemprop="name">React</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="React-前端路由实现及-react-router-v4-源码分析"><a href="#React-前端路由实现及-react-router-v4-源码分析" class="headerlink" title="React 前端路由实现及 react-router v4 源码分析"></a>React 前端路由实现及 react-router v4 源码分析</h2><h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>react-router 目前作为 react 最流行的路由管理库，已经成为了某种意义上的官方路由库（不过下一代的路由库 reach-router 已经蓄势待发了），并且更新到了 v4 版本，完成了一切皆组件的升级。本文将对 react-router v4（以下简称 rr4） 的源码进行分析，来理解 rr4 是如何帮助我们管理路由状态的。</p>
+<h4 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h4><p>在分析源码之前，先来对路由有一个认识。在 SPA 盛行之前，还不存在前端层面的路由概念，每个 URL 对应一个页面，所有的跳转或者链接都通过 <code>&lt;a&gt;</code> 标签来完成，随着 SPA 的逐渐兴盛及 HTML5 的普及，hash 路由及基于 history 的路由库越来越多。</p>
+<p>路由库最大的作用就是<strong>同步 URL 与其对应的回调函数</strong>。对于基于 history 的路由，它通过 <code>history.pushState</code> 来修改 URL，通过 <code>window.addEventListener(&#39;popstate&#39;, callback)</code> 来监听前进/后退事件；对于 hash 路由，通过操作 <code>window.location</code> 的字符串来更改 hash，通过 <code>window.addEventListener(&#39;hashchange&#39;, callback)</code> 来监听 URL 的变化。</p>
+<a id="more"></a>
+<h4 id="SPA-路由实现"><a href="#SPA-路由实现" class="headerlink" title="SPA 路由实现"></a>SPA 路由实现</h4><h5 id="hash-路由"><a href="#hash-路由" class="headerlink" title="hash 路由"></a>hash 路由</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Router</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="comment">// 储存 hash 与 callback 键值对</span></span><br><span class="line">    <span class="keyword">this</span>.routes = &#123;&#125;;</span><br><span class="line">    <span class="comment">// 当前 hash</span></span><br><span class="line">    <span class="keyword">this</span>.currentUrl = <span class="string">''</span>;</span><br><span class="line">    <span class="comment">// 记录出现过的 hash</span></span><br><span class="line">    <span class="keyword">this</span>.history = [];</span><br><span class="line">    <span class="comment">// 作为指针,默认指向 this.history 的末尾,根据后退前进指向 history 中不同的 hash</span></span><br><span class="line">    <span class="keyword">this</span>.currentIndex = <span class="keyword">this</span>.history.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">this</span>.backIndex = <span class="keyword">this</span>.history.length - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">this</span>.refresh = <span class="keyword">this</span>.refresh.bind(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">this</span>.backOff = <span class="keyword">this</span>.backOff.bind(<span class="keyword">this</span>);</span><br><span class="line">    <span class="comment">// 默认不是后退操作</span></span><br><span class="line">    <span class="keyword">this</span>.isBack = <span class="literal">false</span>;</span><br><span class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">'load'</span>, <span class="keyword">this</span>.refresh, <span class="literal">false</span>);</span><br><span class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">'hashchange'</span>, <span class="keyword">this</span>.refresh, <span class="literal">false</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  route(path, callback) &#123;</span><br><span class="line">    <span class="keyword">this</span>.routes[path] = callback || <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  refresh() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'refresh'</span>);</span><br><span class="line">    <span class="keyword">this</span>.currentUrl = location.hash.slice(<span class="number">1</span>) || <span class="string">'/'</span>;</span><br><span class="line">    <span class="keyword">this</span>.history.push(<span class="keyword">this</span>.currentUrl);</span><br><span class="line">    <span class="keyword">this</span>.currentIndex++;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>.isBack) &#123;</span><br><span class="line">      <span class="keyword">this</span>.backIndex = <span class="keyword">this</span>.currentIndex;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.routes[<span class="keyword">this</span>.currentUrl]();</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'指针:'</span>, <span class="keyword">this</span>.currentIndex, <span class="string">'history:'</span>, <span class="keyword">this</span>.history);</span><br><span class="line">    <span class="keyword">this</span>.isBack = <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 后退功能</span></span><br><span class="line">  backOff() &#123;</span><br><span class="line">    <span class="comment">// 后退操作设置为true</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.currentIndex);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.backIndex);</span><br><span class="line">    <span class="keyword">this</span>.isBack = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">this</span>.backIndex &lt;= <span class="number">0</span> ? (<span class="keyword">this</span>.backIndex = <span class="number">0</span>) : (<span class="keyword">this</span>.backIndex = <span class="keyword">this</span>.backIndex - <span class="number">1</span>);</span><br><span class="line">    location.hash = <span class="string">`#<span class="subst">$&#123;<span class="keyword">this</span>.history[<span class="keyword">this</span>.backIndex]&#125;</span>`</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>完整实现 <a href="https://codepen.io/fi3ework/pen/ejOGOJ?editors=1111" target="_blank" rel="noopener">hash-router</a>，参考 <a href="https://juejin.im/post/5ac61da66fb9a028c71eae1b" target="_blank" rel="noopener">hash router</a> 。</p>
+<p>其实知道了路由的原理，想要实现一个 hash 路由并不困难，比较需要注意的是 backOff 的实现，包括  <a href="https://link.juejin.im/?target=https%3A%2F%2Fcodepen.io%2Fxiaomuzhu%2Fpen%2FmxQBod%2F" target="_blank" rel="noopener">hash router</a>  中对 backOff 的实现也是有 bug 的，浏览器的回退会触发 <code>hashChange</code> 所以会在 <code>history</code> 中 push 一个新的路径，也就是每一步都将被记录。所以需要一个 <code>backIndex</code> 来作为返回的 index 的标识，在点击新的 URL 的时候再将 backIndex 回归为 <code>this.currentIndex</code>。</p>
+<h4 id="基于-history-的路由实现"><a href="#基于-history-的路由实现" class="headerlink" title="基于 history 的路由实现"></a>基于 history 的路由实现</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Routers</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">this</span>.routes = &#123;&#125;;</span><br><span class="line">    <span class="comment">// 在初始化时监听popstate事件</span></span><br><span class="line">    <span class="keyword">this</span>._bindPopState();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 初始化路由</span></span><br><span class="line">  init(path) &#123;</span><br><span class="line">    history.replaceState(&#123; <span class="attr">path</span>: path &#125;, <span class="literal">null</span>, path);</span><br><span class="line">    <span class="keyword">this</span>.routes[path] &amp;&amp; <span class="keyword">this</span>.routes[path]();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 将路径和对应回调函数加入hashMap储存</span></span><br><span class="line">  route(path, callback) &#123;</span><br><span class="line">    <span class="keyword">this</span>.routes[path] = callback || <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 触发路由对应回调</span></span><br><span class="line">  go(path) &#123;</span><br><span class="line">    history.pushState(&#123; <span class="attr">path</span>: path &#125;, <span class="literal">null</span>, path);</span><br><span class="line">    <span class="keyword">this</span>.routes[path] &amp;&amp; <span class="keyword">this</span>.routes[path]();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 后退</span></span><br><span class="line">  backOff() &#123;</span><br><span class="line">    history.back();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 监听popstate事件</span></span><br><span class="line">  _bindPopState() &#123;</span><br><span class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">'popstate'</span>, e =&gt; &#123;</span><br><span class="line">      <span class="keyword">const</span> path = e.state &amp;&amp; e.state.path;</span><br><span class="line">      <span class="keyword">this</span>.routes[path] &amp;&amp; <span class="keyword">this</span>.routes[path]();</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考  <a href="https://link.juejin.im/?target=https%3A%2F%2Fcodepen.io%2Fxiaomuzhu%2Fpen%2FQmJorQ%2F" target="_blank" rel="noopener">H5 Router</a></p>
+<p>相比 hash 路由，h5 路由不再需要有些丑陋去的去修改 <code>window.location</code> 了，取而代之使用 <code>history.pushState</code> 来完成对 <code>window.location</code> 的操作，使用 <code>window.addEventListener(&#39;popstate&#39;, callback)</code> 来对前进/后退进行监听，至于后退则可以直接使用 <code>window.history.back()</code> 或者 <code>window.history.go(-1)</code> 来直接实现，由于浏览器的 history 控制了前进/后退的逻辑，所以实现简单了很多。</p>
+<h4 id="react-中的路由"><a href="#react-中的路由" class="headerlink" title="react 中的路由"></a>react 中的路由</h4><p>react 作为一个前端视图框架，本身是不具有除了 view （数据与界面之间的抽象）之外的任何功能的，为 react 引入一个路由库的目的与上面的普通 SPA 目的一致，只不过上面路由更改触发的回调函数是<strong>我们自己写的操作 DOM 的函数</strong>；在 react 中我们不直接操作 DOM，而是管理抽象出来的 VDOM 或者说 JSX，对 react 的来说<strong>路由需要管理组件的生命周期，对不同的路由渲染不同的组件</strong>。</p>
+<h4 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h4><h5 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h5><p>在前面我们了解了创建路由的目的，普通 SPA 路由的实现及 react 路由的目的，先来认识一下 rr4 的周边知识，然后就开始对 react-router 的源码分析。</p>
+<h5 id="history"><a href="#history" class="headerlink" title="history"></a>history</h5><p><a href="https://github.com/ReactTraining/history#readme" target="_blank" rel="noopener">history</a> 库，是 rr4 依赖的一个对 <code>window.history</code> 加强版的 history 库。</p>
+<h5 id="match"><a href="#match" class="headerlink" title="match"></a>match</h5><p>源自 history 库，表示当前的 URL 与 path 的匹配的结果</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">match: &#123;</span><br><span class="line">    path: <span class="string">"/"</span>, <span class="comment">// 用来匹配的 path</span></span><br><span class="line">	url: <span class="string">"/"</span>, <span class="comment">// 当前的 URL</span></span><br><span class="line">	params: &#123;&#125;, <span class="comment">// 路径中的参数</span></span><br><span class="line">	isExact: pathname === <span class="string">"/"</span> <span class="comment">// 是否为严格匹配</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="location"><a href="#location" class="headerlink" title="location"></a>location</h5><p>还是源自 history 库，是 history 库基于 window.location 的一个衍生。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hash: <span class="string">''</span>; <span class="comment">// hash</span></span><br><span class="line">key: <span class="string">'nyi4ea'</span>; <span class="comment">// 一个 uuid</span></span><br><span class="line">pathname: <span class="string">'/explore'</span>; <span class="comment">// URL 中路径部分</span></span><br><span class="line">search: <span class="string">''</span>; <span class="comment">// URL 参数</span></span><br><span class="line">state: <span class="literal">undefined</span>; <span class="comment">// 路由跳转时传递的 state</span></span><br></pre></td></tr></table></figure>
+<p>我们带着问题去分析源码，先逐个分析每个组件的作用，在最后会有回答，在这里先举一个 rr4 的小 <a href="https://codesandbox.io/" target="_blank" rel="noopener">DEMO</a></p>
+<ol>
+<li>页面初始化时的渲染过程？</li>
+<li>点击一个 Link 跳转及渲染更新的过程？</li>
+</ol>
+<h5 id="packages"><a href="#packages" class="headerlink" title="packages"></a>packages</h5><p>rr4 将路由拆成了几个包 —— react-router 负责通用的路由逻辑，react-router-dom 负责浏览器的路由管理，react-router-native 负责 react-native 的路由管理，通用的部分直接从 react-router 中导入，用户只需引入 react-router-dom 或 react-router-native 即可，react-router 作为依赖存在不再需要单独引入。</p>
+<h5 id="Router"><a href="#Router" class="headerlink" title="Router"></a>Router</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import React from &apos;react&apos;</span><br><span class="line">import &#123; render &#125; from &apos;react-dom&apos;</span><br><span class="line">import &#123; BrowserRouter &#125; from &apos;react-router-dom&apos;</span><br><span class="line">import App from &apos;./components/App&apos;;</span><br><span class="line"></span><br><span class="line">render()&#123;</span><br><span class="line">    return(</span><br><span class="line">		&lt;BrowserRouter&gt;</span><br><span class="line">			&lt;App /&gt;</span><br><span class="line">		&lt;/BrowserRouter&gt;</span><br><span class="line">	)</span><br><span class="line">)&#125;</span><br></pre></td></tr></table></figure>
+<p>这是我们调用 Router 的方式，这里拿 BrowserRouter 来举例。</p>
+<p>BrowserRouter 的源码在 react-router-dom 中，它是一个高阶组件，在内部创建一个全局的 history 对象（可以监听整个路由的变化），并将 history 作为 props 传递给 react-router 的 Router 组件（Router 组件再会将这个 history 的属性作为 context 传递给子组件）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">  return &lt;Router history=&#123;this.history&#125; children=&#123;this.props.children&#125; /&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其实整个 Router 的核心是在 react-router 的 Router 组件中，如下，借助 context 向 Route 传递组件，这也解释了为什么 Router 要在所有 Route 的外面。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">getChildContext() &#123;</span><br><span class="line">  return &#123;</span><br><span class="line">    router: &#123;</span><br><span class="line">      ...this.context.router,</span><br><span class="line">      history: this.props.history,</span><br><span class="line">      route: &#123;</span><br><span class="line">        location: this.props.history.location,</span><br><span class="line">        match: this.state.match</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这是 Router 传递给子组件的 context，事实上 Route 也会将 router 作为 context 向下传递，如果我们在 Route 渲染的组件中加入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">static contextTypes = &#123;</span><br><span class="line">  router: PropTypes.shape(&#123;</span><br><span class="line">    history: PropTypes.object.isRequired,</span><br><span class="line">    route: PropTypes.object.isRequired,</span><br><span class="line">    staticContext: PropTypes.object</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>来通过 context 访问 router，不过 rr4 一般通过 props 传递，将 history, location, match 作为三个独立的 props 传递给要渲染的组件，这样访问起来方便一点（实际上已经完全将 router 对象的属性完全传递了）。</p>
+<p>在 Router 的 componentWillMount 中， 添加了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">componentWillMount() &#123;</span><br><span class="line">  const &#123; children, history &#125; = this.props;</span><br><span class="line"></span><br><span class="line">  invariant(</span><br><span class="line">    children == null || React.Children.count(children) === 1,</span><br><span class="line">    &quot;A &lt;Router&gt; may have only one child element&quot;</span><br><span class="line">  );</span><br><span class="line"></span><br><span class="line">  // Do this here so we can setState when a &lt;Redirect&gt; changes the</span><br><span class="line">  // location in componentWillMount. This happens e.g. when doing</span><br><span class="line">  // server rendering using a &lt;sStaticRouter&gt;.</span><br><span class="line">  this.unlisten = history.listen(() =&gt; &#123;</span><br><span class="line">    this.setState(&#123;</span><br><span class="line">      match: this.computeMatch(history.location.pathname)</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>history.listen</code> 能够监听路由的变化并执行回调事件。</p>
+<p>在这里每次路由的变化执行的回调事件为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this.setState(&#123;</span><br><span class="line">    match: this.computeMatch(history.location.pathname)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>相比于在 setState 里做的操作，setState 本身的意义更大 —— 每次路由变化 -&gt; 触发顶层 Router 的回调事件 -&gt; Router 进行 setState -&gt; 向下传递 nextContext（context 中含有最新的 location）-&gt; 下面的 Route 获取新的 nextContext 判断是否进行渲染。</p>
+<p>之所以把这个 subscribe 的函数写在 componentWillMount 里，就像源码中给出的注释：是为了 SSR 的时候，能够使用 Redirect。</p>
+<h5 id="Route"><a href="#Route" class="headerlink" title="Route"></a>Route</h5><p>Route 的作用是匹配路由，并传递给要渲染的组件 props。</p>
+<p>在 Route 的 componentWillReceiveProps 中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">componentWillReceiveProps(nextProps, nextContext) &#123;</span><br><span class="line">  ...</span><br><span class="line">  this.setState(&#123;</span><br><span class="line">    match: this.computeMatch(nextProps, nextContext.router)</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Route 接受上层的 Router 传入的 context，Router 中的 history 监听着整个页面的路由变化，当页面发生跳转时，history 触发监听事件，Router 向下传递 nextContext，就会更新 Route 的 props 和 context 来判断当前 Route 的 path 是否匹配 location，如果匹配则渲染，否则不渲染。</p>
+<p>是否匹配的依据就是 computeMatch 这个函数，在下文会有分析，这里只需要知道匹配失败则 match 为 <code>null</code>，如果匹配成功则将 match 的结果作为 props 的一部分，在 render 中传递给传进来的要渲染的组件。</p>
+<p>接下来看一下 Route 的 render 部分。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">  const &#123; match &#125; = this.state; // 布尔值，表示 location 是否匹配当前 Route 的 path</span><br><span class="line">  const &#123; children, component, render &#125; = this.props; // Route 提供的三种可选的渲染方式</span><br><span class="line">  const &#123; history, route, staticContext &#125; = this.context.router; // Router 传入的 context</span><br><span class="line">  const location = this.props.location || route.location;</span><br><span class="line">  const props = &#123; match, location, history, staticContext &#125;;</span><br><span class="line"></span><br><span class="line">  if (component) return match ? React.createElement(component, props) : null; // Component 创建</span><br><span class="line"></span><br><span class="line">  if (render) return match ? render(props) : null; // render 创建</span><br><span class="line"></span><br><span class="line">  if (typeof children === &quot;function&quot;) return children(props); // 回调 children 创建</span><br><span class="line"></span><br><span class="line">  if (children &amp;&amp; !isEmptyChildren(children)) // 普通 children 创建</span><br><span class="line">    return React.Children.only(children);</span><br><span class="line"></span><br><span class="line">  return null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>rr4 提供了三种渲染组件的方法：component props，render props 和 children props，渲染的优先级也是依次按照顺序，如果前面的已经渲染后了，将会直接 return。</p>
+<ul>
+<li>component (props) —— 由于使用 React.createElement 创建，所以可以传入一个 class component。</li>
+<li>render (props) —— 直接调用 render() 展开子元素，所以需要传入 stateless function component。</li>
+<li>children (props) —— 其实和 render 差不多，区别是不判断 match，总是会被渲染。</li>
+<li>children（子元素）—— 如果以上都没有，那么会默认渲染子元素，但是只能有一个子元素。</li>
+</ul>
+<p>这里解释一下官网的 <a href="https://github.com/ReactTraining/react-router/blob/a27bc562ce49b22019d380d28fa9a534111614b2/packages/react-router/docs/api/Route.md#component" target="_blank" rel="noopener">tips</a>，component 是使用 React.createElement 来创建新的元素，所以如果传入一个内联函数，比如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Route path=&apos;/&apos; component=&#123;()=&gt;(&lt;div&gt;hello world&lt;/div&gt;)&#125;</span><br></pre></td></tr></table></figure>
+<p>的话，由于每次的 props.component 都是新创建的，所以 React 在 diff 的时候会认为进来了一个全新的组件，所以会将旧的组件 unmount，再 re-mount。这时候就要使用 render，少了一层包裹的 component 元素，render 展开后的元素类型每次都是一样的，就不会发生 re-mount 了（children 也不会发生 re-mount）。</p>
+<h5 id="Switch"><a href="#Switch" class="headerlink" title="Switch"></a>Switch</h5><p>我们紧接着 Route 来看 Switch，Switch 是用来嵌套在 Route 的外面，当 Switch 中的第一个 Route 匹配之后就不会再渲染其他的 Route 了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">  const &#123; route &#125; = this.context.router;</span><br><span class="line">  const &#123; children &#125; = this.props;</span><br><span class="line">  const location = this.props.location || route.location;</span><br><span class="line"></span><br><span class="line">  let match, child;</span><br><span class="line">  React.Children.forEach(children, element =&gt; &#123;</span><br><span class="line">    if (match == null &amp;&amp; React.isValidElement(element)) &#123;</span><br><span class="line">      const &#123;</span><br><span class="line">        path: pathProp,</span><br><span class="line">        exact,</span><br><span class="line">        strict,</span><br><span class="line">        sensitive,</span><br><span class="line">        from</span><br><span class="line">      &#125; = element.props;</span><br><span class="line">      const path = pathProp || from;</span><br><span class="line"></span><br><span class="line">      child = element;</span><br><span class="line">      match = matchPath(</span><br><span class="line">        location.pathname,</span><br><span class="line">        &#123; path, exact, strict, sensitive &#125;,</span><br><span class="line">        route.match</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  return match</span><br><span class="line">    ? React.cloneElement(child, &#123; location, computedMatch: match &#125;)</span><br><span class="line">    : null;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Switch 也是通过 matchPath 这个函数来判断是否匹配成功，一直按照 Switch 中 children 的顺序依次遍历子元素，如果匹配失败则 match 为 null，如果匹配成功则标记这个子元素和它对应的 location、computedMatch。在最后的时候使用 React.cloneElement 渲染，如果没有匹配到的子元素则返回 <code>null</code>。</p>
+<p>接下来我们看下 matchPath 是如何判断 location 是否符合 path 的。</p>
+<h5 id="matchPath"><a href="#matchPath" class="headerlink" title="matchPath"></a>matchPath</h5><p>matchPath 返回的是一个如下结构的对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    path, <span class="comment">// 用来进行匹配的路径，其实是直接导出的传入 matchPath 的 options 中的 path</span></span><br><span class="line">    url: path === <span class="string">"/"</span> &amp;&amp; url === <span class="string">""</span> ? <span class="string">"/"</span> : url, <span class="comment">// 整个的 URL</span></span><br><span class="line">    isExact, <span class="comment">// url 与 path 是否是 exact 的匹配</span></span><br><span class="line">    <span class="comment">// 返回的是一个键值对的映射</span></span><br><span class="line">    <span class="comment">// 比如你的 path 是 /users/:id，然后匹配的 pathname 是 /user/123</span></span><br><span class="line">    <span class="comment">// 那么 params 的返回值就是 &#123;id: '123'&#125;</span></span><br><span class="line">    params: keys.reduce(<span class="function">(<span class="params">memo, key, index</span>) =&gt;</span> &#123;</span><br><span class="line">      memo[key.name] = values[index];</span><br><span class="line">      <span class="keyword">return</span> memo;</span><br><span class="line">    &#125;, &#123;&#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>这些信息将作为匹配的参数传递给 Route 和 Switch（Switch 只是一个代理，它的作用还是渲染 Route，Switch 计算得到的 computedMatch 会传递给要渲染的 Route，此时 Route 将直接使用这个 computedMatch 而不需要再自己来计算）。</p>
+<p>在 matchPath 内部 compilePath 时，有个</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> patternCache = &#123;&#125;;</span><br><span class="line"><span class="keyword">const</span> cacheLimit = <span class="number">10000</span>;</span><br><span class="line"><span class="keyword">let</span> cacheCount = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<p>作为 pathToRegexp 的缓存，因为 ES6 的 import 模块导出的是值的<strong>引用</strong>，所以将 patternCache 可以理解为一个全局变量缓存，缓存以 <code>{option:{pattern: }}</code> 的形式存储，之后如果需要匹配相同 pattern 和 option 的 path，则可以直接从缓存中获得正则表达式和 keys。</p>
+<p>加缓存的原因是路由页面大部分情况下都是相似的，比如要访问 <code>/user/123</code> 或 <code>/users/234</code>，都会使用 <code>/user/:id</code> 这个 path 去匹配，没有必要每次都生成一个新的正则表达式。SPA 在页面整个访问的过程中都维护着这份缓存。</p>
+<h5 id="Link"><a href="#Link" class="headerlink" title="Link"></a>Link</h5><p>实际上我们可能写的最多的就是 Link 这个标签了，我们从它的 render 函数开始看</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">    const &#123; replace, to, innerRef, ...props &#125; = this.props; // eslint-disable-line no-unused-vars</span><br><span class="line"></span><br><span class="line">    invariant(</span><br><span class="line">      this.context.router,</span><br><span class="line">      &quot;You should not use &lt;Link&gt; outside a &lt;Router&gt;&quot;</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    invariant(to !== undefined, &apos;You must specify the &quot;to&quot; property&apos;);</span><br><span class="line"></span><br><span class="line">    const &#123; history &#125; = this.context.router;</span><br><span class="line">    const location =</span><br><span class="line">      typeof to === &quot;string&quot;</span><br><span class="line">        ? createLocation(to, null, null, history.location)</span><br><span class="line">        : to;</span><br><span class="line"></span><br><span class="line">    const href = history.createHref(location);</span><br><span class="line">    // 最终创建的是一个 a 标签</span><br><span class="line">    return (</span><br><span class="line">      &lt;a &#123;...props&#125; onClick=&#123;this.handleClick&#125; href=&#123;href&#125; ref=&#123;innerRef&#125; /&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到 Link 最终还是创建一个 a 标签来包裹住要跳转的元素，但是如果只是一个普通的带 href 的 a 标签，那么就会直接跳转到一个新的页面而不是 SPA 了，所以在这个 a 标签的 handleClick 中会 preventDefault 禁止默认的跳转，所以这里的 href 并没有实际的作用，但仍然可以标示出要跳转到的页面的 URL 并且有更好的 html 语义。</p>
+<p>在 handleClick 中，对没有被 “preventDefault 的 &amp;&amp; 鼠标左键点击的 &amp;&amp; 非 <code>_blank</code> 跳转 的&amp;&amp; 没有按住其他功能键的“ 单击进行 preventDefault，然后 push 进 history 中，这也是前面讲过的 —— 路由的变化 与 页面的跳转 是不互相关联的，rr4 在 Link 中通过 history 库的 push 调用了 HTML5 history 的 <code>pushState</code>，但是这仅仅会让路由变化，其他什么都没有改变。还记不记得 Router 中的 listen，它会监听路由的变化，然后通过 context 更新 props 和 nextContext 让下层的 Route 去重新匹配，完成需要渲染部分的更新。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">handleClick = event =&gt; &#123;</span><br><span class="line">  if (this.props.onClick) this.props.onClick(event);</span><br><span class="line"></span><br><span class="line">  if (</span><br><span class="line">    !event.defaultPrevented &amp;&amp; // onClick prevented default</span><br><span class="line">    event.button === 0 &amp;&amp; // ignore everything but left clicks</span><br><span class="line">    !this.props.target &amp;&amp; // let browser handle &quot;target=_blank&quot; etc.</span><br><span class="line">    !isModifiedEvent(event) // ignore clicks with modifier keys</span><br><span class="line">  ) &#123;</span><br><span class="line">    event.preventDefault();</span><br><span class="line"></span><br><span class="line">    const &#123; history &#125; = this.context.router;</span><br><span class="line">    const &#123; replace, to &#125; = this.props;</span><br><span class="line"></span><br><span class="line">    if (replace) &#123;</span><br><span class="line">      history.replace(to);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      history.push(to);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h5 id="withRouter"><a href="#withRouter" class="headerlink" title="withRouter"></a>withRouter</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> withRouter = <span class="function"><span class="params">Component</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> C = <span class="function"><span class="params">props</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; wrappedComponentRef, ...remainingProps &#125; = props;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;Route</span><br><span class="line">        children=&#123;routeComponentProps =&gt; (</span><br><span class="line">          &lt;Component &#123;...remainingProps&#125; &#123;...routeComponentProps&#125; ref=&#123;wrappedComponentRef&#125; /&gt;</span><br><span class="line">        )&#125;</span><br><span class="line">      /&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  C.displayName = <span class="string">`withRouter(<span class="subst">$&#123;Component.displayName || Component.name&#125;</span>)`</span>;</span><br><span class="line">  C.WrappedComponent = Component;</span><br><span class="line">  C.propTypes = &#123;</span><br><span class="line">    wrappedComponentRef: PropTypes.func,</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> hoistStatics(C, Component);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> withRouter;</span><br></pre></td></tr></table></figure>
+<p>withRouter 的作用是让我们在普通的非直接嵌套在 Route 中的组件也能获得路由的信息，这时候我们就要 <code>WithRouter(wrappedComponent)</code> 来创建一个 HOC 传递 props，WithRouter 的其实就是用 Route 包裹了 SomeComponent 的一个 HOC。</p>
+<p>创建 Route 有三种方法，这里直接采用了传递 <code>children</code> props 的方法，因为这个 HOC 要原封不动的渲染 wrappedComponent（<code>children</code> props 比较少用得到，某种程度上是一个内部方法）。</p>
+<p>在最后返回 HOC 时，使用了 hoistStatics 这个方法，这个方法的作用是保留 SomeComponent 类的静态方法，因为 HOC 是在 wrappedComponent 的外层又包了一层 Route，所以要将 wrappedComponent 类的静态方法转移给新的 Route，具体参见 <a href="https://reactjs.org/docs/higher-order-components.html#static-methods-must-be-copied-over" target="_blank" rel="noopener">Static Methods Must Be Copied Over</a>。</p>
+<h4 id="理解"><a href="#理解" class="headerlink" title="理解"></a>理解</h4><p>现在回到一开始的问题，重新理解一下点击一个 Link 跳转的过程。</p>
+<p>有两件事需要完成：</p>
+<ol>
+<li>路由的改变</li>
+<li>页面的渲染部分的改变</li>
+</ol>
+<p>过程如下：</p>
+<ol>
+<li>在最一开始 mount Router 的时候，Router 在 componentWillMount 中 listen 了一个回调函数，由 history 库管理，路由每次改变的时候触发这个回调函数。这个回调函数会触发 setState。</li>
+<li>当点击 Link 标签的时候，实际上点击的是页面上渲染出来的 a 标签，然后通过 preventDefault 阻止 a 标签的页面跳转。</li>
+<li>Link 中也能拿到 Router -&gt; Route 中通过 context 传递的 history，执行 <code>hitsory.push(to)</code>，这个函数实际上就是包装了一下 <code>window.history.pushState()</code>，是 HTML5 history 的 API，但是 pushState 之后除了地址栏有变化其他没有任何影响，到这一步已经完成了目标 1：路由的改变。</li>
+<li>第 1 步中，路由改变是会触发 Router 的 setState 的，在 Router 那章有写道：每次路由变化 -&gt; 触发顶层 Router 的监听事件 -&gt; Router 触发 setState -&gt; 向下传递新的 nextContext（nextContext 中含有最新的 location）</li>
+<li>下层的 Route 拿到新的 nextContext 通过 matchPath 函数来判断 path 是否与 location 匹配，如果匹配则渲染，不匹配则不渲染，完成目标 2：页面的渲染部分的改变。</li>
+</ol>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>看到这里相信你已经能够理解前端路由的实现及 react-router 的实现，但是 react-router 有很多的不足，这也是为什么 reach-router 的出现的原因。</p>
+<p>在下篇文章，我会介绍如何做一个可以缓存的 Route —— 比如在列表页跳转到详情页再后退的时候，恢复列表页的模样，包括状态及滚动位置等。</p>
+<p>先放上仓库的地址： <a href="https://github.com/fi3ework/react-live-route" target="_blank" rel="noopener">react-live-route</a>，喜欢可以 star，欢迎提出 issue。</p>
+<p><a href="https://github.com/fi3ework/blog/issues/21" target="_blank" rel="noopener">尊重原创，感谢分享</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/React/" rel="tag"># React</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/12/21/浅析React-v16-3新生命周期函数/" rel="next" title="浅析React v16.3新生命周期函数">
+                <i class="fa fa-chevron-left"></i> 浅析React v16.3新生命周期函数
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/16/前端进阶笔记/" rel="prev" title="前端进阶笔记">
+                前端进阶笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="fxs">
+            
+              <p class="site-author-name" itemprop="name">fxs</p>
+              <p class="site-description motion-element" itemprop="description">追风逐月莫停留，平芜尽处是春山～</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/fxs-space" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:fengxiansen333@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情推荐
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/fxs-space" title="GitHub" target="_blank">GitHub</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.docschina.org/" title="印记中文" target="_blank">印记中文</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ai-bot.cn/" title="AI Tools" target="_blank">AI Tools</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">fxs</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

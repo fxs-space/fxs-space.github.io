@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="深入分析 javascript 中的错误处理机制前面的话错误处理对于 web 应用程序开发至关重要，不能提前预测到可能发生的错误，不能提前采取恢复策略，可能导致较差的用户体验。由于任何 javascript 错误都可能导致网页无法使用，因此作为开发人员，必须要知道何时可能出错，为什么会出错，以及会出什么错。本文将详细介绍 javascript 中的错误处理机制 error 对象error 对象是包">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入分析javascript中的错误处理机制">
+<meta property="og:url" content="https://fxs-space.github.io/2017/11/23/深入分析javascript中的错误处理机制/index.html">
+<meta property="og:site_name" content="CodeSky&#39;s Blog">
+<meta property="og:description" content="深入分析 javascript 中的错误处理机制前面的话错误处理对于 web 应用程序开发至关重要，不能提前预测到可能发生的错误，不能提前采取恢复策略，可能导致较差的用户体验。由于任何 javascript 错误都可能导致网页无法使用，因此作为开发人员，必须要知道何时可能出错，为什么会出错，以及会出什么错。本文将详细介绍 javascript 中的错误处理机制 error 对象error 对象是包">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2025-03-06T07:00:58.583Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深入分析javascript中的错误处理机制">
+<meta name="twitter:description" content="深入分析 javascript 中的错误处理机制前面的话错误处理对于 web 应用程序开发至关重要，不能提前预测到可能发生的错误，不能提前采取恢复策略，可能导致较差的用户体验。由于任何 javascript 错误都可能导致网页无法使用，因此作为开发人员，必须要知道何时可能出错，为什么会出错，以及会出什么错。本文将详细介绍 javascript 中的错误处理机制 error 对象error 对象是包">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+
+
+
+
+  <title>深入分析javascript中的错误处理机制 | CodeSky's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CodeSky's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">技术分享与学习笔记</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fxs-space.github.io/2017/11/23/深入分析javascript中的错误处理机制/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fxs">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CodeSky's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">深入分析javascript中的错误处理机制</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-23T20:19:00+08:00">
+                2017-11-23
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2025-03-06T15:00:58+08:00">
+                2025-03-06
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端/" itemprop="url" rel="index">
+                    <span itemprop="name">前端</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="深入分析-javascript-中的错误处理机制"><a href="#深入分析-javascript-中的错误处理机制" class="headerlink" title="深入分析 javascript 中的错误处理机制"></a>深入分析 javascript 中的错误处理机制</h2><h4 id="前面的话"><a href="#前面的话" class="headerlink" title="前面的话"></a>前面的话</h4><p>错误处理对于 web 应用程序开发至关重要，不能提前预测到可能发生的错误，不能提前采取恢复策略，可能导致较差的用户体验。由于任何 javascript 错误都可能导致网页无法使用，因此作为开发人员，必须要知道何时可能出错，为什么会出错，以及会出什么错。本文将详细介绍 javascript 中的错误处理机制</p>
+<h4 id="error-对象"><a href="#error-对象" class="headerlink" title="error 对象"></a>error 对象</h4><p>error 对象是包含错误信息的对象，是 javascript 的原生对象。当代码解析或运行时发生错误，javascript 引擎就会自动产生并抛出一个 error 对象的实例，然后整个程序就中断在发生错误的地方</p>
+<p><code>console.log(t);    //Uncaught ReferenceError: t is not defined</code></p>
+<p>ECMA-262 规定了 error 对象包括两个属性：message 和 name。message 属性保存着错误信息，而 name 属性保存错误类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//一般地，使用try-catch语句来捕获错误</span><br><span class="line">try &#123;</span><br><span class="line">    t;</span><br><span class="line">&#125; catch(ex) &#123;</span><br><span class="line">    console.log(ex.message);    //t is not defined</span><br><span class="line">    console.log(ex.name);   //ReferenceError</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>浏览器还对 error 对象的属性做了扩展，添加了其他相关信息。其中各浏览器厂商实现最多的是 stack 属性，它表示栈跟踪信息(safari 不支持)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">    t;</span><br><span class="line">&#125; catch(ex) &#123;</span><br><span class="line">    console.log(ex.stack);  //@file:///D:/wamp/www/form.html:12:2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当然，可以使用 error()构造函数来创建错误对象。如果指定 message 参数，则该 error 对象将把它用做它的 message 属性；若不指定，它将使用一个预定义的默认字符串作为该属性的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">new Error();</span><br><span class="line">new Error(message);</span><br><span class="line"></span><br><span class="line">//一般地，使用throw语句来抛出错误</span><br><span class="line">throw new Error(&apos;test&apos;);    //Uncaught Error: test</span><br><span class="line">throw new Error();  //Uncaught Error</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function UserError(message) &#123;</span><br><span class="line">   this.message = message;</span><br><span class="line">   this.name = &quot;UserError&quot;;</span><br><span class="line">&#125;</span><br><span class="line">UserError.prototype = new Error();</span><br><span class="line">UserError.prototype.constructor = UserError;</span><br><span class="line">throw new UserError(&quot;errorMessage&quot;);   //Uncaught UserError: errorMessage</span><br></pre></td></tr></table></figure>
+<p>当不使用 new 操作符，直接将 Error()构造函数像一个函数一样调用时，它的行为和带 new 操作符调用时一样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Error();</span><br><span class="line">Error(message);</span><br><span class="line">throw Error(&apos;test&apos;);    //Uncaught Error: test</span><br><span class="line">throw Error();  //Uncaught Error</span><br></pre></td></tr></table></figure>
+<p>error 对象有一个 toString()方法，返回’Error:’+ error 对象的 message 属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var test = new Error(&apos;testError&apos;);</span><br><span class="line">console.log(test.toString());   //&apos;Error: testError&apos;</span><br></pre></td></tr></table></figure>
+<h4 id="error-类型"><a href="#error-类型" class="headerlink" title="error 类型"></a>error 类型</h4><p>执行代码期间可能会发生的错误有多种类型。每种错误都有对应的错误类型，而当错误发生时，就会抛出相应类型的错误对象。ECMA-262 定义了下列 7 种错误类型：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Error</span><br><span class="line">EvalError(eval错误)</span><br><span class="line">RangeError(范围错误)</span><br><span class="line">ReferenceError(引用错误)</span><br><span class="line">SyntaxError(语法错误)</span><br><span class="line">TypeError(类型错误)</span><br><span class="line">URIError(URI错误)</span><br></pre></td></tr></table></figure>
+<p>其中，Error 是基类型，其他错误类型都继承自该类型。因此，所有错误类型共享了一组相同的属性。Error 类型的错误很少见，如果有也是浏览器抛出的；这个基类型的主要目的是供开发人员抛出自定义错误</p>
+<h5 id="【EvalError-eval-错误-】"><a href="#【EvalError-eval-错误-】" class="headerlink" title="【EvalError(eval 错误)】"></a>【EvalError(eval 错误)】</h5><p>eval 函数没有被正确执行时，会抛出 EvalError 错误。该错误类型已经不再在 ES5 中出现了，只是为了保证与以前代码兼容，才继续保留</p>
+<h5 id="【RangeError-范围错误-】"><a href="#【RangeError-范围错误-】" class="headerlink" title="【RangeError(范围错误)】"></a>【RangeError(范围错误)】</h5><p>RangeError 类型的错误会在一个值超出相应范围时触发，主要包括超出数组长度范围以及超出数字取值范围等</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">new Array(-1);  //Uncaught RangeError: Invalid array length</span><br><span class="line">new Array(Number.MAX_VALUE);    //Uncaught RangeError: Invalid array length</span><br><span class="line">(1234).toExponential(21);   //Uncaught RangeError: toExponential() argument must be between 0 and 20</span><br><span class="line">(1234).toExponential(-1);   //Uncaught RangeError: toExponential() argument must be between 0 and 20</span><br></pre></td></tr></table></figure>
+<h5 id="【ReferenceError-引用错误-】"><a href="#【ReferenceError-引用错误-】" class="headerlink" title="【ReferenceError(引用错误)】"></a>【ReferenceError(引用错误)】</h5><p>引用一个不存在的变量或左值(lvalue)类型错误时，会触发 ReferenceError(引用错误)</p>
+<p><code>a; //Uncaught ReferenceError: a is not defined</code></p>
+<p><code>1++;  //Uncaught ReferenceError: Invalid left-hand side expression in postfix operation</code></p>
+<h5 id="【SyntaxError-语法错误-】"><a href="#【SyntaxError-语法错误-】" class="headerlink" title="【SyntaxError(语法错误)】"></a>【SyntaxError(语法错误)】</h5><p>当不符合语法规则时，会抛出 SyntaxError(语法错误)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//变量名错误</span><br><span class="line">var 1a;  //Uncaught SyntaxError: Unexpected number</span><br><span class="line">// 缺少括号</span><br><span class="line">console.log &apos;hello&apos;);   //Uncaught SyntaxError: Unexpected string</span><br></pre></td></tr></table></figure>
+<h5 id="【TypeError-类型错误-】"><a href="#【TypeError-类型错误-】" class="headerlink" title="【TypeError(类型错误)】"></a>【TypeError(类型错误)】</h5><p>在变量中保存着意外的类型时，或者在访问不存在的方法时，都会导致 TypeError 类型错误。错误的原因虽然多种多样，但归根结底还是由于在执行特定类型的操作时，变量的类型并不符合要求所致</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var o = new 10;  //Uncaught TypeError: 10 is not a constructor</span><br><span class="line">alert(&apos;name&apos; in true);  //Uncaught TypeError: Cannot use &apos;in&apos; operator to search for &apos;name&apos; in true</span><br><span class="line">Function.prototype.toString.call(&apos;name&apos;);   //Uncaught TypeError: Function.prototype.toString is not generic</span><br></pre></td></tr></table></figure>
+<h5 id="【URIError-URI-错误-】"><a href="#【URIError-URI-错误-】" class="headerlink" title="【URIError(URI 错误)】"></a>【URIError(URI 错误)】</h5><p>URIError 是 URI 相关函数的参数不正确时抛出的错误，主要涉及 encodeURI()、decodeURI()、encodeURIComponent()、decodeURIComponent()、escape()和 unescape()这六个函数</p>
+<p><code>decodeURI(&#39;%2&#39;);   // URIError: URI malformed</code></p>
+<h4 id="error-事件"><a href="#error-事件" class="headerlink" title="error 事件"></a>error 事件</h4><p>任何没有通过 try-catch 处理的错误都会触发 window 对象的 error 事件</p>
+<p>error 事件可以接收三个参数：错误消息、错误所在的 URL 和行号。多数情况下，只有错误消息有用，因为 URL 只是给出了文档的位置，而行号所指的代码行既可能出自嵌入的 JavaScript 代码，也可能出自外部的文件</p>
+<p>要指定 onerror 事件处理程序，可以使用 DOM0 级技术，也可以使用 DOM2 级事件的标准格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//DOM0级</span><br><span class="line">window.onerror = function(message,url,line) &#123;</span><br><span class="line">    alert(message);</span><br><span class="line">&#125;</span><br><span class="line">//DOM2级</span><br><span class="line">window.addEventListener(&quot;error&quot;,function(message,url,line) &#123;</span><br><span class="line">    alert(message);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>浏览器是否显示标准的错误消息，取决于 onerror 的返回值。如果返回值为 false，则在控制台中显示错误消息；如果返回值为 true，则不显示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//控制台显示错误消息</span><br><span class="line">window.onerror = function(message,url,line) &#123;</span><br><span class="line">    alert(message);</span><br><span class="line">    return false;</span><br><span class="line">&#125;</span><br><span class="line">a;</span><br><span class="line">//控制台不显示错误消息</span><br><span class="line">window.onerror = function(message,url,line) &#123;</span><br><span class="line">    alert(message);</span><br><span class="line">    return true;</span><br><span class="line">&#125;</span><br><span class="line">a;</span><br></pre></td></tr></table></figure>
+<p>这个事件处理程序是避免浏览器报告错误的最后一道防线。理想情况下，只要可能就不应该使用它。只要能够适当地使用 try-catch 语句，就不会有错误交给浏览器，也就不会触发 error 事件</p>
+<p>图像也支持 error 事件。只要图像的 src 特性中的 URL 不能返回可以被识别的图像格式，就会触发 error 事件。此时的 error 事件遵循 DOM 格式，会返回一个以图像为目标的 event 对象</p>
+<p>加载图像失败时会显示一个警告框。发生 error 事件时，图像下载过程已经结束，也就是不能再重新下载了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var image = new Image();</span><br><span class="line">image.src = &apos;smilex.gif&apos;;</span><br><span class="line">image.onerror = function(e) &#123;</span><br><span class="line">    console.log(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="throw-语句与抛出错误"><a href="#throw-语句与抛出错误" class="headerlink" title="throw 语句与抛出错误"></a>throw 语句与抛出错误</h4><p>throw 语句用于抛出错误。抛出错误时，必须要给 throw 语句指定一个值，这个值是什么类型，没有要求</p>
+<p>[注意]抛出错误的过程是阻塞的，后续代码将不会执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">throw 12345;</span><br><span class="line">throw &apos;hello world&apos;;</span><br><span class="line">throw true;</span><br><span class="line">throw &#123;name: &apos;javascript&apos;&#125;;</span><br></pre></td></tr></table></figure>
+<p>可以使用 throw 语句手动抛出一个 Error 对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">throw new Error(&apos;something bad happened&apos;);</span><br><span class="line">throw new SyntaxError(&apos;I don\&apos;t like your syntax.&apos;);</span><br><span class="line">throw new TypeError(&apos;what type of variable do you take me for?&apos;);</span><br><span class="line">throw new RangeError(&apos;sorry,you just don\&apos;t have the range.&apos;);</span><br><span class="line">throw new EvalError(&apos;That doesn\&apos;t evaluate.&apos;);</span><br><span class="line">throw new URIError(&apos;URI, is that you?&apos;);</span><br><span class="line">throw new ReferenceError(&apos;you didn\&apos;t cite your references properly&apos;);</span><br></pre></td></tr></table></figure>
+<p>利用原型链还可以通过继承 Error 来创建自定义错误类型（原型链在第 6 章中介绍）。此时，需要为新创建的错误类型指定 name 和 message 属性</p>
+<p>浏览器对待继承自 Error 的自定义错误类型，就像对待其他错误类型一样。如果要捕获自己抛出的错误并且把它与浏览器错误区别对待的话，创建自定义错误是很有用的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function CustomError(message)&#123;</span><br><span class="line">    this.name = &apos;CustomError&apos;;</span><br><span class="line">    this.message = message;</span><br><span class="line">&#125;</span><br><span class="line">CustomError.prototype = new Error();</span><br><span class="line">throw new CustomError(&apos;my message&apos;);</span><br></pre></td></tr></table></figure>
+<p>在遇到 throw 语句时，代码会立即停止执行。仅当有 try-catch 语句捕获到被抛出的值时，代码才会继续执行</p>
+<p>更详细的解释为：当抛出异常时，javascript 解释器会立即停止当前正在执行的逻辑，并跳转到就近的异常处理程序。异常处理程序是用 try-catch 语句的 catch 从句编写的。如果抛出异常的代码块没有一条相关联的 catch 从句，解释器会检查更高层的闭合代码块，看它是否有相关联的异常处理程序。以此类推，直到找到一个异常处理程序为止。如果抛出异常的函数没有处理它的 try-catch 语句，异常将向上传播到调用该函数的代码。这样的话，异常就会沿着 javascript 方法的词法结构和调用栈向上传播。如果没有找到任何异常处理程序，javascript 将把异常当成程序错误来处理，并报告给用户</p>
+<h4 id="try-catch-语句与捕获错误"><a href="#try-catch-语句与捕获错误" class="headerlink" title="try catch 语句与捕获错误"></a>try catch 语句与捕获错误</h4><p>ECMA-262 第 3 版引入了 try-catch 语句，作为 JavaScript 中处理异常的一种标准方式，用于捕获和处理错误</p>
+<p>其中，try 从句定义了需要处理的异常所在的代码块。catch 从句跟随在 try 从句之后，当 try 块内某处发生了异常时，调用 catch 内的代码逻辑。catch 从句后跟随 finally 块，后者中放置清理代码，不管 try 块中是否产生异常，finally 块内的逻辑总是会执行。尽管 catch 和 finally 都是可选的，但 try 从句需要至少二者之一与之组成完整的语句</p>
+<p>try/catch/finally 语句块都需要使用花括号括起来，这里的花括号是必需的，即使从句中只有一条语句也不能省略花括号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">    //通常来讲，这里的代码会从头到尾而不会产生任何问题</span><br><span class="line">    //但有时会抛出一个异常，要么是由throw语句直接抛出，要么通过调用一个方法间接抛出</span><br><span class="line">&#125; catch(e) &#123;</span><br><span class="line">    //当且仅当try语句块抛出了异常，才会执行这里的代码</span><br><span class="line">    //这里可以通过局部变量e来获得对Error对象或者抛出的其他值的引用</span><br><span class="line">    //这里的代码块可以基于某种原因处理这个异常，也可以忽略这个异常，还可以通过throw语句重新抛出异常</span><br><span class="line">&#125; finally &#123;</span><br><span class="line">    //不管try语句是否抛出了异常，finally里的逻辑总是会执行，终止try语句块的方式有：</span><br><span class="line">    //1、正常终止，执行完语句块的最后一条语句</span><br><span class="line">    //2、通过break、continue或return语句终止</span><br><span class="line">    //3、抛出一个异常，异常被catch从句捕获</span><br><span class="line">    //4、抛出一个异常，异常未被捕获，继续向上传播</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一般地，把所有可能会抛出错误的代码都放在 try 语句块中，而把那些用于错误处理的代码放在 catch 块中</p>
+<p>如果 try 块中的任何代码发生了错误，就会立即退出代码执行过程，然后接着执行 catch 块。此时，catch 块会接收到一个错误信息的对象，这个对象中包含的实际信息会因浏览器而异，但共同的是有一个保存着错误消息的 message 属性</p>
+<p>[注意]一定要给 error 对象起个名字，置空会报语法错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">    q;</span><br><span class="line">&#125; catch(error) &#123;</span><br><span class="line">    alert(error.message);  //q is not defined</span><br><span class="line">&#125;</span><br><span class="line">//Uncaught SyntaxError: Unexpected token</span><br><span class="line">try &#123;</span><br><span class="line">    q;</span><br><span class="line">&#125; catch() &#123;</span><br><span class="line">    alert(error.message);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>catch 接受一个参数，表示 try 代码块抛出的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function throwIt(exception) &#123;</span><br><span class="line">  try &#123;</span><br><span class="line">    throw exception;</span><br><span class="line">  &#125; catch (e) &#123;</span><br><span class="line">    console.log(&apos;Caught: &apos;+ e);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">throwIt(3);    // Caught: 3</span><br><span class="line">throwIt(&apos;hello&apos;);   // Caught: hello</span><br><span class="line">throwIt(new Error(&apos;An error happened&apos;));    // Caught: Error: An error happened</span><br></pre></td></tr></table></figure>
+<p>catch 代码块捕获错误之后，程序不会中断，会按照正常流程继续执行下去</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">  throw &quot;出错了&quot;;</span><br><span class="line">&#125; catch (e) &#123;</span><br><span class="line">  console.log(111);</span><br><span class="line">&#125;</span><br><span class="line">console.log(222);</span><br><span class="line">// 111</span><br><span class="line">// 222</span><br></pre></td></tr></table></figure>
+<p>为了捕捉不同类型的错误，catch 代码块之中可以加入判断语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">  foo.bar();</span><br><span class="line">&#125; catch (e) &#123;</span><br><span class="line">  if (e instanceof EvalError) &#123;</span><br><span class="line">    console.log(e.name + &quot;: &quot; + e.message);</span><br><span class="line">  &#125; else if (e instanceof RangeError) &#123;</span><br><span class="line">    console.log(e.name + &quot;: &quot; + e.message);</span><br><span class="line">  &#125;</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>虽然 finally 子句在 try-catch 语句中是可选的，但 finally 子句一经使用，其代码无论如何都会执行。换句话说，try 语句块中的代码全部正常执行，finally 子句会执行；如果因为出错而执行了 catch 语句块，finally 子句照样还会执行。只要代码中包含 finally 子句，则无论 try 或 catch 语句块中包含什么代码——甚至 return 语句，都不会阻止 finally 子句的执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//由于没有catch语句块，所以错误没有捕获。执行finally代码块以后，程序就中断在错误抛出的地方</span><br><span class="line">function cleansUp() &#123;</span><br><span class="line">  try &#123;</span><br><span class="line">    throw new Error(&apos;出错了……&apos;);</span><br><span class="line">    console.log(&apos;此行不会执行&apos;);</span><br><span class="line">  &#125; finally &#123;</span><br><span class="line">    console.log(&apos;完成清理工作&apos;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">cleansUp();</span><br><span class="line">// 完成清理工作</span><br><span class="line">// Error: 出错了……</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function testFinnally() &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        return 2;</span><br><span class="line">    &#125; catch(error) &#123;</span><br><span class="line">        return 1;</span><br><span class="line">    &#125; finally &#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">testFinnally(); //0</span><br></pre></td></tr></table></figure>
+<p>[注意]return 语句的 count 的值，是在 finally 代码块运行之前，就获取完成了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var count = 0;</span><br><span class="line">function countUp() &#123;</span><br><span class="line">  try &#123;</span><br><span class="line">    return count;</span><br><span class="line">  &#125; finally &#123;</span><br><span class="line">    count++;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">countUp();  // 0</span><br><span class="line">console.log(count); // 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">function f() &#123;</span><br><span class="line">  try &#123;</span><br><span class="line">    console.log(0);</span><br><span class="line">    throw &quot;bug&quot;;</span><br><span class="line">  &#125; catch(e) &#123;</span><br><span class="line">    console.log(1);</span><br><span class="line">    return true; // 这句原本会延迟到finally代码块结束再执行</span><br><span class="line">    console.log(2); // 不会运行</span><br><span class="line">  &#125; finally &#123;</span><br><span class="line">    console.log(3);</span><br><span class="line">    return false; // 这句会覆盖掉前面那句return</span><br><span class="line">    console.log(4); // 不会运行</span><br><span class="line">  &#125;</span><br><span class="line">  console.log(5); // 不会运行</span><br><span class="line">&#125;</span><br><span class="line">var result = f();</span><br><span class="line">// 0</span><br><span class="line">// 1</span><br><span class="line">// 3</span><br><span class="line">console.log(result);    // false</span><br></pre></td></tr></table></figure>
+<h5 id="【tips】块级作用域"><a href="#【tips】块级作用域" class="headerlink" title="【tips】块级作用域"></a>【tips】块级作用域</h5><p>try-catch 语句的一个常见用途是创建块级作用域，其中声明的变量仅仅在 catch 内部有效</p>
+<p>ES6 引入了 let 关键字，为其声明的变量创建块级作用域。但是，在目前 ES3 和 ES5 的情况下，常常使用 try-catch 语句来实现类似的效果</p>
+<p>由下面代码可知，e 仅存在于 catch 分句内部，当试图从别处引用它时会抛出错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">    throw new Error();  //抛出错误</span><br><span class="line">&#125; catch(e) &#123;</span><br><span class="line">    console.log(e); //Error(…)</span><br><span class="line">&#125;</span><br><span class="line">console.log(e); //Uncaught ReferenceError: e is not defined</span><br></pre></td></tr></table></figure>
+<h4 id="常见错误"><a href="#常见错误" class="headerlink" title="常见错误"></a>常见错误</h4><p>错误处理的核心是首先要知道代码里会发生什么错误。由于 javaScript 是松散类型的，而且也不会验证函数的参数，因此错误只会在代码期间出现。一般来说，需要关注三种错误：类型转换错误、数据类型错误、通信错误</p>
+<h5 id="【类型转换错误】"><a href="#【类型转换错误】" class="headerlink" title="【类型转换错误】"></a>【类型转换错误】</h5><p>类型转换错误发生在使用某个操作符，或者使用其他可能自动转换值的数据类型的语言结构时</p>
+<p>容易发生类型转换错误的地方是流控制语句。像 if 之类的语句在确定下一步操作之前，会自动把任何值转换成布尔值。尤其是 if 语句，如果使用不当，最容易出错</p>
+<p>未使用过的命名变量会自动被赋予 undefined 值。而 undefined 值可以被转换成布尔值 false，因此下面这个函数中的 if 语句实际上只适用于提供了第三个参数的情况。问题在于，并不是只有 undefined 才会被转换成 false，也不是只有字符串值才可以转换为 true。例如，假设第三个参数是数值 0，那么 if 语句的测试就会失败，而对数值 1 的测试则会通过</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function concat(str1,str2,str3) &#123;</span><br><span class="line">    var result = str1 + str2;</span><br><span class="line">    if(str3) &#123; //绝对不要这样</span><br><span class="line">        result += str3;</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在流控制语句中使用非布尔值，是极为常见的一个错误来源。为避免此类错误，就要做到在条件比较时切实传入布尔值。实际上，执行某种形式的比较就可以达到这个目的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function concat(str1,str2,str3) &#123;</span><br><span class="line">    var result = str1 + str2;</span><br><span class="line">    if(typeof str3 == &apos;string&apos;) &#123; //更合适</span><br><span class="line">        result += str3;</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="【数据类型错误】"><a href="#【数据类型错误】" class="headerlink" title="【数据类型错误】"></a>【数据类型错误】</h5><p>javascript 是松散类型的，在使用变量和函数参数之前，不会对它们进行比较以确保它们的数据类型正确。为了保证不会发生数据类型错误，只能编写适当的数据类型检测代码。在将预料之外的值传递绘函数的情况下，最容易发生数据类型错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//不安全的函数，任何非数组值都会导致错误</span><br><span class="line">function reverseSort(values) &#123;</span><br><span class="line">    if(values) &#123;</span><br><span class="line">        values.sort();</span><br><span class="line">        values.reverse();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>另一个常见的错误就是将参数与 null 值进行比较。与 null 进行比较只能确保相应的值不是 null 和 undefined。要确保传入的值有效，仅检测 null 值是不够的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//不安全的函数，任何非数组值都会导致错误</span><br><span class="line">function reverseSort(values) &#123;</span><br><span class="line">    if(values != null) &#123;</span><br><span class="line">        values.sort();</span><br><span class="line">        values.reverse();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果传入一个包含 sort()方法的对象（而不是数组）会通过检测，但调用 reverse()函数时可能会出错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//不安全的函数，任何非数组值都会导致错误</span><br><span class="line">function reverseSort(values) &#123;</span><br><span class="line">    if(typeof values.sort == &apos;function&apos;) &#123;</span><br><span class="line">        values.sort();</span><br><span class="line">        values.reverse();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在确切知道应该传入什么类型的情况下，最好是使用 instanceof 来检测其数据类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//安全，非数组值被忽略</span><br><span class="line">function reverseSort(values) &#123;</span><br><span class="line">    if(values instanceof Array) &#123;</span><br><span class="line">        values.sort();</span><br><span class="line">        values.reverse();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="【通信错误】"><a href="#【通信错误】" class="headerlink" title="【通信错误】"></a>【通信错误】</h5><p>随着 Ajax 编程的兴起，Web 应用程序在其生命周期内动态加载信息或功能，已经成为一件司空见惯的事。不过，javascript 与服务器之间的任何一次通信，都有可能会产生错误</p>
+<p>最常见的问题是在将数据发送给服务器之前，没有使用 encodeURIComponent()对数据进行编码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//错误</span><br><span class="line">http://www.yourdomain.com/?redir=http://www.sometherdomain.com?a=b&amp;c=d</span><br><span class="line">//针对&apos;redir=&apos;后面的所有字符串调用encodeURIComponent()就可以解决这个问题</span><br><span class="line">http://www.yourdomain.com/?redir=http:%3A%2F%2Fwww.sometherdomain.com%3Fa%3Db%26c%3Dd</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.jb51.net/article/88743.htm" target="_blank" rel="noopener">尊重原创，感谢原创分享</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/09/Webpack从入门到上手/" rel="next" title="Webpack从入门到上手">
+                <i class="fa fa-chevron-left"></i> Webpack从入门到上手
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/12/18/Vim命令笔记/" rel="prev" title="Vim命令笔记">
+                Vim命令笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="fxs">
+            
+              <p class="site-author-name" itemprop="name">fxs</p>
+              <p class="site-description motion-element" itemprop="description">追风逐月莫停留，平芜尽处是春山～</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/fxs-space" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:fengxiansen333@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情推荐
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/fxs-space" title="GitHub" target="_blank">GitHub</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.docschina.org/" title="印记中文" target="_blank">印记中文</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ai-bot.cn/" title="AI Tools" target="_blank">AI Tools</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">fxs</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

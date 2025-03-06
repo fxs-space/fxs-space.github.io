@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="爬坑,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="RN 开发之调用 WebView 爬坑记解决 React Native 之 Android 手机中 WebView 不能调用相机相册的问题记录最近在 RN 开发中踩的一个坑以及分享我的爬坑记：Android 手机不能在 WebView 中调用相机相册；我刚开始很困惑，大家都一致认为这是链接的第三方写的 H5 中调用相机相册的方法有问题所导致的，后来我通过查找原因，发现这是 Android 原生 W">
+<meta name="keywords" content="爬坑">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RN开发之调用WebView爬坑记">
+<meta property="og:url" content="https://fxs-space.github.io/2018/06/24/RN开发之调用WebView爬坑记/index.html">
+<meta property="og:site_name" content="CodeSky&#39;s Blog">
+<meta property="og:description" content="RN 开发之调用 WebView 爬坑记解决 React Native 之 Android 手机中 WebView 不能调用相机相册的问题记录最近在 RN 开发中踩的一个坑以及分享我的爬坑记：Android 手机不能在 WebView 中调用相机相册；我刚开始很困惑，大家都一致认为这是链接的第三方写的 H5 中调用相机相册的方法有问题所导致的，后来我通过查找原因，发现这是 Android 原生 W">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2025-03-06T07:00:57.759Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RN开发之调用WebView爬坑记">
+<meta name="twitter:description" content="RN 开发之调用 WebView 爬坑记解决 React Native 之 Android 手机中 WebView 不能调用相机相册的问题记录最近在 RN 开发中踩的一个坑以及分享我的爬坑记：Android 手机不能在 WebView 中调用相机相册；我刚开始很困惑，大家都一致认为这是链接的第三方写的 H5 中调用相机相册的方法有问题所导致的，后来我通过查找原因，发现这是 Android 原生 W">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+
+
+
+
+  <title>RN开发之调用WebView爬坑记 | CodeSky's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CodeSky's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">技术分享与学习笔记</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://fxs-space.github.io/2018/06/24/RN开发之调用WebView爬坑记/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fxs">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CodeSky's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">RN开发之调用WebView爬坑记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-24T18:56:28+08:00">
+                2018-06-24
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2025-03-06T15:00:57+08:00">
+                2025-03-06
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/React-Native/" itemprop="url" rel="index">
+                    <span itemprop="name">React Native</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="RN-开发之调用-WebView-爬坑记"><a href="#RN-开发之调用-WebView-爬坑记" class="headerlink" title="RN 开发之调用 WebView 爬坑记"></a>RN 开发之调用 WebView 爬坑记</h2><h4 id="解决-React-Native-之-Android-手机中-WebView-不能调用相机相册的问题"><a href="#解决-React-Native-之-Android-手机中-WebView-不能调用相机相册的问题" class="headerlink" title="解决 React Native 之 Android 手机中 WebView 不能调用相机相册的问题"></a>解决 React Native 之 Android 手机中 WebView 不能调用相机相册的问题</h4><p>记录最近在 RN 开发中踩的一个坑以及分享我的爬坑记：Android 手机不能在 WebView 中调用相机相册；我刚开始很困惑，大家都一致认为这是链接的第三方写的 H5 中调用相机相册的方法有问题所导致的，后来我通过查找原因，发现这是 Android 原生 WebView 中没有实现调用相机相册的功能；soga，知道原因后开始在网上查找解决方法，大概找到两三个类似的依赖包，于是开始尝试集成到现在的项目中去，结果全部 jj：不是和其他依赖包冲突就是 gradle build 失败；唉，各种心塞心累，于是决定自己尝试桥接原生 WebView，桥接的过程也是各种蜿蜒曲折啊；下面开始分享我桥接的过程，希望可以帮助有需要的人少踩点坑。</p>
+<a id="more"></a>
+<h5 id="1-为什么-RN-的-android-端-webview-不支持上传图片和调用相机？"><a href="#1-为什么-RN-的-android-端-webview-不支持上传图片和调用相机？" class="headerlink" title="1. 为什么 RN 的 android 端 webview 不支持上传图片和调用相机？"></a>1. 为什么 RN 的 android 端 webview 不支持上传图片和调用相机？</h5><p>android 原生的 webview，本身就需要配置一个方法来配合上传图片，所以 RN 封装的 webView 没有配置这个方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">// For Android 4.1</span><br><span class="line">        public void openFileChooser(ValueCallback&lt;Uri&gt; uploadMsg, String acceptType, String capture) &#123;</span><br><span class="line">            if (mUploadMessage != null) &#123;</span><br><span class="line">                mUploadMessage.onReceiveValue(null);</span><br><span class="line">            &#125;</span><br><span class="line">            mUploadMessage = uploadMsg;</span><br><span class="line">            showPopSelectPic();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public boolean onShowFileChooser(WebView webView, ValueCallback&lt;Uri[]&gt; filePathCallback, FileChooserParams fileChooserParams) &#123;</span><br><span class="line">            if (mUploadMessage != null) &#123;</span><br><span class="line">                mUploadMessage.onReceiveValue(null);</span><br><span class="line">            &#125;</span><br><span class="line">            mUploadMessage = filePathCallback;</span><br><span class="line">            showPopSelectPic();</span><br><span class="line">            return true;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<h5 id="2-如何给-RN-的-webview-配置上这个方法？"><a href="#2-如何给-RN-的-webview-配置上这个方法？" class="headerlink" title="2. 如何给 RN 的 webview 配置上这个方法？"></a>2. 如何给 RN 的 webview 配置上这个方法？</h5><p>在 js 代码中暂时没办法处理，那只好改原生的方法，原生的 webview 封装在 react native 包里，没办法改，只好重新封装一个 webview.</p>
+<h5 id="3-怎么重新封装一个-RN-组件？"><a href="#3-怎么重新封装一个-RN-组件？" class="headerlink" title="3. 怎么重新封装一个 RN 组件？"></a>3. 怎么重新封装一个 RN 组件？</h5><p><a href="https://reactnative.cn/docs/0.45/native-component-android.html#content" target="_blank" rel="noopener">可参考封装 RN 组件的教程</a></p>
+<ol>
+<li>首先把<code>/node_modules/react-native/ReactAndroid/src/main/java/com/facebook/react/views/webview</code>中的 ReactWebViewManager 的复制到自己的 src 的 java 包目录里</li>
+<li>然后根据自己的需求进行更改，比如现在的需求事添加选择图片的配置</li>
+</ol>
+<p>(1). 新建一个 ActivityResultInterface 接口回调</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">interface ActivityResultInterface &#123;</span><br><span class="line">    void callback(int requestCode, int resultCode, Intent data);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(2). PickerActivityEventListener onActivityResult 回调和自定义回调链接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class PickerActivityEventListener extends BaseActivityEventListener &#123;</span><br><span class="line"></span><br><span class="line">    private ActivityResultInterface mCallback;</span><br><span class="line"></span><br><span class="line">    public PickerActivityEventListener(ReactApplicationContext reactContext, ActivityResultInterface callback) &#123;</span><br><span class="line">        reactContext.addActivityEventListener(this);</span><br><span class="line">        mCallback = callback;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // &lt; RN 0.33.0</span><br><span class="line">    public void onActivityResult(int requestCode, int resultCode, Intent data) &#123;</span><br><span class="line">        mCallback.callback(requestCode, resultCode, data);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // &gt;= RN 0.33.0</span><br><span class="line">    public void onActivityResult(Activity activity, int requestCode, int resultCode, Intent data) &#123;</span><br><span class="line">        mCallback.callback(requestCode, resultCode, data);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(3). ReactWebViewManager 自定义添加配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br></pre></td><td class="code"><pre><span class="line">public class ReactWebViewManager extends SimpleViewManager&lt;WebView&gt; implements ActivityResultInterface &#123;</span><br><span class="line">    //一些初始化变量</span><br><span class="line">    private ReactApplicationContext reactApplicationContext;</span><br><span class="line">    private ValueCallback mUploadMessage;</span><br><span class="line">    private Uri imageUri;</span><br><span class="line">    private static final int TAKE_PHOTO = 10001;</span><br><span class="line">    private static final int CHOOSE_PHOTO = 10002;</span><br><span class="line">    protected static final String REACT_CLASS = &quot;RCTWebView2&quot;;</span><br><span class="line">    ......</span><br><span class="line">    //修改构造方法</span><br><span class="line">    public ReactWebViewManager(ReactApplicationContext reactApplicationContext) &#123;</span><br><span class="line">        this.reactApplicationContext = reactApplicationContext;</span><br><span class="line">        new PickerActivityEventListener(reactApplicationContext, this);</span><br><span class="line">        mWebViewConfig = new WebViewConfig() &#123;</span><br><span class="line">            public void configWebView(WebView webView) &#123;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    ......</span><br><span class="line">     protected WebView createViewInstance(final ThemedReactContext reactContext) &#123;</span><br><span class="line">        ReactWebView webView = createReactWebViewInstance(reactContext);</span><br><span class="line">        webView.setWebChromeClient(new WebChromeClient() &#123;</span><br><span class="line">          ......</span><br><span class="line">            // For Android 4.1</span><br><span class="line">            public void openFileChooser(ValueCallback&lt;Uri&gt; uploadMsg, String acceptType, String capture) &#123;</span><br><span class="line">                if (mUploadMessage != null) &#123;</span><br><span class="line">                    mUploadMessage.onReceiveValue(null);</span><br><span class="line">                &#125;</span><br><span class="line">                mUploadMessage = uploadMsg;</span><br><span class="line">                showPopSelectPic(reactContext);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            public boolean onShowFileChooser(WebView webView, ValueCallback&lt;Uri[]&gt; filePathCallback, FileChooserParams fileChooserParams) &#123;</span><br><span class="line">                if (mUploadMessage != null) &#123;</span><br><span class="line">                    mUploadMessage.onReceiveValue(null);</span><br><span class="line">                &#125;</span><br><span class="line">                mUploadMessage = filePathCallback;</span><br><span class="line">                showPopSelectPic(reactContext);</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;);</span><br><span class="line">        ......</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void showPopSelectPic(final ThemedReactContext Context) &#123;</span><br><span class="line">        String[] items = new String[]&#123;&quot;相机&quot;, &quot;相册&quot;&#125;;</span><br><span class="line">        AlertDialog.Builder builder = new AlertDialog.Builder(Context);</span><br><span class="line">        builder.setTitle(&quot;提示&quot;)</span><br><span class="line">                .setSingleChoiceItems(items, 0, new DialogInterface.OnClickListener() &#123;</span><br><span class="line">                    @Override</span><br><span class="line">                    public void onClick(DialogInterface dialog, int which) &#123;</span><br><span class="line">                        dialog.dismiss();</span><br><span class="line">                        if (which == 0) &#123;</span><br><span class="line">                            //openCamera</span><br><span class="line">                            File outputImage = new File(Context.getExternalCacheDir(), &quot;output_image.jpg&quot;);</span><br><span class="line">                            try &#123;</span><br><span class="line">                                if (outputImage.exists()) &#123;</span><br><span class="line">                                    outputImage.delete();</span><br><span class="line">                                &#125;</span><br><span class="line">                                outputImage.createNewFile();</span><br><span class="line">                            &#125; catch (IOException e) &#123;</span><br><span class="line">                                e.printStackTrace();</span><br><span class="line">                            &#125;</span><br><span class="line">                            if (Build.VERSION.SDK_INT &lt; 24) &#123;</span><br><span class="line">                                imageUri = Uri.fromFile(outputImage);</span><br><span class="line">                            &#125; else &#123;</span><br><span class="line">                                imageUri = FileProvider.getUriForFile(Context, Context.getPackageName() + &quot;.provider&quot;, outputImage);</span><br><span class="line">                            &#125;</span><br><span class="line">                            // 启动相机程序</span><br><span class="line">                            if (ContextCompat.checkSelfPermission(Context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">                                //ActivityCompat.requestPermissions(Context, new String[]&#123;Manifest.permission.CAMERA&#125;, 2);</span><br><span class="line">                            &#125; else &#123;</span><br><span class="line">                                openCamera();</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125; else if (which == 1) &#123;</span><br><span class="line">                            //openAlbum</span><br><span class="line">                            if (ContextCompat.checkSelfPermission(Context, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) &#123;</span><br><span class="line">                                //ActivityCompat.requestPermissions(Context, new String[]&#123;Manifest.permission.WRITE_EXTERNAL_STORAGE&#125;, 1);</span><br><span class="line">                            &#125; else &#123;</span><br><span class="line">                                openAlbum();</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">                .setOnCancelListener(new DialogInterface.OnCancelListener() &#123;</span><br><span class="line">                    @Override</span><br><span class="line">                    public void onCancel(DialogInterface dialog) &#123;</span><br><span class="line">                        if (mUploadMessage != null) &#123;</span><br><span class="line">                            mUploadMessage.onReceiveValue(null);</span><br><span class="line">                            mUploadMessage = null;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">        builder.create().show();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void openCamera() &#123;</span><br><span class="line">        Intent intent = new Intent(&quot;android.media.action.IMAGE_CAPTURE&quot;);</span><br><span class="line">        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);</span><br><span class="line">        Activity currentActivity = reactApplicationContext.getCurrentActivity();</span><br><span class="line">        currentActivity.startActivityForResult(intent, TAKE_PHOTO);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void openAlbum() &#123;</span><br><span class="line">        Intent intent = new Intent(&quot;android.intent.action.GET_CONTENT&quot;);</span><br><span class="line">        intent.setType(&quot;image/*&quot;);</span><br><span class="line">        Activity currentActivity = reactApplicationContext.getCurrentActivity();</span><br><span class="line">        currentActivity.startActivityForResult(intent, CHOOSE_PHOTO); // 打开相册</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void callback(int requestCode, int resultCode, Intent data) &#123;</span><br><span class="line">        switch (requestCode) &#123;</span><br><span class="line">            case TAKE_PHOTO:</span><br><span class="line">                if (resultCode == RESULT_OK) &#123;</span><br><span class="line">                    if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP) &#123;</span><br><span class="line">                        mUploadMessage.onReceiveValue(new Uri[]&#123;imageUri&#125;);</span><br><span class="line">                    &#125; else &#123;</span><br><span class="line">                        mUploadMessage.onReceiveValue(imageUri);</span><br><span class="line">                    &#125;</span><br><span class="line">                    mUploadMessage = null;</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    mUploadMessage.onReceiveValue(null);</span><br><span class="line">                    mUploadMessage = null;</span><br><span class="line">                    return;</span><br><span class="line">                &#125;</span><br><span class="line">                break;</span><br><span class="line">            case CHOOSE_PHOTO:</span><br><span class="line">                if (resultCode == RESULT_OK) &#123;</span><br><span class="line">                    if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP) &#123;</span><br><span class="line">                        mUploadMessage.onReceiveValue(new Uri[]&#123;data.getData()&#125;);</span><br><span class="line">                    &#125; else &#123;</span><br><span class="line">                        mUploadMessage.onReceiveValue(data.getData());</span><br><span class="line">                    &#125;</span><br><span class="line">                    mUploadMessage = null;</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    mUploadMessage.onReceiveValue(null);</span><br><span class="line">                    mUploadMessage = null;</span><br><span class="line">                    return;</span><br><span class="line">                &#125;</span><br><span class="line">                break;</span><br><span class="line">            default:</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(4). 注意 需要注册 FileProvider 和设置 xml path<br>(注意此处可能会和其他上传图片的依赖包中的清单文件冲突，原因是配置的 authorities 冲突，只要修改一致即可)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//清单文件中注册</span><br><span class="line">&lt;application</span><br><span class="line">    ...&gt;</span><br><span class="line"></span><br><span class="line">   &lt;provider</span><br><span class="line">        android:name=&quot;android.support.v4.content.FileProvider&quot;</span><br><span class="line">        android:authorities=&quot;com.company.app.provider&quot; //最好是包名+&apos;.provider&apos;, 如果你的工程里集成有图片上传的依赖包，那么编译可能会有冲突，解决：你将此处修改成与冲突的依赖包一致即可，注意桥接方法里的图片路径(FileProvider)也要同步修改</span><br><span class="line">        android:exported=&quot;false&quot;</span><br><span class="line">        android:grantUriPermissions=&quot;true&quot;&gt;</span><br><span class="line">        &lt;meta-data</span><br><span class="line">            android:name=&quot;android.support.FILE_PROVIDER_PATHS&quot;</span><br><span class="line">            android:resource=&quot;@xml/provider_paths&quot; //注意和冲突的依赖包进行比对修改</span><br><span class="line">        /&gt;</span><br><span class="line">    &lt;/provider&gt;</span><br><span class="line">&lt;/application</span><br></pre></td></tr></table></figure>
+<p>(5). res 资源文件中新建 xml 文件夹新建文件 provider_paths.xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;paths xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;</span><br><span class="line">       &lt;external-path name=&quot;app_images&quot; path=&quot;.&quot; /&gt;</span><br><span class="line">&lt;/paths&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="4-新建-WebViewReactPackage-java-文件，将写好的-ReactWebViewManager-写入到-WebViewReactPackage-中"><a href="#4-新建-WebViewReactPackage-java-文件，将写好的-ReactWebViewManager-写入到-WebViewReactPackage-中" class="headerlink" title="4. 新建 WebViewReactPackage.java 文件，将写好的 ReactWebViewManager 写入到 WebViewReactPackage 中"></a>4. 新建 WebViewReactPackage.java 文件，将写好的 ReactWebViewManager 写入到 WebViewReactPackage 中</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public class WebViewReactPackage implements ReactPackage &#123;</span><br><span class="line"></span><br><span class="line">    public List&lt;Class&lt;? extends JavaScriptModule&gt;&gt; createJSModules() &#123;</span><br><span class="line">        return Collections.emptyList();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public List&lt;ViewManager&gt; createViewManagers(ReactApplicationContext reactApplicationContext) &#123;</span><br><span class="line">        return Arrays.&lt;ViewManager&gt;asList(</span><br><span class="line">                new ReactWebViewManager(reactApplicationContext)</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public List&lt;NativeModule&gt; createNativeModules(</span><br><span class="line">            ReactApplicationContext reactApplicationContext) &#123;</span><br><span class="line">        return Collections.emptyList();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="5-将-WebViewReactPackage-写入-MainApplication-中"><a href="#5-将-WebViewReactPackage-写入-MainApplication-中" class="headerlink" title="5. 将 WebViewReactPackage 写入 MainApplication 中"></a>5. 将 WebViewReactPackage 写入 MainApplication 中</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class MainApplication extends Application implements ReactApplication &#123;</span><br><span class="line">......</span><br><span class="line">  private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) &#123;</span><br><span class="line">  ......</span><br><span class="line">    @Override</span><br><span class="line">    protected List&lt;ReactPackage&gt; getPackages() &#123;</span><br><span class="line">      return Arrays.&lt;ReactPackage&gt;asList(</span><br><span class="line">          new MainReactPackage(),</span><br><span class="line">            new WebViewReactPackage()</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line"> ......</span><br><span class="line">  &#125;;</span><br><span class="line">......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="6-在项目新建-BridgeWebView-js-文件，把-node-modules-react-native-Libraries-Components-WebView中的-webview-android-js-复制到自己的-js-文件夹中，做一定的修改"><a href="#6-在项目新建-BridgeWebView-js-文件，把-node-modules-react-native-Libraries-Components-WebView中的-webview-android-js-复制到自己的-js-文件夹中，做一定的修改" class="headerlink" title="6. 在项目新建 BridgeWebView.js 文件，把/node_modules/react-native/Libraries/Components/WebView中的 webview.android.js,复制到自己的 js 文件夹中，做一定的修改"></a>6. 在项目新建 BridgeWebView.js 文件，把<code>/node_modules/react-native/Libraries/Components/WebView</code>中的 webview.android.js,复制到自己的 js 文件夹中，做一定的修改</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 修改部分</span><br><span class="line">var RCT_WEBVIEW_REF = &apos;webview&apos;;</span><br><span class="line">......</span><br><span class="line">class WebViewBridge extends React.Component &#123;</span><br><span class="line">    ......</span><br><span class="line">    var RCTWebView = requireNativeComponent(&apos;RCTWebViewOpenImg&apos;, WebViewBridge, WebViewBridge.extraNativeComponentConfig); //RCTWebViewOpenImg与ReactWebViewManager的REACT_CLASS对应</span><br><span class="line">module.exports = WebViewBridge;</span><br></pre></td></tr></table></figure>
+<h5 id="7-最后你在需要用的-js-文件，引入-BridgeWebView-js-文件，通过-Platform-判断-Android-平台调用桥接的-WebViewBridge，iOS-平台调用-RN-封装的-WebView"><a href="#7-最后你在需要用的-js-文件，引入-BridgeWebView-js-文件，通过-Platform-判断-Android-平台调用桥接的-WebViewBridge，iOS-平台调用-RN-封装的-WebView" class="headerlink" title="7. 最后你在需要用的 js 文件，引入 BridgeWebView.js 文件，通过 Platform 判断 Android 平台调用桥接的 WebViewBridge，iOS 平台调用 RN 封装的 WebView."></a>7. 最后你在需要用的 js 文件，引入 BridgeWebView.js 文件，通过 Platform 判断 Android 平台调用桥接的 WebViewBridge，iOS 平台调用 RN 封装的 WebView.</h5>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/爬坑/" rel="tag"># 爬坑</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/15/vue中的computed和watch之间的区别/" rel="next" title="vue中的computed和watch之间的区别">
+                <i class="fa fa-chevron-left"></i> vue中的computed和watch之间的区别
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/07/Android-Studio-gradle插件由2-2-3升级到3-1-0/" rel="prev" title="Android Studio gradle插件由2.2.3升级到3.1.0">
+                Android Studio gradle插件由2.2.3升级到3.1.0 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="fxs">
+            
+              <p class="site-author-name" itemprop="name">fxs</p>
+              <p class="site-description motion-element" itemprop="description">追风逐月莫停留，平芜尽处是春山～</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/fxs-space" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:fengxiansen333@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情推荐
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://github.com/fxs-space" title="GitHub" target="_blank">GitHub</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.docschina.org/" title="印记中文" target="_blank">印记中文</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://ai-bot.cn/" title="AI Tools" target="_blank">AI Tools</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">fxs</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
