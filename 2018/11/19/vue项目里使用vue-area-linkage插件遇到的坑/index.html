@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -92,9 +92,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-32x32-next.png?v=5.1.4">
@@ -112,7 +112,7 @@
 
 
 
-  <meta name="keywords" content="爬坑,">
+  <meta name="keywords" content="爬坑," />
 
 
 
@@ -124,32 +124,32 @@
 
 
 <meta name="description" content="vue 项目里使用 vue-area-linkage 插件遇到的坑最近写的项目有一个需求是要写省市区联动选择，上网搜罗了一遍之后发现了vue-area-linkage这个插件挺热门的，于是打算开始用这个插件，结果在使用的时候遇到一些坑，于是写下本文来分享下自己的爬坑记。 使用方法作者介绍的很详细了，我就不赘述了vue-area-linkage 的使用方法。 插件使用之后的样子:">
-<meta name="keywords" content="爬坑">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue项目里使用vue-area-linkage插件遇到的坑">
-<meta property="og:url" content="https://fxs-space.github.io/2018/11/19/vue项目里使用vue-area-linkage插件遇到的坑/index.html">
+<meta property="og:url" content="https://fxs-space.github.io/2018/11/19/vue%E9%A1%B9%E7%9B%AE%E9%87%8C%E4%BD%BF%E7%94%A8vue-area-linkage%E6%8F%92%E4%BB%B6%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/index.html">
 <meta property="og:site_name" content="CodeSky&#39;s Blog">
 <meta property="og:description" content="vue 项目里使用 vue-area-linkage 插件遇到的坑最近写的项目有一个需求是要写省市区联动选择，上网搜罗了一遍之后发现了vue-area-linkage这个插件挺热门的，于是打算开始用这个插件，结果在使用的时候遇到一些坑，于是写下本文来分享下自己的爬坑记。 使用方法作者介绍的很详细了，我就不赘述了vue-area-linkage 的使用方法。 插件使用之后的样子:">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://fxs-space.github.io/2018/11/19/vue项目里使用vue-area-linkage插件遇到的坑/1.png">
-<meta property="og:image" content="https://fxs-space.github.io/2018/11/19/vue项目里使用vue-area-linkage插件遇到的坑/2.png">
-<meta property="og:image" content="https://fxs-space.github.io/2018/11/19/vue项目里使用vue-area-linkage插件遇到的坑/3.png">
-<meta property="og:image" content="https://fxs-space.github.io/2018/11/19/vue项目里使用vue-area-linkage插件遇到的坑/4.png">
-<meta property="og:image" content="https://fxs-space.github.io/2018/11/19/vue项目里使用vue-area-linkage插件遇到的坑/5.png">
-<meta property="og:image" content="https://fxs-space.github.io/2018/11/19/vue项目里使用vue-area-linkage插件遇到的坑/6.png">
-<meta property="og:image" content="https://fxs-space.github.io/2018/11/19/vue项目里使用vue-area-linkage插件遇到的坑/7.png">
-<meta property="og:updated_time" content="2025-03-06T07:00:58.080Z">
+<meta property="og:locale">
+<meta property="og:image" content="https://fxs-space.github.io/.io//1.png">
+<meta property="og:image" content="https://fxs-space.github.io/.io//2.png">
+<meta property="og:image" content="https://fxs-space.github.io/.io//3.png">
+<meta property="og:image" content="https://fxs-space.github.io/.io//4.png">
+<meta property="og:image" content="https://fxs-space.github.io/.io//5.png">
+<meta property="og:image" content="https://fxs-space.github.io/.io//6.png">
+<meta property="og:image" content="https://fxs-space.github.io/.io//7.png">
+<meta property="article:published_time" content="2018-11-19T12:37:26.000Z">
+<meta property="article:modified_time" content="2025-03-06T07:00:58.080Z">
+<meta property="article:author" content="fxs">
+<meta property="article:tag" content="爬坑">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vue项目里使用vue-area-linkage插件遇到的坑">
-<meta name="twitter:description" content="vue 项目里使用 vue-area-linkage 插件遇到的坑最近写的项目有一个需求是要写省市区联动选择，上网搜罗了一遍之后发现了vue-area-linkage这个插件挺热门的，于是打算开始用这个插件，结果在使用的时候遇到一些坑，于是写下本文来分享下自己的爬坑记。 使用方法作者介绍的很详细了，我就不赘述了vue-area-linkage 的使用方法。 插件使用之后的样子:">
-<meta name="twitter:image" content="https://fxs-space.github.io/2018/11/19/vue项目里使用vue-area-linkage插件遇到的坑/1.png">
+<meta name="twitter:image" content="https://fxs-space.github.io/.io//1.png">
 
 
 
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '',
     scheme: 'Pisces',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
@@ -186,9 +186,9 @@
 
 
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -198,13 +198,13 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">CodeSky's Blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -234,7 +234,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -244,7 +244,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -254,7 +254,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -264,7 +264,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -274,7 +274,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -308,20 +308,20 @@
   
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fxs-space.github.io/2018/11/19/vue项目里使用vue-area-linkage插件遇到的坑/">
+    <link itemprop="mainEntityOfPage" href="https://fxs-space.github.io/2018/11/19/vue%E9%A1%B9%E7%9B%AE%E9%87%8C%E4%BD%BF%E7%94%A8vue-area-linkage%E6%8F%92%E4%BB%B6%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="fxs">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/3501718267655.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="CodeSky's Blog">
     </span>
 
@@ -365,7 +365,7 @@
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -376,7 +376,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Vue/" itemprop="url" rel="index">
                     <span itemprop="name">Vue</span>
                   </a>
@@ -415,17 +415,18 @@
 
       
         <h2 id="vue-项目里使用-vue-area-linkage-插件遇到的坑"><a href="#vue-项目里使用-vue-area-linkage-插件遇到的坑" class="headerlink" title="vue 项目里使用 vue-area-linkage 插件遇到的坑"></a>vue 项目里使用 vue-area-linkage 插件遇到的坑</h2><p>最近写的项目有一个需求是要写省市区联动选择，上网搜罗了一遍之后发现了<code>vue-area-linkage</code>这个插件挺热门的，于是打算开始用这个插件，结果在使用的时候遇到一些坑，于是写下本文来分享下自己的爬坑记。</p>
-<p>使用方法作者介绍的很详细了，我就不赘述了<a href="https://github.com/dwqs/vue-area-linkage" target="_blank" rel="noopener">vue-area-linkage 的使用方法</a>。</p>
-<h5 id="插件使用之后的样子"><a href="#插件使用之后的样子" class="headerlink" title="插件使用之后的样子:"></a>插件使用之后的样子:</h5><p><img src="/2018/11/19/vue项目里使用vue-area-linkage插件遇到的坑/1.png" alt="1"></p>
-<a id="more"></a>
+<p>使用方法作者介绍的很详细了，我就不赘述了<a target="_blank" rel="noopener" href="https://github.com/dwqs/vue-area-linkage">vue-area-linkage 的使用方法</a>。</p>
+<h5 id="插件使用之后的样子"><a href="#插件使用之后的样子" class="headerlink" title="插件使用之后的样子:"></a>插件使用之后的样子:</h5><p><img src="/.io//1.png" alt="1"></p>
+<span id="more"></span>
+
 <p>下面开始介绍遇到的坑以及解决办法：</p>
-<h5 id="1-样式问题"><a href="#1-样式问题" class="headerlink" title="1.样式问题"></a>1.样式问题</h5><p>我调整这个插件选择框的样式怎么样都无效，去查依赖包中，找到 css 文件，重新拷贝出来，粘贴到新建个样式文件，引入新建的样式文件，然后开始随便搞事情。<br><img src="/2018/11/19/vue项目里使用vue-area-linkage插件遇到的坑/2.png" alt="2"></p>
-<h5 id="2-运行时出现-Property-or-method-quot-pca-quot-is-not-defined"><a href="#2-运行时出现-Property-or-method-quot-pca-quot-is-not-defined" class="headerlink" title="2.运行时出现 Property or method &quot;pca&quot; is not defined"></a>2.运行时出现 <code>Property or method &quot;pca&quot; is not defined</code></h5><p><img src="/2018/11/19/vue项目里使用vue-area-linkage插件遇到的坑/3.png" alt="3"></p>
-<p>结果发现官网表述不清晰，容易造成误解，这个 pca 文件需要在需要使用该插件的文件中注入：<br><img src="/2018/11/19/vue项目里使用vue-area-linkage插件遇到的坑/4.png" alt="4"></p>
-<h5 id="3-无法清空之前选择的数据"><a href="#3-无法清空之前选择的数据" class="headerlink" title="3.无法清空之前选择的数据"></a>3.<a href="https://github.com/dwqs/vue-area-linkage/issues/19" target="_blank" rel="noopener">无法清空之前选择的数据</a></h5><p>下面开始讲述我的踩坑之路：有个需求是点击重置按钮需要清空之前的选择的数据，但结果怎么样都不能清空，很让人费解啊，无奈之下查源码，找到了对应的方法 <code>area_cascader_render</code> , <code>debugger</code> 之后，发现在进入页面的时候会渲染一下页面，然后就不会继续渲染了，不渲染，那值自然就是之前的值。</p>
+<h5 id="1-样式问题"><a href="#1-样式问题" class="headerlink" title="1.样式问题"></a>1.样式问题</h5><p>我调整这个插件选择框的样式怎么样都无效，去查依赖包中，找到 css 文件，重新拷贝出来，粘贴到新建个样式文件，引入新建的样式文件，然后开始随便搞事情。<br><img src="/.io//2.png" alt="2"></p>
+<h5 id="2-运行时出现-Property-or-method-pca-is-not-defined"><a href="#2-运行时出现-Property-or-method-pca-is-not-defined" class="headerlink" title="2.运行时出现 Property or method &quot;pca&quot; is not defined"></a>2.运行时出现 <code>Property or method &quot;pca&quot; is not defined</code></h5><p><img src="/.io//3.png" alt="3"></p>
+<p>结果发现官网表述不清晰，容易造成误解，这个 pca 文件需要在需要使用该插件的文件中注入：<br><img src="/.io//4.png" alt="4"></p>
+<h5 id="3-无法清空之前选择的数据"><a href="#3-无法清空之前选择的数据" class="headerlink" title="3.无法清空之前选择的数据"></a>3.<a target="_blank" rel="noopener" href="https://github.com/dwqs/vue-area-linkage/issues/19">无法清空之前选择的数据</a></h5><p>下面开始讲述我的踩坑之路：有个需求是点击重置按钮需要清空之前的选择的数据，但结果怎么样都不能清空，很让人费解啊，无奈之下查源码，找到了对应的方法 <code>area_cascader_render</code> , <code>debugger</code> 之后，发现在进入页面的时候会渲染一下页面，然后就不会继续渲染了，不渲染，那值自然就是之前的值。</p>
 <p>既然找到了产生问题的原因，那就开始解决问题了：</p>
 <p>于是想要不在点击事件里把这个值置为空，不好使；那要不控制一下 <code>placeholder</code>，不好使；使用 jq 控制一下 <code>placeholder</code> , 不好使，果断放弃。</p>
-<p>最后灵机一动那就操作这个组件，点击事件让它先卸载再重新渲染，那样问题不就暂时性解决了嘛？性能问题先不考虑了，先实现功能，于是果断采用 v-if。<br><img src="/2018/11/19/vue项目里使用vue-area-linkage插件遇到的坑/5.png" alt="5"><br><img src="/2018/11/19/vue项目里使用vue-area-linkage插件遇到的坑/6.png" alt="6"><br><img src="/2018/11/19/vue项目里使用vue-area-linkage插件遇到的坑/7.png" alt="7"></p>
+<p>最后灵机一动那就操作这个组件，点击事件让它先卸载再重新渲染，那样问题不就暂时性解决了嘛？性能问题先不考虑了，先实现功能，于是果断采用 v-if。<br><img src="/.io//5.png" alt="5"><br><img src="/.io//6.png" alt="6"><br><img src="/.io//7.png" alt="7"></p>
 
       
     </div>
@@ -443,7 +444,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/爬坑/" rel="tag"># 爬坑</a>
+            <a href="/tags/%E7%88%AC%E5%9D%91/" rel="tag"># 爬坑</a>
           
         </div>
       
@@ -456,7 +457,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/17/vue项目实战中的小技巧/" rel="next" title="vue项目实战中的小技巧">
+              <a href="/2018/09/17/vue%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98%E4%B8%AD%E7%9A%84%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="next" title="vue项目实战中的小技巧">
                 <i class="fa fa-chevron-left"></i> vue项目实战中的小技巧
               </a>
             
@@ -466,7 +467,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/12/21/浅析React-v16-3新生命周期函数/" rel="prev" title="浅析React v16.3新生命周期函数">
+              <a href="/2018/12/21/%E6%B5%85%E6%9E%90React-v16-3%E6%96%B0%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/" rel="prev" title="浅析React v16.3新生命周期函数">
                 浅析React v16.3新生命周期函数 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -523,12 +524,14 @@
 
       <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/3501718267655.jpg" alt="fxs">
+              <img class="site-author-image" itemprop="image"
+                src="/images/3501718267655.jpg"
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">fxs</p>
-              <p class="site-description motion-element" itemprop="description">追风逐月莫停留，平芜尽处是春山～</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           <nav class="site-state motion-element">
@@ -536,7 +539,7 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives/%7C%7Carchive">
               
                   <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
@@ -713,7 +716,7 @@
 
   
   
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
   
 
   

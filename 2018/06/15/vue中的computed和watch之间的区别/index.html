@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -92,9 +92,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-32x32-next.png?v=5.1.4">
@@ -112,7 +112,7 @@
 
 
 
-  <meta name="keywords" content="Vue,">
+  <meta name="keywords" content="Vue," />
 
 
 
@@ -124,24 +124,24 @@
 
 
 <meta name="description" content="vue 中的 computed 和 watch 之间的区别计算属性 computed 是计算属性，侦听器 watch 是侦听器 watch。计算属性顾名思义就是通过其他变量计算得来的另一个属性，例如 fullName 在它所依赖 firstName，lastName 这两个变量变化时重新计算自己的值。 另外，计算属性具有缓存。计算属性是基于它们的依赖进行缓存的。计算属性只有在它的相关依赖发生改变时">
-<meta name="keywords" content="Vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue中的computed和watch之间的区别">
-<meta property="og:url" content="https://fxs-space.github.io/2018/06/15/vue中的computed和watch之间的区别/index.html">
+<meta property="og:url" content="https://fxs-space.github.io/2018/06/15/vue%E4%B8%AD%E7%9A%84computed%E5%92%8Cwatch%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/index.html">
 <meta property="og:site_name" content="CodeSky&#39;s Blog">
 <meta property="og:description" content="vue 中的 computed 和 watch 之间的区别计算属性 computed 是计算属性，侦听器 watch 是侦听器 watch。计算属性顾名思义就是通过其他变量计算得来的另一个属性，例如 fullName 在它所依赖 firstName，lastName 这两个变量变化时重新计算自己的值。 另外，计算属性具有缓存。计算属性是基于它们的依赖进行缓存的。计算属性只有在它的相关依赖发生改变时">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2025-03-06T07:00:57.854Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2018-06-15T11:40:24.000Z">
+<meta property="article:modified_time" content="2025-03-06T07:00:57.854Z">
+<meta property="article:author" content="fxs">
+<meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vue中的computed和watch之间的区别">
-<meta name="twitter:description" content="vue 中的 computed 和 watch 之间的区别计算属性 computed 是计算属性，侦听器 watch 是侦听器 watch。计算属性顾名思义就是通过其他变量计算得来的另一个属性，例如 fullName 在它所依赖 firstName，lastName 这两个变量变化时重新计算自己的值。 另外，计算属性具有缓存。计算属性是基于它们的依赖进行缓存的。计算属性只有在它的相关依赖发生改变时">
 
 
 
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '',
     scheme: 'Pisces',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
@@ -178,9 +178,9 @@
 
 
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -190,13 +190,13 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">CodeSky's Blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -226,7 +226,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -236,7 +236,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -246,7 +246,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -256,7 +256,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -266,7 +266,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -300,20 +300,20 @@
   
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fxs-space.github.io/2018/06/15/vue中的computed和watch之间的区别/">
+    <link itemprop="mainEntityOfPage" href="https://fxs-space.github.io/2018/06/15/vue%E4%B8%AD%E7%9A%84computed%E5%92%8Cwatch%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="fxs">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/3501718267655.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="CodeSky's Blog">
     </span>
 
@@ -357,7 +357,7 @@
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -368,7 +368,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Vue/" itemprop="url" rel="index">
                     <span itemprop="name">Vue</span>
                   </a>
@@ -409,7 +409,8 @@
         <h2 id="vue-中的-computed-和-watch-之间的区别"><a href="#vue-中的-computed-和-watch-之间的区别" class="headerlink" title="vue 中的 computed 和 watch 之间的区别"></a>vue 中的 computed 和 watch 之间的区别</h2><h4 id="计算属性-computed-是计算属性，侦听器-watch-是侦听器-watch。"><a href="#计算属性-computed-是计算属性，侦听器-watch-是侦听器-watch。" class="headerlink" title="计算属性 computed 是计算属性，侦听器 watch 是侦听器 watch。"></a>计算属性 computed 是计算属性，侦听器 watch 是侦听器 watch。</h4><p>计算属性顾名思义就是通过其他变量计算得来的另一个属性，例如 fullName 在它所依赖 firstName，lastName 这两个变量变化时重新计算自己的值。</p>
 <p>另外，计算属性具有缓存。计算属性是基于它们的依赖进行缓存的。计算属性只有在它的相关依赖发生改变时才会重新求值。这就意味着只要 lastName 和 firstName 都没有发生改变，多次访问 fullName 计算属性会立即返回之前的计算结果，而不必再次执行函数。</p>
 <p>而侦听器 watch 是侦听一个特定的值，当该值变化时执行特定的函数。例如分页组件中，我们可以监听当前页码，当页码变化时执行对应的获取数据的函数。</p>
-<a id="more"></a>
+<span id="more"></span>
+
 <ul>
 <li><p>从属性名上，computed 是计算属性，也就是依赖其它的属性计算所得出最后的值。watch 是去监听一个值的变化，然后执行相对应的函数。</p>
 </li>
@@ -450,7 +451,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/04/redux-saga的入门基础/" rel="next" title="redux-saga的入门基础">
+              <a href="/2018/04/04/redux-saga%E7%9A%84%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80/" rel="next" title="redux-saga的入门基础">
                 <i class="fa fa-chevron-left"></i> redux-saga的入门基础
               </a>
             
@@ -460,7 +461,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/24/RN开发之调用WebView爬坑记/" rel="prev" title="RN开发之调用WebView爬坑记">
+              <a href="/2018/06/24/RN%E5%BC%80%E5%8F%91%E4%B9%8B%E8%B0%83%E7%94%A8WebView%E7%88%AC%E5%9D%91%E8%AE%B0/" rel="prev" title="RN开发之调用WebView爬坑记">
                 RN开发之调用WebView爬坑记 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -517,12 +518,14 @@
 
       <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/3501718267655.jpg" alt="fxs">
+              <img class="site-author-image" itemprop="image"
+                src="/images/3501718267655.jpg"
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">fxs</p>
-              <p class="site-description motion-element" itemprop="description">追风逐月莫停留，平芜尽处是春山～</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           <nav class="site-state motion-element">
@@ -530,7 +533,7 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives/%7C%7Carchive">
               
                   <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
@@ -707,7 +710,7 @@
 
   
   
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
   
 
   

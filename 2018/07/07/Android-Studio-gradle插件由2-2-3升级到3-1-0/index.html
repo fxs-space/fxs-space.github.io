@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -92,9 +92,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-32x32-next.png?v=5.1.4">
@@ -112,7 +112,7 @@
 
 
 
-  <meta name="keywords" content="爬坑,">
+  <meta name="keywords" content="爬坑," />
 
 
 
@@ -124,24 +124,24 @@
 
 
 <meta name="description" content="Android Studio gradle 插件由 2.2.3 升级到 3.1.0升级 gradle 插件的原因是因为项目里集成第三方依赖都已经需要 gradle3.x 的版本去编译，所以我也需要将项目的 gradle 插件进行升级；插件升级的过程中也遇到了一些乱七八糟编译失败的报错，网上搜了一大堆解决办法，结果没有一个方案让升级过程变得畅通无阻，没办法只好网上找了 gradle3.x 版本的 D">
-<meta name="keywords" content="爬坑">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android Studio gradle插件由2.2.3升级到3.1.0">
-<meta property="og:url" content="https://fxs-space.github.io/2018/07/07/Android-Studio-gradle插件由2-2-3升级到3-1-0/index.html">
+<meta property="og:url" content="https://fxs-space.github.io/2018/07/07/Android-Studio-gradle%E6%8F%92%E4%BB%B6%E7%94%B12-2-3%E5%8D%87%E7%BA%A7%E5%88%B03-1-0/index.html">
 <meta property="og:site_name" content="CodeSky&#39;s Blog">
 <meta property="og:description" content="Android Studio gradle 插件由 2.2.3 升级到 3.1.0升级 gradle 插件的原因是因为项目里集成第三方依赖都已经需要 gradle3.x 的版本去编译，所以我也需要将项目的 gradle 插件进行升级；插件升级的过程中也遇到了一些乱七八糟编译失败的报错，网上搜了一大堆解决办法，结果没有一个方案让升级过程变得畅通无阻，没办法只好网上找了 gradle3.x 版本的 D">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2025-03-06T07:00:57.172Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2018-07-07T11:14:01.000Z">
+<meta property="article:modified_time" content="2025-03-06T07:00:57.172Z">
+<meta property="article:author" content="fxs">
+<meta property="article:tag" content="爬坑">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android Studio gradle插件由2.2.3升级到3.1.0">
-<meta name="twitter:description" content="Android Studio gradle 插件由 2.2.3 升级到 3.1.0升级 gradle 插件的原因是因为项目里集成第三方依赖都已经需要 gradle3.x 的版本去编译，所以我也需要将项目的 gradle 插件进行升级；插件升级的过程中也遇到了一些乱七八糟编译失败的报错，网上搜了一大堆解决办法，结果没有一个方案让升级过程变得畅通无阻，没办法只好网上找了 gradle3.x 版本的 D">
 
 
 
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '',
     scheme: 'Pisces',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
@@ -178,9 +178,9 @@
 
 
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -190,13 +190,13 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">CodeSky's Blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -226,7 +226,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -236,7 +236,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -246,7 +246,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -256,7 +256,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -266,7 +266,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -300,20 +300,20 @@
   
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fxs-space.github.io/2018/07/07/Android-Studio-gradle插件由2-2-3升级到3-1-0/">
+    <link itemprop="mainEntityOfPage" href="https://fxs-space.github.io/2018/07/07/Android-Studio-gradle%E6%8F%92%E4%BB%B6%E7%94%B12-2-3%E5%8D%87%E7%BA%A7%E5%88%B03-1-0/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="fxs">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/3501718267655.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="CodeSky's Blog">
     </span>
 
@@ -357,7 +357,7 @@
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -368,7 +368,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/React-Native/" itemprop="url" rel="index">
                     <span itemprop="name">React Native</span>
                   </a>
@@ -407,7 +407,8 @@
 
       
         <h2 id="Android-Studio-gradle-插件由-2-2-3-升级到-3-1-0"><a href="#Android-Studio-gradle-插件由-2-2-3-升级到-3-1-0" class="headerlink" title="Android Studio gradle 插件由 2.2.3 升级到 3.1.0"></a>Android Studio gradle 插件由 2.2.3 升级到 3.1.0</h2><p>升级 gradle 插件的原因是因为项目里集成第三方依赖都已经需要 gradle3.x 的版本去编译，所以我也需要将项目的 gradle 插件进行升级；插件升级的过程中也遇到了一些乱七八糟编译失败的报错，网上搜了一大堆解决办法，结果没有一个方案让升级过程变得畅通无阻，没办法只好网上找了 gradle3.x 版本的 Demo 进行比对尝试，后来结果还算令人欣喜；现在开始奉上我升级 gradle 插件的方案，希望可以帮助有需要的人少走点弯路。</p>
-<a id="more"></a>
+<span id="more"></span>
+
 <h5 id="1-更新-Android-Gradle-Plugin-版本"><a href="#1-更新-Android-Gradle-Plugin-版本" class="headerlink" title="1. 更新 Android Gradle Plugin 版本"></a>1. 更新 Android Gradle Plugin 版本</h5><p>打开 <code>android/build.gradle</code> 文件</p>
 <p>将 <code>classpath &#39;com.android.tools.build:gradle:2.2.3&#39;</code> 修改为 <code>com.android.tools.build:gradle:3.1.0</code></p>
 <h5 id="2-更新-Gradle-版本"><a href="#2-更新-Gradle-版本" class="headerlink" title="2. 更新 Gradle 版本"></a>2. 更新 Gradle 版本</h5><p>打开 <code>android/gradle/wrapper/gradle-wrapper.properties</code> 文件</p>
@@ -421,9 +422,10 @@
 <p>将<code>compile &quot;com.android.support:appcompat-v7:23.0.1&quot;</code> 修改为 <code>compile &quot;com.android.support:appcompat-v7:27.1.1&quot;</code>;</p>
 <p>同时将 <code>dependencies</code> 中所有的 <code>compile</code> 修改为 <code>implementation</code>，</p>
 <p>如：<code>compile &quot;com.android.support:appcompat-v7:27.1.1&quot;</code> 修改为 <code>implementation &quot;com.android.support:appcompat-v7:27.1.1&quot;</code></p>
-<p>具体原因看<a href="https://developer.android.google.cn/studio/build/gradle-plugin-3-0-0-migration" target="_blank" rel="noopener">这里</a></p>
+<p>具体原因看<a target="_blank" rel="noopener" href="https://developer.android.google.cn/studio/build/gradle-plugin-3-0-0-migration">这里</a></p>
 <h5 id="6-设置-maven-仓库"><a href="#6-设置-maven-仓库" class="headerlink" title="6. 设置 maven 仓库"></a>6. 设置 maven 仓库</h5><p>在 <code>android/build.gradle</code> 文件中进行 maven 仓库的设置，请参考下面的配置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">// Top-level build file where you can add configuration options common to all sub-projects/modules.</span><br><span class="line"></span><br><span class="line">buildscript &#123;</span><br><span class="line">  repositories &#123;</span><br><span class="line">    jcenter()</span><br><span class="line">    google()</span><br><span class="line">    maven &#123;</span><br><span class="line">      url &apos;https://maven.google.com&apos;</span><br><span class="line">      name &apos;Google&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    maven&#123;</span><br><span class="line">      url &apos;http://maven.aliyun.com/nexus/content/groups/public/&apos;</span><br><span class="line">      name &apos;aliyun&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    maven &#123;</span><br><span class="line">      url &quot;https://jitpack.io&quot;</span><br><span class="line">      name &apos;jitpack&apos;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  dependencies &#123;</span><br><span class="line">    classpath &apos;com.android.tools.build:gradle:3.1.0&apos;</span><br><span class="line"></span><br><span class="line">    // NOTE: Do not place your application dependencies here; they belong</span><br><span class="line">    // in the individual module build.gradle files</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">allprojects &#123;</span><br><span class="line">  repositories &#123;</span><br><span class="line">    mavenLocal()</span><br><span class="line">    jcenter()</span><br><span class="line">    google()</span><br><span class="line">    maven &#123;</span><br><span class="line">      // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm</span><br><span class="line">      url &quot;$rootDir/../node_modules/react-native/android&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    maven &#123;</span><br><span class="line">      url &apos;https://maven.google.com&apos; // Google&apos;s Maven repository</span><br><span class="line">      name &apos;Google&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    maven&#123;</span><br><span class="line">      url &apos;http://maven.aliyun.com/nexus/content/groups/public/&apos;</span><br><span class="line">      name &apos;aliyun&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    maven &#123;</span><br><span class="line">      url &quot;https://jitpack.io&quot;</span><br><span class="line">      name &apos;jitpack&apos;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">// Top-level build file where you can add configuration options common to all sub-projects/modules.</span><br><span class="line"></span><br><span class="line">buildscript &#123;</span><br><span class="line">  repositories &#123;</span><br><span class="line">    jcenter()</span><br><span class="line">    google()</span><br><span class="line">    maven &#123;</span><br><span class="line">      url &#x27;https://maven.google.com&#x27;</span><br><span class="line">      name &#x27;Google&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">    maven&#123;</span><br><span class="line">      url &#x27;http://maven.aliyun.com/nexus/content/groups/public/&#x27;</span><br><span class="line">      name &#x27;aliyun&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">    maven &#123;</span><br><span class="line">      url &quot;https://jitpack.io&quot;</span><br><span class="line">      name &#x27;jitpack&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  dependencies &#123;</span><br><span class="line">    classpath &#x27;com.android.tools.build:gradle:3.1.0&#x27;</span><br><span class="line"></span><br><span class="line">    // NOTE: Do not place your application dependencies here; they belong</span><br><span class="line">    // in the individual module build.gradle files</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">allprojects &#123;</span><br><span class="line">  repositories &#123;</span><br><span class="line">    mavenLocal()</span><br><span class="line">    jcenter()</span><br><span class="line">    google()</span><br><span class="line">    maven &#123;</span><br><span class="line">      // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm</span><br><span class="line">      url &quot;$rootDir/../node_modules/react-native/android&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    maven &#123;</span><br><span class="line">      url &#x27;https://maven.google.com&#x27; // Google&#x27;s Maven repository</span><br><span class="line">      name &#x27;Google&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">    maven&#123;</span><br><span class="line">      url &#x27;http://maven.aliyun.com/nexus/content/groups/public/&#x27;</span><br><span class="line">      name &#x27;aliyun&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">    maven &#123;</span><br><span class="line">      url &quot;https://jitpack.io&quot;</span><br><span class="line">      name &#x27;jitpack&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>现在你可以看到提供了好几个数据源，你可以选择一个，也可以都配置上去。</p>
 <h5 id="7-error-uncompiled-PNG-file-passed-as-argument-报错处理"><a href="#7-error-uncompiled-PNG-file-passed-as-argument-报错处理" class="headerlink" title="7. error: uncompiled PNG file passed as argument 报错处理"></a>7. error: uncompiled PNG file passed as argument 报错处理</h5><p>如遇到 <code>error: uncompiled PNG file passed as argument. Must be compiled first into .flat file.</code> 的报错，解决方法如下：</p>
 <p>打开 <code>android/gradle.properties</code>文件</p>
@@ -445,7 +447,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/爬坑/" rel="tag"># 爬坑</a>
+            <a href="/tags/%E7%88%AC%E5%9D%91/" rel="tag"># 爬坑</a>
           
         </div>
       
@@ -458,7 +460,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/24/RN开发之调用WebView爬坑记/" rel="next" title="RN开发之调用WebView爬坑记">
+              <a href="/2018/06/24/RN%E5%BC%80%E5%8F%91%E4%B9%8B%E8%B0%83%E7%94%A8WebView%E7%88%AC%E5%9D%91%E8%AE%B0/" rel="next" title="RN开发之调用WebView爬坑记">
                 <i class="fa fa-chevron-left"></i> RN开发之调用WebView爬坑记
               </a>
             
@@ -468,7 +470,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/07/13/Xcode无证书打包/" rel="prev" title="Xcode无证书打包">
+              <a href="/2018/07/13/Xcode%E6%97%A0%E8%AF%81%E4%B9%A6%E6%89%93%E5%8C%85/" rel="prev" title="Xcode无证书打包">
                 Xcode无证书打包 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -525,12 +527,14 @@
 
       <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/3501718267655.jpg" alt="fxs">
+              <img class="site-author-image" itemprop="image"
+                src="/images/3501718267655.jpg"
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">fxs</p>
-              <p class="site-description motion-element" itemprop="description">追风逐月莫停留，平芜尽处是春山～</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           <nav class="site-state motion-element">
@@ -538,7 +542,7 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives/%7C%7Carchive">
               
                   <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
@@ -715,7 +719,7 @@
 
   
   
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
   
 
   

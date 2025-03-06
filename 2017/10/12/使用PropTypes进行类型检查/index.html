@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -92,9 +92,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-32x32-next.png?v=5.1.4">
@@ -112,7 +112,7 @@
 
 
 
-  <meta name="keywords" content="PropTypes,">
+  <meta name="keywords" content="PropTypes," />
 
 
 
@@ -124,24 +124,24 @@
 
 
 <meta name="description" content="使用 PropTypes 进行类型检查注意： 从 React v15.5 开始 ，React.PropTypes 助手函数已被弃用，我们建议使用 prop-types 库 来定义 contextTypes。 我们提供一个 codemod 脚本来自动转换。 随着应用规模的提升，你可以通过类型检测捕获更多的 bug。对于部分应用，你可能需要使用类似于 Flow 或者 TypeScript 等 Java">
-<meta name="keywords" content="PropTypes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用PropTypes进行类型检查">
-<meta property="og:url" content="https://fxs-space.github.io/2017/10/12/使用PropTypes进行类型检查/index.html">
+<meta property="og:url" content="https://fxs-space.github.io/2017/10/12/%E4%BD%BF%E7%94%A8PropTypes%E8%BF%9B%E8%A1%8C%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%9F%A5/index.html">
 <meta property="og:site_name" content="CodeSky&#39;s Blog">
 <meta property="og:description" content="使用 PropTypes 进行类型检查注意： 从 React v15.5 开始 ，React.PropTypes 助手函数已被弃用，我们建议使用 prop-types 库 来定义 contextTypes。 我们提供一个 codemod 脚本来自动转换。 随着应用规模的提升，你可以通过类型检测捕获更多的 bug。对于部分应用，你可能需要使用类似于 Flow 或者 TypeScript 等 Java">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2025-03-06T07:00:58.293Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-10-12T11:50:19.000Z">
+<meta property="article:modified_time" content="2025-03-06T07:00:58.293Z">
+<meta property="article:author" content="fxs">
+<meta property="article:tag" content="PropTypes">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用PropTypes进行类型检查">
-<meta name="twitter:description" content="使用 PropTypes 进行类型检查注意： 从 React v15.5 开始 ，React.PropTypes 助手函数已被弃用，我们建议使用 prop-types 库 来定义 contextTypes。 我们提供一个 codemod 脚本来自动转换。 随着应用规模的提升，你可以通过类型检测捕获更多的 bug。对于部分应用，你可能需要使用类似于 Flow 或者 TypeScript 等 Java">
 
 
 
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '',
     scheme: 'Pisces',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
@@ -178,9 +178,9 @@
 
 
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -190,13 +190,13 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">CodeSky's Blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -226,7 +226,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -236,7 +236,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -246,7 +246,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -256,7 +256,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -266,7 +266,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -300,20 +300,20 @@
   
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fxs-space.github.io/2017/10/12/使用PropTypes进行类型检查/">
+    <link itemprop="mainEntityOfPage" href="https://fxs-space.github.io/2017/10/12/%E4%BD%BF%E7%94%A8PropTypes%E8%BF%9B%E8%A1%8C%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%9F%A5/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="fxs">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/3501718267655.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="CodeSky's Blog">
     </span>
 
@@ -357,7 +357,7 @@
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -368,7 +368,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/React/" itemprop="url" rel="index">
                     <span itemprop="name">React</span>
                   </a>
@@ -406,22 +406,28 @@
       
 
       
-        <h2 id="使用-PropTypes-进行类型检查"><a href="#使用-PropTypes-进行类型检查" class="headerlink" title="使用 PropTypes 进行类型检查"></a>使用 PropTypes 进行类型检查</h2><p>注意： 从 React v15.5 开始 ，React.PropTypes 助手函数已被弃用，我们建议使用 <a href="https://www.npmjs.com/package/prop-types" target="_blank" rel="noopener">prop-types 库</a> 来定义 contextTypes。</p>
-<p>我们提供<a href="http://www.css88.com/blog/2017/04/07/react-v15.5.0.html#migrating-from-react.proptypes" target="_blank" rel="noopener">一个 codemod 脚本</a>来自动转换。</p>
-<p>随着应用规模的提升，你可以通过类型检测捕获更多的 bug。对于部分应用，你可能需要使用类似于 <a href="https://flowtype.org/" target="_blank" rel="noopener">Flow</a> 或者 <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener">TypeScript</a> 等 JavaScript 扩展来对你整个应用类型进行类型检测。但即使你不使用这些，React 内置了类型检测的功能。要在组件中进行类型检测，你可以赋值 <code>propTypes</code> 属性。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import PropTypes from &apos;prop-types&apos;;</span><br><span class="line"></span><br><span class="line">class Greeting extends React.Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;h1&gt;Hello, &#123;this.props.name&#125;&lt;/h1&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Greeting.propTypes = &#123;</span><br><span class="line">  name: PropTypes.string</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
+        <h2 id="使用-PropTypes-进行类型检查"><a href="#使用-PropTypes-进行类型检查" class="headerlink" title="使用 PropTypes 进行类型检查"></a>使用 PropTypes 进行类型检查</h2><p>注意： 从 React v15.5 开始 ，React.PropTypes 助手函数已被弃用，我们建议使用 <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/prop-types">prop-types 库</a> 来定义 contextTypes。</p>
+<p>我们提供<a target="_blank" rel="noopener" href="http://www.css88.com/blog/2017/04/07/react-v15.5.0.html#migrating-from-react.proptypes">一个 codemod 脚本</a>来自动转换。</p>
+<p>随着应用规模的提升，你可以通过类型检测捕获更多的 bug。对于部分应用，你可能需要使用类似于 <a target="_blank" rel="noopener" href="https://flowtype.org/">Flow</a> 或者 <a target="_blank" rel="noopener" href="https://www.typescriptlang.org/">TypeScript</a> 等 JavaScript 扩展来对你整个应用类型进行类型检测。但即使你不使用这些，React 内置了类型检测的功能。要在组件中进行类型检测，你可以赋值 <code>propTypes</code> 属性。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import PropTypes from &#x27;prop-types&#x27;;</span><br><span class="line"></span><br><span class="line">class Greeting extends React.Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;h1&gt;Hello, &#123;this.props.name&#125;&lt;/h1&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Greeting.propTypes = &#123;</span><br><span class="line">  name: PropTypes.string</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
 <p><code>PropTypes</code> 输出了一系列的验证器，可以用来确保接收到的参数是有效的。例如，我们可以使用<code>PropTypes.string</code> 语句。当给 prop 传递了一个不正确的值时，JavaScript 控制台将会显示一条警告。出于性能的原因，<code>propTypes</code> 仅在开发模式中检测。</p>
 <h4 id="PropTypes"><a href="#PropTypes" class="headerlink" title="PropTypes"></a>PropTypes</h4><p>这里是一个示例记录提供的不同的验证器：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">import PropTypes from &apos;prop-types&apos;;</span><br><span class="line"></span><br><span class="line">MyComponent.propTypes = &#123;</span><br><span class="line">  // 你可以声明一个 prop 是一个特定的 JS 原始类型。</span><br><span class="line">  // 默认情况下，这些都是可选的。</span><br><span class="line">  optionalArray: PropTypes.array,</span><br><span class="line">  optionalBool: PropTypes.bool,</span><br><span class="line">  optionalFunc: PropTypes.func,</span><br><span class="line">  optionalNumber: PropTypes.number,</span><br><span class="line">  optionalObject: PropTypes.object,</span><br><span class="line">  optionalString: PropTypes.string,</span><br><span class="line">  optionalSymbol: PropTypes.symbol,</span><br><span class="line"></span><br><span class="line">  // 任何东西都可以被渲染:numbers, strings, elements,或者是包含这些类型的数组(或者是片段)。</span><br><span class="line">  optionalNode: PropTypes.node,</span><br><span class="line"></span><br><span class="line">  // 一个 React 元素。</span><br><span class="line">  optionalElement: PropTypes.element,</span><br><span class="line"></span><br><span class="line">  // 你也可以声明一个 prop 是类的一个实例。</span><br><span class="line">  // 使用 JS 的 instanceof 运算符。</span><br><span class="line">  optionalMessage: PropTypes.instanceOf(Message),</span><br><span class="line"></span><br><span class="line">  // 你可以声明 prop 是特定的值，类似于枚举</span><br><span class="line">  optionalEnum: PropTypes.oneOf([&apos;News&apos;, &apos;Photos&apos;]),</span><br><span class="line"></span><br><span class="line">  // 一个对象可以是多种类型其中之一</span><br><span class="line">  optionalUnion: PropTypes.oneOfType([</span><br><span class="line">    PropTypes.string,</span><br><span class="line">    PropTypes.number,</span><br><span class="line">    PropTypes.instanceOf(Message)</span><br><span class="line">  ]),</span><br><span class="line"></span><br><span class="line">  // 一个某种类型的数组</span><br><span class="line">  optionalArrayOf: PropTypes.arrayOf(PropTypes.number),</span><br><span class="line"></span><br><span class="line">  // 属性值为某种类型的对象</span><br><span class="line">  optionalObjectOf: PropTypes.objectOf(PropTypes.number),</span><br><span class="line"></span><br><span class="line">  // 一个特定形式的对象</span><br><span class="line">  optionalObjectWithShape: PropTypes.shape(&#123;</span><br><span class="line">    color: PropTypes.string,</span><br><span class="line">    fontSize: PropTypes.number</span><br><span class="line">  &#125;),</span><br><span class="line"></span><br><span class="line">  // 你可以使用 `isRequired&apos; 链接上述任何一个，以确保在没有提供 prop 的情况下显示警告。</span><br><span class="line">  requiredFunc: PropTypes.func.isRequired,</span><br><span class="line"></span><br><span class="line">  // 任何数据类型的值</span><br><span class="line">  requiredAny: PropTypes.any.isRequired,</span><br><span class="line"></span><br><span class="line">  // 你也可以声明自定义的验证器。如果验证失败返回 Error 对象。不要使用 `console.warn` 或者 throw ，</span><br><span class="line">  // 因为这不会在 `oneOfType` 类型的验证器中起作用。</span><br><span class="line">  customProp: function(props, propName, componentName) &#123;</span><br><span class="line">    if (!/matchme/.test(props[propName])) &#123;</span><br><span class="line">      return new Error(</span><br><span class="line">        &apos;Invalid prop `&apos; + propName + &apos;` supplied to&apos; +</span><br><span class="line">        &apos; `&apos; + componentName + &apos;`. Validation failed.&apos;</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  // 也可以声明`arrayOf`和`objectOf`类型的验证器，如果验证失败需要返回Error对象。</span><br><span class="line">  // 会在数组或者对象的每一个元素上调用验证器。验证器的前两个参数分别是数组或者对象本身，</span><br><span class="line">  // 以及当前元素的键值。</span><br><span class="line">  customArrayProp: PropTypes.arrayOf(function(propValue, key, componentName, location, propFullName) &#123;</span><br><span class="line">    if (!/matchme/.test(propValue[key])) &#123;</span><br><span class="line">      return new Error(</span><br><span class="line">        &apos;Invalid prop `&apos; + propFullName + &apos;` supplied to&apos; +</span><br><span class="line">        &apos; `&apos; + componentName + &apos;`. Validation failed.&apos;</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">import PropTypes from &#x27;prop-types&#x27;;</span><br><span class="line"></span><br><span class="line">MyComponent.propTypes = &#123;</span><br><span class="line">  // 你可以声明一个 prop 是一个特定的 JS 原始类型。</span><br><span class="line">  // 默认情况下，这些都是可选的。</span><br><span class="line">  optionalArray: PropTypes.array,</span><br><span class="line">  optionalBool: PropTypes.bool,</span><br><span class="line">  optionalFunc: PropTypes.func,</span><br><span class="line">  optionalNumber: PropTypes.number,</span><br><span class="line">  optionalObject: PropTypes.object,</span><br><span class="line">  optionalString: PropTypes.string,</span><br><span class="line">  optionalSymbol: PropTypes.symbol,</span><br><span class="line"></span><br><span class="line">  // 任何东西都可以被渲染:numbers, strings, elements,或者是包含这些类型的数组(或者是片段)。</span><br><span class="line">  optionalNode: PropTypes.node,</span><br><span class="line"></span><br><span class="line">  // 一个 React 元素。</span><br><span class="line">  optionalElement: PropTypes.element,</span><br><span class="line"></span><br><span class="line">  // 你也可以声明一个 prop 是类的一个实例。</span><br><span class="line">  // 使用 JS 的 instanceof 运算符。</span><br><span class="line">  optionalMessage: PropTypes.instanceOf(Message),</span><br><span class="line"></span><br><span class="line">  // 你可以声明 prop 是特定的值，类似于枚举</span><br><span class="line">  optionalEnum: PropTypes.oneOf([&#x27;News&#x27;, &#x27;Photos&#x27;]),</span><br><span class="line"></span><br><span class="line">  // 一个对象可以是多种类型其中之一</span><br><span class="line">  optionalUnion: PropTypes.oneOfType([</span><br><span class="line">    PropTypes.string,</span><br><span class="line">    PropTypes.number,</span><br><span class="line">    PropTypes.instanceOf(Message)</span><br><span class="line">  ]),</span><br><span class="line"></span><br><span class="line">  // 一个某种类型的数组</span><br><span class="line">  optionalArrayOf: PropTypes.arrayOf(PropTypes.number),</span><br><span class="line"></span><br><span class="line">  // 属性值为某种类型的对象</span><br><span class="line">  optionalObjectOf: PropTypes.objectOf(PropTypes.number),</span><br><span class="line"></span><br><span class="line">  // 一个特定形式的对象</span><br><span class="line">  optionalObjectWithShape: PropTypes.shape(&#123;</span><br><span class="line">    color: PropTypes.string,</span><br><span class="line">    fontSize: PropTypes.number</span><br><span class="line">  &#125;),</span><br><span class="line"></span><br><span class="line">  // 你可以使用 `isRequired&#x27; 链接上述任何一个，以确保在没有提供 prop 的情况下显示警告。</span><br><span class="line">  requiredFunc: PropTypes.func.isRequired,</span><br><span class="line"></span><br><span class="line">  // 任何数据类型的值</span><br><span class="line">  requiredAny: PropTypes.any.isRequired,</span><br><span class="line"></span><br><span class="line">  // 你也可以声明自定义的验证器。如果验证失败返回 Error 对象。不要使用 `console.warn` 或者 throw ，</span><br><span class="line">  // 因为这不会在 `oneOfType` 类型的验证器中起作用。</span><br><span class="line">  customProp: function(props, propName, componentName) &#123;</span><br><span class="line">    if (!/matchme/.test(props[propName])) &#123;</span><br><span class="line">      return new Error(</span><br><span class="line">        &#x27;Invalid prop `&#x27; + propName + &#x27;` supplied to&#x27; +</span><br><span class="line">        &#x27; `&#x27; + componentName + &#x27;`. Validation failed.&#x27;</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  // 也可以声明`arrayOf`和`objectOf`类型的验证器，如果验证失败需要返回Error对象。</span><br><span class="line">  // 会在数组或者对象的每一个元素上调用验证器。验证器的前两个参数分别是数组或者对象本身，</span><br><span class="line">  // 以及当前元素的键值。</span><br><span class="line">  customArrayProp: PropTypes.arrayOf(function(propValue, key, componentName, location, propFullName) &#123;</span><br><span class="line">    if (!/matchme/.test(propValue[key])) &#123;</span><br><span class="line">      return new Error(</span><br><span class="line">        &#x27;Invalid prop `&#x27; + propFullName + &#x27;` supplied to&#x27; +</span><br><span class="line">        &#x27; `&#x27; + componentName + &#x27;`. Validation failed.&#x27;</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
 <h4 id="要求单独的-Child"><a href="#要求单独的-Child" class="headerlink" title="要求单独的 Child"></a>要求单独的 Child</h4><p>使用 <code>PropTypes.element</code> ，你可以指定仅将单一子元素传递给组件，作为子节点。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import PropTypes from &apos;prop-types&apos;;</span><br><span class="line"></span><br><span class="line">class MyComponent extends React.Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    // 这里必须是一个元素，否则会发出警告。</span><br><span class="line">    const children = this.props.children;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &#123;children&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MyComponent.propTypes = &#123;</span><br><span class="line">  children: PropTypes.element.isRequired</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import PropTypes from &#x27;prop-types&#x27;;</span><br><span class="line"></span><br><span class="line">class MyComponent extends React.Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    // 这里必须是一个元素，否则会发出警告。</span><br><span class="line">    const children = this.props.children;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &#123;children&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MyComponent.propTypes = &#123;</span><br><span class="line">  children: PropTypes.element.isRequired</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
 <h4 id="默认的-prop-值"><a href="#默认的-prop-值" class="headerlink" title="默认的 prop 值"></a>默认的 prop 值</h4><p>你可以通过赋值特定的 <code>defaultProps</code> 属性为 <code>props</code> 定义默认值：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Greeting extends React.Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;h1&gt;Hello, &#123;this.props.name&#125;&lt;/h1&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 指定 props 的默认值：</span><br><span class="line">Greeting.defaultProps = &#123;</span><br><span class="line">  name: &apos;Stranger&apos;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// 渲染为 &quot;Hello, Stranger&quot;:</span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;Greeting /&gt;,</span><br><span class="line">  document.getElementById(&apos;example&apos;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<p>如果你在使用像 <a href="https://babeljs.io/docs/plugins/transform-class-properties/" target="_blank" rel="noopener">transform-class-properties</a> 的 Babel 转换器，你也可以在 React 组件类中声明 <code>defaultProps</code> 作为静态属性。这个语法还没有最终通过，在浏览器中需要一步编译工作。更多信息，查看<a href="https://github.com/tc39/proposal-class-fields" target="_blank" rel="noopener">类字段提议</a>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Greeting extends React.Component &#123;</span><br><span class="line">  static defaultProps = &#123;</span><br><span class="line">    name: &apos;stranger&apos;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;Hello, &#123;this.props.name&#125;&lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">class Greeting extends React.Component &#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;h1&gt;Hello, &#123;this.props.name&#125;&lt;/h1&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 指定 props 的默认值：</span><br><span class="line">Greeting.defaultProps = &#123;</span><br><span class="line">  name: &#x27;Stranger&#x27;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// 渲染为 &quot;Hello, Stranger&quot;:</span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;Greeting /&gt;,</span><br><span class="line">  document.getElementById(&#x27;example&#x27;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>如果你在使用像 <a target="_blank" rel="noopener" href="https://babeljs.io/docs/plugins/transform-class-properties/">transform-class-properties</a> 的 Babel 转换器，你也可以在 React 组件类中声明 <code>defaultProps</code> 作为静态属性。这个语法还没有最终通过，在浏览器中需要一步编译工作。更多信息，查看<a target="_blank" rel="noopener" href="https://github.com/tc39/proposal-class-fields">类字段提议</a>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Greeting extends React.Component &#123;</span><br><span class="line">  static defaultProps = &#123;</span><br><span class="line">    name: &#x27;stranger&#x27;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;Hello, &#123;this.props.name&#125;&lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>如果父组件没有为 <code>this.props.name</code> 传值，<code>defaultProps</code> 会给其一个默认值。<code>propTypes</code> 的类型检测是在<code>defaultProps</code> 解析之后发生的，因此也会对默认属性 <code>defaultProps</code> 进行类型检测。</p>
-<p><a href="http://www.css88.com/react/docs/typechecking-with-proptypes.html" target="_blank" rel="noopener">参考文章</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.css88.com/react/docs/typechecking-with-proptypes.html">参考文章</a></p>
 
       
     </div>
@@ -452,7 +458,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/28/需要了解的几个最佳ES6特性/" rel="next" title="需要了解的几个最佳ES6特性">
+              <a href="/2017/09/28/%E9%9C%80%E8%A6%81%E4%BA%86%E8%A7%A3%E7%9A%84%E5%87%A0%E4%B8%AA%E6%9C%80%E4%BD%B3ES6%E7%89%B9%E6%80%A7/" rel="next" title="需要了解的几个最佳ES6特性">
                 <i class="fa fa-chevron-left"></i> 需要了解的几个最佳ES6特性
               </a>
             
@@ -462,7 +468,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/10/18/exports、module-exports-和-export、export-default-之间的关系与区别/" rel="prev" title="exports、module.exports 和 export、export default 之间的关系与区别">
+              <a href="/2017/10/18/exports%E3%80%81module-exports-%E5%92%8C-export%E3%80%81export-default-%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB%E4%B8%8E%E5%8C%BA%E5%88%AB/" rel="prev" title="exports、module.exports 和 export、export default 之间的关系与区别">
                 exports、module.exports 和 export、export default 之间的关系与区别 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -519,12 +525,14 @@
 
       <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/3501718267655.jpg" alt="fxs">
+              <img class="site-author-image" itemprop="image"
+                src="/images/3501718267655.jpg"
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">fxs</p>
-              <p class="site-description motion-element" itemprop="description">追风逐月莫停留，平芜尽处是春山～</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           <nav class="site-state motion-element">
@@ -532,7 +540,7 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives/%7C%7Carchive">
               
                   <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
@@ -709,7 +717,7 @@
 
   
   
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
   
 
   

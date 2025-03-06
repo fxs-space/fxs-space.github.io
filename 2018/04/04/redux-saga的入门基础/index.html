@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -92,9 +92,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-32x32-next.png?v=5.1.4">
@@ -112,7 +112,7 @@
 
 
 
-  <meta name="keywords" content="Redux,">
+  <meta name="keywords" content="Redux," />
 
 
 
@@ -124,24 +124,24 @@
 
 
 <meta name="description" content="redux-saga 的入门基础redux-saga 是一个用于管理 Redux 应用异步操作（Side Effects。译注：直译成 “副作用” 不太通顺，所以这里译为 “异步操作” 更好理解）的中间件（又称异步 action）。 redux-saga 通过创建 Sagas 将所有的异步操作逻辑收集在一个地方集中处理，可以用来代替 redux-thunk 中间件。 这意味着应用的逻辑会存在两个地">
-<meta name="keywords" content="Redux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="redux-saga的入门基础">
-<meta property="og:url" content="https://fxs-space.github.io/2018/04/04/redux-saga的入门基础/index.html">
+<meta property="og:url" content="https://fxs-space.github.io/2018/04/04/redux-saga%E7%9A%84%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="CodeSky&#39;s Blog">
 <meta property="og:description" content="redux-saga 的入门基础redux-saga 是一个用于管理 Redux 应用异步操作（Side Effects。译注：直译成 “副作用” 不太通顺，所以这里译为 “异步操作” 更好理解）的中间件（又称异步 action）。 redux-saga 通过创建 Sagas 将所有的异步操作逻辑收集在一个地方集中处理，可以用来代替 redux-thunk 中间件。 这意味着应用的逻辑会存在两个地">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2025-03-06T07:00:57.724Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2018-04-04T11:51:50.000Z">
+<meta property="article:modified_time" content="2025-03-06T07:00:57.724Z">
+<meta property="article:author" content="fxs">
+<meta property="article:tag" content="Redux">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="redux-saga的入门基础">
-<meta name="twitter:description" content="redux-saga 的入门基础redux-saga 是一个用于管理 Redux 应用异步操作（Side Effects。译注：直译成 “副作用” 不太通顺，所以这里译为 “异步操作” 更好理解）的中间件（又称异步 action）。 redux-saga 通过创建 Sagas 将所有的异步操作逻辑收集在一个地方集中处理，可以用来代替 redux-thunk 中间件。 这意味着应用的逻辑会存在两个地">
 
 
 
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '',
     scheme: 'Pisces',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
@@ -178,9 +178,9 @@
 
 
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -190,13 +190,13 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">CodeSky's Blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -226,7 +226,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -236,7 +236,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -246,7 +246,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -256,7 +256,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -266,7 +266,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -300,20 +300,20 @@
   
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fxs-space.github.io/2018/04/04/redux-saga的入门基础/">
+    <link itemprop="mainEntityOfPage" href="https://fxs-space.github.io/2018/04/04/redux-saga%E7%9A%84%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="fxs">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/3501718267655.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="CodeSky's Blog">
     </span>
 
@@ -357,7 +357,7 @@
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -368,7 +368,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/React/" itemprop="url" rel="index">
                     <span itemprop="name">React</span>
                   </a>
@@ -413,22 +413,27 @@
 <li><p>Sagas 负责协调那些复杂或异步的操作。</p>
 </li>
 </ol>
-<p>Sagas 是通过 Generator 函数来创建的。如果你还不熟悉 Generator，可以在这里找到 <a href="http://superraytin.github.io/redux-saga-in-chinese/docs/ExternalResources.html" target="_blank" rel="noopener">一些有用的链接</a>。</p>
-<a id="more"></a>
+<p>Sagas 是通过 Generator 函数来创建的。如果你还不熟悉 Generator，可以在这里找到 <a target="_blank" rel="noopener" href="http://superraytin.github.io/redux-saga-in-chinese/docs/ExternalResources.html">一些有用的链接</a>。</p>
+<span id="more"></span>
+
 <p>Sagas 不同于 Thunks，Thunks 是在 action 被创建时调用，而 Sagas 只会在应用启动时调用（但初始启动的 Sagas 可能会动态调用其他 Sagas）。 Sagas 可以被看作是在后台运行的进程。Sagas 监听发起的 action，然后决定基于这个 action 来做什么：是发起一个异步调用（比如一个 Ajax 请求），还是发起其他的 action 到 Store，甚至是调用其他的 Sagas。</p>
 <p>在 redux-saga 的世界里，所有的任务都通用 yield Effects 来完成（译注：Effect 可以看作是 redux-saga 的任务单元）。Effects 都是简单的 Javascript 对象，包含了要被 Saga middleware 执行的信息（打个比方，你可以看到 Redux action 其实是一个个包含执行信息的对象）。 redux-saga 为各项任务提供了各种 Effect 创建器，比如调用一个异步函数，发起一个 action 到 Store，启动一个后台任务或者等待一个满足某些条件的未来的 action。</p>
-<p>因为使用了 Generator，redux-saga 让你可以用同步的方式写异步代码。就像你可以使用 async/await 函数所能做的一样。但 Generator 可以让你做一些 async 函数做不到的事情。</p>
+<p>因为使用了 Generator，redux-saga 让你可以用同步的方式写异步代码。就像你可以使用 async&#x2F;await 函数所能做的一样。但 Generator 可以让你做一些 async 函数做不到的事情。</p>
 <p>事实上 Sagas yield 普通对象的方式让你能容易地测试 Generator 里所有的业务逻辑，可以通过简单地迭代 yield 过的对象进行简单的单元测试。</p>
 <p>此外，redux-saga 启动的任务可以在任何时候通过手动取消，也可以把任务和其他的 Effects 放到 race 方法里以自动取消。</p>
-<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save redux-saga</span><br></pre></td></tr></table></figure>
-<p>你也可以直接在 HTML 页面中通过 <code>&amp;lt;script&amp;gt</code>; 标签使用提供的 UMD 构建版本，看 <a href="https://github.com/superRaytin/redux-saga-in-chinese#using-umd-build-in-the-browser" target="_blank" rel="noopener">这里</a>。</p>
+<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save redux-saga</span><br></pre></td></tr></table></figure>
+
+<p>你也可以直接在 HTML 页面中通过 <code>&amp;lt;script&amp;gt</code>; 标签使用提供的 UMD 构建版本，看 <a target="_blank" rel="noopener" href="https://github.com/superRaytin/redux-saga-in-chinese#using-umd-build-in-the-browser">这里</a>。</p>
 <h5 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h5><p>假设我们有一个 UI 界面，在单击按钮时从远程服务器获取一些用户数据（为简单起见，我们只列出 action 触发代码）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class UserComponent extends React.Component &#123;</span><br><span class="line">  ...</span><br><span class="line">  onSomeButtonClicked() &#123;</span><br><span class="line">    const &#123; userId, dispatch &#125; = this.props</span><br><span class="line">    dispatch(&#123;type: &apos;USER_FETCH_REQUESTED&apos;, payload: &#123;userId&#125;&#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class UserComponent extends React.Component &#123;</span><br><span class="line">  ...</span><br><span class="line">  onSomeButtonClicked() &#123;</span><br><span class="line">    const &#123; userId, dispatch &#125; = this.props</span><br><span class="line">    dispatch(&#123;type: &#x27;USER_FETCH_REQUESTED&#x27;, payload: &#123;userId&#125;&#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>这个组件发起一个普通对象格式的 action 到 Store。我们将创建一个 Saga 来监听所有的 <code>USER_FETCH_REQUESTED</code> action，并触发一个 API 调用以获取用户数据。</p>
-<h6 id="sagas-js"><a href="#sagas-js" class="headerlink" title="sagas.js"></a>sagas.js</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">import &#123; takeEvery, takeLatest &#125; from &apos;redux-saga&apos;</span><br><span class="line">import &#123; call, put &#125; from &apos;redux-saga/effects&apos;</span><br><span class="line">import Api from &apos;...&apos;</span><br><span class="line"></span><br><span class="line">// workder Saga : 将在 USER_FETCH_REQUESTED action 被发起时调用</span><br><span class="line">function* fetchUser(action) &#123;</span><br><span class="line">   try &#123;</span><br><span class="line">      const user = yield call(Api.fetchUser, action.payload.userId);</span><br><span class="line">      yield put(&#123;type: &quot;USER_FETCH_SUCCEEDED&quot;, user: user&#125;);</span><br><span class="line">   &#125; catch (e) &#123;</span><br><span class="line">      yield put(&#123;type: &quot;USER_FETCH_FAILED&quot;, message: e.message&#125;);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">  在每个 `USER_FETCH_REQUESTED` action 被发起时调用 fetchUser</span><br><span class="line">  允许并发（译注：即同时处理多个相同的 action）</span><br><span class="line">*/</span><br><span class="line">function* mySaga() &#123;</span><br><span class="line">  yield* takeEvery(&quot;USER_FETCH_REQUESTED&quot;, fetchUser);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">  也可以使用 takeLatest</span><br><span class="line"></span><br><span class="line">  不允许并发，发起一个 `USER_FETCH_REQUESTED` action 时，</span><br><span class="line">  如果在这之前已经有一个 `USER_FETCH_REQUESTED` action 在处理中，</span><br><span class="line">  那么处理中的 action 会被取消，只会执行当前的</span><br><span class="line">*/</span><br><span class="line">function* mySaga() &#123;</span><br><span class="line">  yield* takeLatest(&quot;USER_FETCH_REQUESTED&quot;, fetchUser);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="sagas-js"><a href="#sagas-js" class="headerlink" title="sagas.js"></a>sagas.js</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">import &#123; takeEvery, takeLatest &#125; from &#x27;redux-saga&#x27;</span><br><span class="line">import &#123; call, put &#125; from &#x27;redux-saga/effects&#x27;</span><br><span class="line">import Api from &#x27;...&#x27;</span><br><span class="line"></span><br><span class="line">// workder Saga : 将在 USER_FETCH_REQUESTED action 被发起时调用</span><br><span class="line">function* fetchUser(action) &#123;</span><br><span class="line">   try &#123;</span><br><span class="line">      const user = yield call(Api.fetchUser, action.payload.userId);</span><br><span class="line">      yield put(&#123;type: &quot;USER_FETCH_SUCCEEDED&quot;, user: user&#125;);</span><br><span class="line">   &#125; catch (e) &#123;</span><br><span class="line">      yield put(&#123;type: &quot;USER_FETCH_FAILED&quot;, message: e.message&#125;);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">  在每个 `USER_FETCH_REQUESTED` action 被发起时调用 fetchUser</span><br><span class="line">  允许并发（译注：即同时处理多个相同的 action）</span><br><span class="line">*/</span><br><span class="line">function* mySaga() &#123;</span><br><span class="line">  yield* takeEvery(&quot;USER_FETCH_REQUESTED&quot;, fetchUser);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">  也可以使用 takeLatest</span><br><span class="line"></span><br><span class="line">  不允许并发，发起一个 `USER_FETCH_REQUESTED` action 时，</span><br><span class="line">  如果在这之前已经有一个 `USER_FETCH_REQUESTED` action 在处理中，</span><br><span class="line">  那么处理中的 action 会被取消，只会执行当前的</span><br><span class="line">*/</span><br><span class="line">function* mySaga() &#123;</span><br><span class="line">  yield* takeLatest(&quot;USER_FETCH_REQUESTED&quot;, fetchUser);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>为了能跑起 Saga，我们需要使用 redux-saga 中间件将 Saga 与 Redux Store 建立连接。</p>
-<h5 id="main-js"><a href="#main-js" class="headerlink" title="main.js"></a>main.js</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createStore, applyMiddleware &#125; from &apos;redux&apos;</span><br><span class="line">import createSagaMiddleware from &apos;redux-saga&apos;</span><br><span class="line"></span><br><span class="line">import reducer from &apos;./reducers&apos;</span><br><span class="line">import mySaga from &apos;./sagas&apos;</span><br><span class="line"></span><br><span class="line">const sagaMiddleware = createSagaMiddleware(mySaga)</span><br><span class="line">const store = createStore(</span><br><span class="line">  reducer,</span><br><span class="line">  applyMiddleware(sagaMiddleware)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">// render the application</span><br></pre></td></tr></table></figure>
-<p><a href="https://github.com/superRaytin/redux-saga-in-chinese" target="_blank" rel="noopener">Redux-saga 中文文档</a></p>
+<h5 id="main-js"><a href="#main-js" class="headerlink" title="main.js"></a>main.js</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createStore, applyMiddleware &#125; from &#x27;redux&#x27;</span><br><span class="line">import createSagaMiddleware from &#x27;redux-saga&#x27;</span><br><span class="line"></span><br><span class="line">import reducer from &#x27;./reducers&#x27;</span><br><span class="line">import mySaga from &#x27;./sagas&#x27;</span><br><span class="line"></span><br><span class="line">const sagaMiddleware = createSagaMiddleware(mySaga)</span><br><span class="line">const store = createStore(</span><br><span class="line">  reducer,</span><br><span class="line">  applyMiddleware(sagaMiddleware)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">// render the application</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://github.com/superRaytin/redux-saga-in-chinese">Redux-saga 中文文档</a></p>
 
       
     </div>
@@ -459,7 +464,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/08/前端常见跨域解决方案/" rel="next" title="前端常见跨域解决方案">
+              <a href="/2018/03/08/%E5%89%8D%E7%AB%AF%E5%B8%B8%E8%A7%81%E8%B7%A8%E5%9F%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" rel="next" title="前端常见跨域解决方案">
                 <i class="fa fa-chevron-left"></i> 前端常见跨域解决方案
               </a>
             
@@ -469,7 +474,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/15/vue中的computed和watch之间的区别/" rel="prev" title="vue中的computed和watch之间的区别">
+              <a href="/2018/06/15/vue%E4%B8%AD%E7%9A%84computed%E5%92%8Cwatch%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/" rel="prev" title="vue中的computed和watch之间的区别">
                 vue中的computed和watch之间的区别 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -526,12 +531,14 @@
 
       <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/3501718267655.jpg" alt="fxs">
+              <img class="site-author-image" itemprop="image"
+                src="/images/3501718267655.jpg"
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">fxs</p>
-              <p class="site-description motion-element" itemprop="description">追风逐月莫停留，平芜尽处是春山～</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           <nav class="site-state motion-element">
@@ -539,7 +546,7 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives/%7C%7Carchive">
               
                   <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
@@ -716,7 +723,7 @@
 
   
   
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
   
 
   

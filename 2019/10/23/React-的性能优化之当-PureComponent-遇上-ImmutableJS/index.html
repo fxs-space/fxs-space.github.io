@@ -6,10 +6,10 @@
 
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
@@ -92,9 +92,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-32x32-next.png?v=5.1.4">
@@ -112,7 +112,7 @@
 
 
 
-  <meta name="keywords" content="React,">
+  <meta name="keywords" content="React," />
 
 
 
@@ -124,24 +124,24 @@
 
 
 <meta name="description" content="React 的性能优化之当 PureComponent 遇上 ImmutableJS一、痛点在我们的印象中，React 好像就意味着组件化、高性能，我们永远只需要关心数据整体，两次数据之间的 UI 如何变化，则完全交给 React Virtual Dom 的 Diff 算法 去做。以至于我们很随意的去操纵数据，基本优化 shouldComponentUpdate 也懒得去写，毕竟不写也能正确渲染。">
-<meta name="keywords" content="React">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React 的性能优化之当 PureComponent 遇上 ImmutableJS">
-<meta property="og:url" content="https://fxs-space.github.io/2019/10/23/React-的性能优化之当-PureComponent-遇上-ImmutableJS/index.html">
+<meta property="og:url" content="https://fxs-space.github.io/2019/10/23/React-%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E5%BD%93-PureComponent-%E9%81%87%E4%B8%8A-ImmutableJS/index.html">
 <meta property="og:site_name" content="CodeSky&#39;s Blog">
 <meta property="og:description" content="React 的性能优化之当 PureComponent 遇上 ImmutableJS一、痛点在我们的印象中，React 好像就意味着组件化、高性能，我们永远只需要关心数据整体，两次数据之间的 UI 如何变化，则完全交给 React Virtual Dom 的 Diff 算法 去做。以至于我们很随意的去操纵数据，基本优化 shouldComponentUpdate 也懒得去写，毕竟不写也能正确渲染。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2025-03-04T07:51:36.026Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2019-10-23T11:00:33.000Z">
+<meta property="article:modified_time" content="2025-03-04T07:51:36.026Z">
+<meta property="article:author" content="fxs">
+<meta property="article:tag" content="React">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="React 的性能优化之当 PureComponent 遇上 ImmutableJS">
-<meta name="twitter:description" content="React 的性能优化之当 PureComponent 遇上 ImmutableJS一、痛点在我们的印象中，React 好像就意味着组件化、高性能，我们永远只需要关心数据整体，两次数据之间的 UI 如何变化，则完全交给 React Virtual Dom 的 Diff 算法 去做。以至于我们很随意的去操纵数据，基本优化 shouldComponentUpdate 也懒得去写，毕竟不写也能正确渲染。">
 
 
 
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '',
     scheme: 'Pisces',
     version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
@@ -178,9 +178,9 @@
 
 
 
-</head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 
-<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -190,13 +190,13 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">CodeSky's Blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -226,7 +226,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -236,7 +236,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -246,7 +246,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -256,7 +256,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
           </a>
@@ -266,7 +266,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
             关于
           </a>
@@ -300,20 +300,20 @@
   
   
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://fxs-space.github.io/2019/10/23/React-的性能优化之当-PureComponent-遇上-ImmutableJS/">
+    <link itemprop="mainEntityOfPage" href="https://fxs-space.github.io/2019/10/23/React-%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E5%BD%93-PureComponent-%E9%81%87%E4%B8%8A-ImmutableJS/">
 
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="fxs">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/3501718267655.jpg">
     </span>
 
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="CodeSky's Blog">
     </span>
 
@@ -357,7 +357,7 @@
           </span>
 
           
-            <span class="post-category">
+            <span class="post-category" >
             
               <span class="post-meta-divider">|</span>
             
@@ -368,7 +368,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/React/" itemprop="url" rel="index">
                     <span itemprop="name">React</span>
                   </a>
@@ -407,13 +407,15 @@
 
       
         <h2 id="React-的性能优化之当-PureComponent-遇上-ImmutableJS"><a href="#React-的性能优化之当-PureComponent-遇上-ImmutableJS" class="headerlink" title="React 的性能优化之当 PureComponent 遇上 ImmutableJS"></a>React 的性能优化之当 PureComponent 遇上 ImmutableJS</h2><h4 id="一、痛点"><a href="#一、痛点" class="headerlink" title="一、痛点"></a>一、痛点</h4><p>在我们的印象中，React 好像就意味着组件化、高性能，我们永远只需要关心数据整体，两次数据之间的 UI 如何变化，则完全交给 React Virtual Dom 的 Diff 算法 去做。以至于我们很随意的去操纵数据，基本优化 shouldComponentUpdate 也懒得去写，毕竟不写也能正确渲染。但随着应用体积越来越大，会发现页面好像有点变慢了，特别是组件嵌套比较多，数据结构比较复杂的情况下，随便改变一个表单项，或者对列表做一个筛选都要耗时 100ms 以上，这个时候我们就需要优化了！当然如果没有遇到性能瓶颈，完全不用担心，过早优化是邪恶的。这里我们总结一个很简单的方案来让 React 应用性能发挥到极致。在下面一部分，我们先回顾一下一些背景知识，包括：JavaScript 变量类型和 React 渲染机制，如果你是老鸟可以直接跳过。</p>
-<a id="more"></a>
+<span id="more"></span>
+
 <h4 id="二、一些背景知识的回顾"><a href="#二、一些背景知识的回顾" class="headerlink" title="二、一些背景知识的回顾"></a>二、一些背景知识的回顾</h4><h5 id="1-变量类型"><a href="#1-变量类型" class="headerlink" title="1. 变量类型"></a>1. 变量类型</h5><p>JavaScript 的变量类型有两类：</p>
 <ul>
 <li>基本类型：6 种基本数据类型， Undefined 、 Null 、 Boolean 、 Number 、 String 、 Symbol</li>
 <li>引用类型：统称为 Object 类型，细分为：Object 类型、 Array 类型、 Date 类型、 RegExp 类型、 Function 类型等。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">举个例子：</span><br><span class="line"></span><br><span class="line">let p1 = &#123; name: &apos;neo&apos; &#125;;</span><br><span class="line">let p2 = p1;</span><br><span class="line">p2.name = &apos;dave&apos;;</span><br><span class="line">console.log(p1.name); // dave</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">举个例子：</span><br><span class="line"></span><br><span class="line">let p1 = &#123; name: &#x27;neo&#x27; &#125;;</span><br><span class="line">let p2 = p1;</span><br><span class="line">p2.name = &#x27;dave&#x27;;</span><br><span class="line">console.log(p1.name); // dave</span><br></pre></td></tr></table></figure>
+
 <p>在引用类型里，声明一个 p1 的对象，把 p1 赋值给 p2 ，此时赋的其实是该对象的在堆中的地址，而不是堆中的数据，也就是两个变量指向的是同一个存储空间，后面 p2.name 改变后，也就影响到了 p1。虽然这样做可以节约内存，但当应用复杂后，就需要很小心的操作数据了，因为一不注意修改一个变量的值可能就影响到了另外一个变量。如果我们想要让他们不互相影响，就需要拷贝出一份一模一样的数据，拷贝又分浅拷贝与深拷贝，浅拷贝只会拷贝第一层的数据，深拷贝则会递归所有层级都拷贝一份，比较消耗性能。</p>
 <h5 id="2-React"><a href="#2-React" class="headerlink" title="2. React"></a>2. React</h5><p>在 React 中，每次 setState ， Virtual DOM 会计算出前后两次虚拟 DOM 对象的区别，再去修改真实需要修改的 DOM 。由于 js 计算速度很快，而操作真实 DOM 相对比较慢，Virtual DOM 避免了没必要的真实 DOM 操作，所以 React 性能很好。但随着应用复杂度的提升， DOM 树越来越复杂，大量的对比操作也会影响性能。比如一个 Table 组件，修改其中一行 Tr 组件的某一个字段， setState 后，其他所有行 Tr 组件也都会执行一次 render 函数，这其实是不必要的。我们可以通过 shouldComponentUpdate 函数决定是否更新组件。大部分时候我们是可以知道哪些组件是不会变的，根本就没必要去计算那一部分虚拟 DOM。</p>
 <h4 id="三、-PureComponent"><a href="#三、-PureComponent" class="headerlink" title="三、 PureComponent"></a>三、 PureComponent</h4><p>React15.3 中新加了一个类 PureComponent，前身是 PureRenderMixin ，和 Component 基本一样，只不过会在 render 之前帮组件自动执行一次 shallowEqual（浅比较），来决定是否更新组件，浅比较类似于浅复制，只会比较第一层。</p>
@@ -424,22 +426,28 @@
 <li>第一层数据改变，但引用没变，会造成不渲染，所以需要很小心的操作数据。</li>
 </ol>
 <h4 id="四、-Immutable-js"><a href="#四、-Immutable-js" class="headerlink" title="四、 Immutable.js"></a>四、 Immutable.js</h4><p>Immutable.js 是 Facebook 在 2014 年出的持久性数据结构的库，持久性指的是数据一旦创建，就不能再被更改，任何修改或添加删除操作都会返回一个新的 Immutable 对象。可以让我们更容易的去处理缓存、回退、数据变化检测等问题，简化开发。并且提供了大量的类似原生 JS 的方法，还有 Lazy Operation 的特性，完全的函数式编程。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Map &#125; from &quot;immutable&quot;;</span><br><span class="line">const map1 = Map(&#123; a: &#123; aa: 1 &#125;, b: 2, c: 3 &#125;);</span><br><span class="line">const map2 = map1.set(&apos;b&apos;, 50);</span><br><span class="line">map1 !== map2; // true</span><br><span class="line">map1.get(&apos;b&apos;); // 2</span><br><span class="line">map2.get(&apos;b&apos;); // 50</span><br><span class="line">map1.get(&apos;a&apos;) === map2.get(&apos;a&apos;); // true</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Map &#125; from &quot;immutable&quot;;</span><br><span class="line">const map1 = Map(&#123; a: &#123; aa: 1 &#125;, b: 2, c: 3 &#125;);</span><br><span class="line">const map2 = map1.set(&#x27;b&#x27;, 50);</span><br><span class="line">map1 !== map2; // true</span><br><span class="line">map1.get(&#x27;b&#x27;); // 2</span><br><span class="line">map2.get(&#x27;b&#x27;); // 50</span><br><span class="line">map1.get(&#x27;a&#x27;) === map2.get(&#x27;a&#x27;); // true</span><br></pre></td></tr></table></figure>
+
 <p>可以看到，修改 map1 的属性返回 map2，他们并不是指向同一存储空间，map1 声明了只有，所有的操作都不会改变它。</p>
 <p>ImmutableJS 提供了大量的方法去更新、删除、添加数据，极大的方便了我们操纵数据。除此之外，还提供了原生类型与 ImmutableJS 类型判断与转换方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import &#123; fromJS, isImmutable &#125; from &quot;immutable&quot;;</span><br><span class="line">const obj = fromJS(&#123;</span><br><span class="line">  a: &apos;test&apos;,</span><br><span class="line">  b: [1, 2, 4]</span><br><span class="line">&#125;); // 支持混合类型</span><br><span class="line">isImmutable(obj); // true</span><br><span class="line">obj.size(); // 2</span><br><span class="line">const obj1 = obj.toJS(); // 转换成原生 `js` 类型</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import &#123; fromJS, isImmutable &#125; from &quot;immutable&quot;;</span><br><span class="line">const obj = fromJS(&#123;</span><br><span class="line">  a: &#x27;test&#x27;,</span><br><span class="line">  b: [1, 2, 4]</span><br><span class="line">&#125;); // 支持混合类型</span><br><span class="line">isImmutable(obj); // true</span><br><span class="line">obj.size(); // 2</span><br><span class="line">const obj1 = obj.toJS(); // 转换成原生 `js` 类型</span><br></pre></td></tr></table></figure>
+
 <p>ImmutableJS 最大的两个特性就是： immutable data structures（持久性数据结构）与 structural sharing（结构共享），持久性数据结构保证数据一旦创建就不能修改，使用旧数据创建新数据时，旧数据也不会改变，不会像原生 js 那样新数据的操作会影响旧数据。而结构共享是指没有改变的数据共用一个引用，这样既减少了深拷贝的性能消耗，也减少了内存。比如下图：tree</p>
 <p>左边是旧值，右边是新值，我需要改变左边红色节点的值，生成的新值改变了红色节点到根节点路径之间的所有节点，也就是所有青色节点的值，旧值没有任何改变，其他使用它的地方并不会受影响，而超过一大半的蓝色节点还是和旧值共享的。在 ImmutableJS 内部，构造了一种特殊的数据结构，把原生的值结合一系列的私有属性，创建成 ImmutableJS 类型，每次改变值，先会通过私有属性的辅助检测，然后改变对应的需要改变的私有属性和真实值，最后生成一个新的值，中间会有很多的优化，所以性能会很高。</p>
-<h4 id="五、-案例"><a href="#五、-案例" class="headerlink" title="五、 案例"></a>五、 案例</h4><p>首先我们看看只使用 React 的情况下，应用性能为什么会被浪费，代码地址：<a href="https://github.com/wulv/fe-example/tree/master/react-table" target="_blank" rel="noopener">https://github.com/wulv/fe-example/tree/master/react-table</a> ，这个案例使用 create-react-app，检测工具使用 chrome 插件:React Perf。执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/wulv/fe-example.git</span><br><span class="line">cd fe-example/react-table</span><br><span class="line">yarn</span><br><span class="line">yarn start</span><br></pre></td></tr></table></figure>
+<h4 id="五、-案例"><a href="#五、-案例" class="headerlink" title="五、 案例"></a>五、 案例</h4><p>首先我们看看只使用 React 的情况下，应用性能为什么会被浪费，代码地址：<a target="_blank" rel="noopener" href="https://github.com/wulv/fe-example/tree/master/react-table">https://github.com/wulv/fe-example/tree/master/react-table</a> ，这个案例使用 create-react-app，检测工具使用 chrome 插件:React Perf。执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/wulv/fe-example.git</span><br><span class="line">cd fe-example/react-table</span><br><span class="line">yarn</span><br><span class="line">yarn start</span><br></pre></td></tr></table></figure>
+
 <p>可以打开页面，开始记录，然后随便对一列数据进行修改，结束记录，可以看到我们仅修改了一行数据，但在 Print Wasted 那一项里，渲染 Tr 组件浪费了 5 次：react-table</p>
 <p>无论是添加，删除操作，都会浪费 n-1 次 render ，因为 App 组件的整个 state 改变了，所有的组件都会重新渲染一次，最后对比出需要真实 DOM 的操作。我们把 Table 组件和 Tr 继承的 Component 改成 PureComponent ，那么， Tr 组件每次更新都会进行一次 shallowEqual 比较，在记录一次，会发现修改操作没有了浪费，然而这个时候添加和删除操作却无效了，分析一下添加的操作是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">add = () =&gt; &#123;</span><br><span class="line">    const  &#123; data &#125; = this.state;</span><br><span class="line">    data.push(dataGenerate())</span><br><span class="line">    this.setState(&#123;</span><br><span class="line">      data</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">add = () =&gt; &#123;</span><br><span class="line">    const  &#123; data &#125; = this.state;</span><br><span class="line">    data.push(dataGenerate())</span><br><span class="line">    this.setState(&#123;</span><br><span class="line">      data</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
 <p>data.push 并没有改变 data 的引用，所以 PureComponent 的 shallowEqual 直接返回了 true ，不去 render 了。这并不是我们想要的，所以如果使用 Component 必定带来性能浪费，使用 PureComponent 又必须保证组件需要更新时，props 或 state 返回一个新引用，否则不会更新 UI。</p>
-<p>这个时候， ImmutableJS 就可以显示出它的威力了，因为它可以保证每次修改返回一个新的 Object，我们看看修改后的例子：代码地址：<a href="https://github.com/wulv/fe-example/tree/master/react-immutablejs" target="_blank" rel="noopener">https://github.com/wulv/fe-example/tree/master/react-immutablejs</a> ，执行上面例子同样的操作，可以看到：react-immutablejs 添加，删除，修改操作，没有一次浪费。没有浪费的原因是所有的子组件都使用了 PureComponent， ImmutableJS 保证修改操作返回一个新引用，并且只修改需要修改的节点（PureComponent 可以渲染出新的改动），其他的节点引用保持不变（PureComponent 直接不渲染）。可以看出， PureComponent 与 ImmutableJS 简直是天生一对啊，如果结合 redux ，那就更加完美了。因为 redux 的 reducer 必须每次返回一个新的引用，有时候我们必须使用 clone 或者 assign 等操作来确保返回新引用，使用 ImmutanleJS 天然保证了这一点，根本就不需要 lodash 等函数库了，比如我使用 redux + immutable + react-router + express 写了一个稍微复杂点的例子：<a href="https://github.com/wulv/fe-example/tree/master/express-redux-immutable，可以看到" target="_blank" rel="noopener">https://github.com/wulv/fe-example/tree/master/express-redux-immutable，可以看到</a> pageIndex 的 store 的状态是：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  loading: false,</span><br><span class="line">  tableData: [&#123;</span><br><span class="line">    &quot;name&quot;: &quot;gyu3w0oa5zggkanciclhm2t9&quot;,</span><br><span class="line">    &quot;age&quot;: 64,</span><br><span class="line">    &quot;height&quot;: 121,</span><br><span class="line">    &quot;width&quot;: 71,</span><br><span class="line">    &quot;hobby&quot;: &#123;</span><br><span class="line">      &quot;movie&quot;: &#123;</span><br><span class="line">        &quot;name&quot;: &quot;zrah6zrvm9e512qt4typhkt9&quot;,</span><br><span class="line">        &quot;director&quot;: &quot;t1c69z1vd4em1lh747dp9zfr&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;],</span><br><span class="line">  totle: 0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个时候， ImmutableJS 就可以显示出它的威力了，因为它可以保证每次修改返回一个新的 Object，我们看看修改后的例子：代码地址：<a target="_blank" rel="noopener" href="https://github.com/wulv/fe-example/tree/master/react-immutablejs">https://github.com/wulv/fe-example/tree/master/react-immutablejs</a> ，执行上面例子同样的操作，可以看到：react-immutablejs 添加，删除，修改操作，没有一次浪费。没有浪费的原因是所有的子组件都使用了 PureComponent， ImmutableJS 保证修改操作返回一个新引用，并且只修改需要修改的节点（PureComponent 可以渲染出新的改动），其他的节点引用保持不变（PureComponent 直接不渲染）。可以看出， PureComponent 与 ImmutableJS 简直是天生一对啊，如果结合 redux ，那就更加完美了。因为 redux 的 reducer 必须每次返回一个新的引用，有时候我们必须使用 clone 或者 assign 等操作来确保返回新引用，使用 ImmutanleJS 天然保证了这一点，根本就不需要 lodash 等函数库了，比如我使用 redux + immutable + react-router + express 写了一个稍微复杂点的例子：<a target="_blank" rel="noopener" href="https://github.com/wulv/fe-example/tree/master/express-redux-immutable%EF%BC%8C%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%88%B0">https://github.com/wulv/fe-example/tree/master/express-redux-immutable，可以看到</a> pageIndex 的 store 的状态是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  loading: false,</span><br><span class="line">  tableData: [&#123;</span><br><span class="line">    &quot;name&quot;: &quot;gyu3w0oa5zggkanciclhm2t9&quot;,</span><br><span class="line">    &quot;age&quot;: 64,</span><br><span class="line">    &quot;height&quot;: 121,</span><br><span class="line">    &quot;width&quot;: 71,</span><br><span class="line">    &quot;hobby&quot;: &#123;</span><br><span class="line">      &quot;movie&quot;: &#123;</span><br><span class="line">        &quot;name&quot;: &quot;zrah6zrvm9e512qt4typhkt9&quot;,</span><br><span class="line">        &quot;director&quot;: &quot;t1c69z1vd4em1lh747dp9zfr&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;],</span><br><span class="line">  totle: 0</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>如果我需要快速修改 width 的值为 90，比较一下使用深拷贝、 Object.assign 和 ImmutableJS 三种方式的区别：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">// payload = &#123; name: &apos;gyu3w0oa5zggkanciclhm2t9&apos;, width: 90 &#125;</span><br><span class="line">// 1. 使用深拷贝</span><br><span class="line"> updateWidth(state, payload) &#123;</span><br><span class="line">    const newState = deepClone(state);</span><br><span class="line">    return newState.tableData.map(item =&gt; &#123;</span><br><span class="line">      if (tem.name === payload.name) &#123;</span><br><span class="line">        item.width = payload.width;</span><br><span class="line">      &#125;</span><br><span class="line">      return item;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">// 2. 使用Object.assign</span><br><span class="line"> updateWidth(state, payload) &#123;</span><br><span class="line">    return Object.assign(&#123;&#125;, state, &#123;</span><br><span class="line">      tableData: state.state.map(item =&gt; &#123;</span><br><span class="line">        if (item.name === payload.name) &#123;</span><br><span class="line">          return Object.assign(&#123;&#125;, item, &#123; width: payload.width &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        return item;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">// 3. 使用ImmutableJS</span><br><span class="line"> updateWidth(state, payload) &#123;</span><br><span class="line">  return state.update(&apos;tableData&apos;, list =&gt; list.update(</span><br><span class="line">      list.findIndex((item) =&gt; item.get(&apos;name&apos;) === payload.name),</span><br><span class="line">    item =&gt; item.set(&apos;width&apos;, payload.width)));</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">// payload = &#123; name: &#x27;gyu3w0oa5zggkanciclhm2t9&#x27;, width: 90 &#125;</span><br><span class="line">// 1. 使用深拷贝</span><br><span class="line"> updateWidth(state, payload) &#123;</span><br><span class="line">    const newState = deepClone(state);</span><br><span class="line">    return newState.tableData.map(item =&gt; &#123;</span><br><span class="line">      if (tem.name === payload.name) &#123;</span><br><span class="line">        item.width = payload.width;</span><br><span class="line">      &#125;</span><br><span class="line">      return item;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">// 2. 使用Object.assign</span><br><span class="line"> updateWidth(state, payload) &#123;</span><br><span class="line">    return Object.assign(&#123;&#125;, state, &#123;</span><br><span class="line">      tableData: state.state.map(item =&gt; &#123;</span><br><span class="line">        if (item.name === payload.name) &#123;</span><br><span class="line">          return Object.assign(&#123;&#125;, item, &#123; width: payload.width &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        return item;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">// 3. 使用ImmutableJS</span><br><span class="line"> updateWidth(state, payload) &#123;</span><br><span class="line">  return state.update(&#x27;tableData&#x27;, list =&gt; list.update(</span><br><span class="line">      list.findIndex((item) =&gt; item.get(&#x27;name&#x27;) === payload.name),</span><br><span class="line">    item =&gt; item.set(&#x27;width&#x27;, payload.width)));</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
 <p>使用深拷贝是一个昂贵的操作，而且引用都改变了，必然造成 re-render, 而 Object.assign 会浅复制第一层，虽然不会造成 re-render，但浅复制把其他的属性也都复制了一次，在这里也是很没有必要的，只有使用 ImmutableJS 完美的完成了修改，并且代码也最少。</p>
 <h4 id="六、-优势与不足"><a href="#六、-优势与不足" class="headerlink" title="六、 优势与不足"></a>六、 优势与不足</h4><p>可以看出， ImmutableJS 结合 PureComponent 可以很大程度的减少应用 re-render 的次数，可以大量的提高性能。但还是有一些不足的地方：</p>
 <ol>
@@ -449,7 +457,8 @@
 <li>难以调试，在 redux-logger 里面需要在 stateTransformer 配置里执行 state.toJS()。</li>
 </ol>
 <h4 id="七、-最佳实践"><a href="#七、-最佳实践" class="headerlink" title="七、 最佳实践"></a>七、 最佳实践</h4><p>其实，重要的是编程者需要有性能优化的意识，熟悉 js 引用类型的特性，了解事情的本质比会使用某个框架或库更加重要。用其他的方法也是完全可以达到 ImmutableJS 的效果，比如添加数据可以使用解构操作符的方式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">add = () =&gt; &#123;</span><br><span class="line">    const  &#123; data &#125; = this.state;</span><br><span class="line">    this.setState(&#123;</span><br><span class="line">      data: [...data, dataGenerate()]</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">add = () =&gt; &#123;</span><br><span class="line">    const  &#123; data &#125; = this.state;</span><br><span class="line">    this.setState(&#123;</span><br><span class="line">      data: [...data, dataGenerate()]</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
 <p>只不过如果数据嵌套比较深，写起来还是比较麻烦。以下有一些小技巧：</p>
 <ol>
 <li>还有两个轻量库可以实现不可变数据结构：seamless-immutable 或者 immutability-helper，只不过原理完全不一样，效率也没那么高。</li>
@@ -458,12 +467,12 @@
 <li>结合 redux 的时候，要使用 import { combineReducers } from ‘redux-immutablejs’;，因为 redux 的 combineReducers 期望 state 是一个纯净的 js 对象。</li>
 <li>尽量将 state 设计成扁平状的。</li>
 <li>展示组件不要使用 Immutable 数据结构。</li>
-<li>不要在 render 函数里一个 PureComponent 组件的 props 使用 bind(this) 或者 style={ { width: ‘100px’ } }，因为 shallowEqual 一定会对比不通过。</li>
+<li>不要在 render 函数里一个 PureComponent 组件的 props 使用 bind(this) 或者 style&#x3D;{ { width: ‘100px’ } }，因为 shallowEqual 一定会对比不通过。</li>
 </ol>
 <h4 id="八、-参考链接"><a href="#八、-参考链接" class="headerlink" title="八、 参考链接"></a>八、 参考链接</h4><ul>
-<li><a href="https://medium.com/@dtinth/immutable-js-persistent-data-structures-and-structural-sharing-6d163fbd73d2" target="_blank" rel="noopener">Immutable.js, persistent data structures and structural sharing</a></li>
-<li><a href="http://blog.klipse.tech/javascript/2016/06/23/immutable-perf.html" target="_blank" rel="noopener">immutable.js is much faster than native javascript</a></li>
-<li><a href="https://github.com/camsong/blog/issues/3" target="_blank" rel="noopener">Immutable 详解及 React 中实践</a></li>
+<li><a target="_blank" rel="noopener" href="https://medium.com/@dtinth/immutable-js-persistent-data-structures-and-structural-sharing-6d163fbd73d2">Immutable.js, persistent data structures and structural sharing</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.klipse.tech/javascript/2016/06/23/immutable-perf.html">immutable.js is much faster than native javascript</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/camsong/blog/issues/3">Immutable 详解及 React 中实践</a></li>
 </ul>
 
       
@@ -495,7 +504,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/11/手撕常用代码/" rel="next" title="手撕常用代码">
+              <a href="/2019/04/11/%E6%89%8B%E6%92%95%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81/" rel="next" title="手撕常用代码">
                 <i class="fa fa-chevron-left"></i> 手撕常用代码
               </a>
             
@@ -558,12 +567,14 @@
 
       <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/3501718267655.jpg" alt="fxs">
+              <img class="site-author-image" itemprop="image"
+                src="/images/3501718267655.jpg"
+                alt="" />
             
-              <p class="site-author-name" itemprop="name">fxs</p>
-              <p class="site-description motion-element" itemprop="description">追风逐月莫停留，平芜尽处是春山～</p>
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           <nav class="site-state motion-element">
@@ -571,7 +582,7 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/">
+                <a href="/archives/%7C%7Carchive">
               
                   <span class="site-state-item-count">28</span>
                   <span class="site-state-item-name">日志</span>
@@ -748,7 +759,7 @@
 
   
   
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
   
 
   
